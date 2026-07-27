@@ -147,12 +147,12 @@
 
 <main>
   <section class="tabpanel active" id="panel-mom">
-    <div class="panel-sub">Compares the current month against the immediately preceding month (e.g. June 2026 vs July 2026). Same working‑day window (8,14 days) on both sides of every comparison.</div>
+    <div class="panel-sub">Compares the current month against the immediately preceding month (e.g. June 2026 vs July 2026). Same working‑day window (8 days) on both sides of every comparison.</div>
     <div class="report-grid" id="grid-mom"></div>
   </section>
 
   <section class="tabpanel" id="panel-yoy">
-    <div class="panel-sub">Compares the current month against the same month one year earlier (e.g. July 2025 vs July 2026). Same working‑day window (8,14 days) on both sides of every comparison.</div>
+    <div class="panel-sub">Compares the current month against the same month one year earlier (e.g. July 2025 vs July 2026). Same working‑day window (8 days) on both sides of every comparison.</div>
     <div class="report-grid" id="grid-yoy"></div>
   </section>
 
@@ -186,7 +186,7 @@
 const reports = [
   {
     type: 'mom',
-    title: 'Jun 3–12 vs Jul 3–12, 2026',
+    title: 'June 2026 vs July 2026',
     date: '2026-07-15',
     workingDays: 8,
     file: 'Performance_Review_June_vs_July_2026.html'
@@ -199,8 +199,15 @@ const reports = [
     file: 'Performance_Review_Jun3-19_vs_Jul3-19_2026.html'
   },
   {
+    type: 'mom',
+    title: 'Jun 3–26 vs Jul 3–26, 2026',
+    date: '2026-07-27',
+    workingDays: 21,
+    file: 'Performance_Review_Jun3-26_vs_Jul3-26_2026.html'
+  },
+  {
     type: 'yoy',
-    title: 'Jul 2–10, 2025 vs Jul 3–19, 2026',
+    title: 'July 2025 vs July 2026',
     date: '2026-07-15',
     workingDays: 8,
     file: 'Performance_Review_July2025_vs_July2026.html'
@@ -210,7 +217,14 @@ const reports = [
     title: 'Jul 2–17, 2025 vs Jul 3–19, 2026',
     date: '2026-07-20',
     workingDays: 14,
-    file: 'Performance_Review_Jul2025_vs_Jul2026_wk2.html'
+    file: 'Performance_Review_Jul2025_vs_Jul2026_wk3.html'
+  },
+  {
+    type: 'yoy',
+    title: 'Jul 2–25, 2025 vs Jul 3–26, 2026 (+ Market Analysis)',
+    date: '2026-07-27',
+    workingDays: 21,
+    file: 'Performance_Review_Jul2025_vs_Jul2026_wk4_market.html'
   },
 ];
 /* ================================================================ */
