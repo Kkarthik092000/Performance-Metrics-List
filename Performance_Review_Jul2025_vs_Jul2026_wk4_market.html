@@ -188,7 +188,7 @@
 <header class="hero" id="overview">
   <div class="eyebrow">Jul 2–25, 2025 → Jul 3–26, 2026 · 21 working days each</div>
   <h1>Revenue up 18.6%, <em>but conversion and pitch‑to‑close both fell</em>.</h1>
-  <p class="lede">Revenue grew 18.61% year‑over‑year on a much bigger funnel — leads rose 44.8%, pitches rose 54.1%, while campaigns barely moved (+1.1%). That scale came at a real efficiency cost: Conversion Rate fell from 7.83% to 6.47% and Pitch‑to‑Close dropped from 13.93% to 10.82%. Headcount grew 34.8%, far faster than revenue, so Productivity per head fell 12.0%. This report breaks down the overall funnel, all six regions/departments, and a college‑level Market Analysis.</p>
+  <p class="lede">Revenue grew 18.61% year‑over‑year on a much bigger funnel — leads rose 44.8%, pitches rose 80.1%, while campaigns barely moved (+1.1%). That scale came at a real efficiency cost: Conversion Rate fell from 7.83% to 6.47% and Pitch‑to‑Close dropped from 16.28% to 10.82%. Headcount grew 34.8%, far faster than revenue, so Productivity per head fell 12.0%. This report breaks down the overall funnel, all six regions/departments, and a college‑level Market Analysis.</p>
 
   <div class="stat-strip">
     <div class="stat">
@@ -209,7 +209,7 @@
     <div class="stat">
       <div class="k">Pitch → Close</div>
       <div class="v">10.82%</div>
-      <div class="d down">▼ 3.11 pp</div>
+      <div class="d down">▼ 5.46 pp</div>
     </div>
   </div>
 </header>
@@ -352,11 +352,11 @@
   <div class="insight-grid">
     <div class="insight-card good">
       <div class="num">+18.61%</div>
-      <p><b>Revenue grew strongly, but efficiency did not keep pace.</b> Total revenue rose from ₹93,81,200 to ₹1,11,27,500 — driven by leads up 44.8% and pitches up 54.1%, even as campaigns barely moved (+1.1%). Growth came almost entirely from working the existing campaign base harder.</p>
+      <p><b>Revenue grew strongly, but efficiency did not keep pace.</b> Total revenue rose from ₹93,81,200 to ₹1,11,27,500 — driven by leads up 44.8% and pitches up 80.1%, even as campaigns barely moved (+1.1%). Growth came almost entirely from working the existing campaign base harder.</p>
     </div>
     <div class="insight-card warn">
-      <div class="num">-3.11pp</div>
-      <p><b>Pitch‑to‑close is the biggest casualty.</b> P to C fell from 13.93% to 10.82% (‑22.3% relative) — WCC Cluster alone dropped over 25 points (35.73%→10.35%), the steepest efficiency collapse in the table.</p>
+      <div class="num">-5.46pp</div>
+      <p><b>Pitch‑to‑close is the biggest casualty.</b> P to C fell from 16.28% to 10.82% (‑33.5% relative) — WCC Cluster alone dropped over 23 points (33.41%→10.35%), the steepest efficiency collapse in the table.</p>
     </div>
     <div class="insight-card warn">
       <div class="num">-1.36pp</div>
@@ -368,7 +368,7 @@
     </div>
     <div class="insight-card good">
       <div class="num">Nagpur +104.7%</div>
-      <p><b>Fastest‑growing region.</b> Nagpur Cluster revenue more than doubled (₹9.30L→₹19.04L) on leads up 303.8% (1,244→5,023) — by far the strongest volume story, though P2C nearly halved (25.29%→12.97%) as scale increased.</p>
+      <p><b>Fastest‑growing region.</b> Nagpur Cluster revenue more than doubled (₹9.30L→₹19.04L) on leads up 303.8% (1,244→5,023) — by far the strongest volume story, though P2C nearly halved (25.64%→12.97%) as scale increased.</p>
     </div>
     <div class="insight-card warn">
       <div class="num">WCC -27.82%</div>
@@ -608,12 +608,12 @@ const t1 = [
   {name:'Total Campaigns', v25:5650, v26:5710, type:'num'},
   {name:'Total Leads', v25:21711, v26:31436, type:'num'},
   {name:'Leads Per Campaign (LPC)', v25:3.84, v26:5.51, type:'dec'},
-  {name:'Pitches', v25:12193, v26:18787, type:'num'},
-  {name:'P to C', v25:13.93, v26:10.82, type:'pct'},
+  {name:'Pitches', v25:10434, v26:18787, type:'num'},
+  {name:'P to C', v25:16.28, v26:10.82, type:'pct'},
   {name:'Working Days', v25:21, v26:21, type:'num'},
   {name:'Campaigns Per Day', v25:269, v26:272, type:'num'},
   {name:'Leads Per Day', v25:1034, v26:1497, type:'num'},
-  {name:'Pitches Per Day', v25:581, v26:895, type:'num'},
+  {name:'Pitches Per Day', v25:497, v26:895, type:'num'},
   {name:'Revenue Per Day', v25:446724, v26:529881, type:'cur'},
   {name:'Head Count', v25:115, v26:155, type:'num'},
   {name:'Productivity (Rev/Head)', v25:81576, v26:71790, type:'cur2'},
@@ -681,10 +681,10 @@ const t1AnalysisPoints = [
   `<b>Total Campaigns</b> barely moved, from 5,650 to 5,710 (<span class="up">▲1.06%</span>) — essentially flat, meaning every downstream gain came from working the same campaign base far harder.`,
   `<b>Total Leads</b> rose from 21,711 to 31,436 (<span class="up">▲44.79%</span>) on almost no change in campaign volume — a strong improvement in lead generation per campaign.`,
   `<b>Leads Per Campaign</b> rose from 3.84 to 5.51 (<span class="up">▲43.49%</span>) — a standout efficiency gain, since nearly all of the lead growth came from getting more out of the same campaigns rather than running more of them.`,
-  `<b>Pitches</b> rose from 12,193 to 18,787 (<span class="up">▲54.08%</span>), the fastest‑growing funnel stage — the team pitched a larger share of a much bigger lead pool.`,
-  `<b>P to C</b> fell from 13.93% to 10.82% (<span class="down">▼3.11 pp</span>, a 22.3% relative decline) — a real efficiency loss at the back end of the funnel; more pitches converted into a smaller share of closes.`,
+  `<b>Pitches</b> rose from 10,434 to 18,787 (<span class="up">▲80.06%</span>), the fastest‑growing funnel stage by far — the team pitched a much larger share of a much bigger lead pool.`,
+  `<b>P to C</b> fell sharply from 16.28% to 10.82% (<span class="down">▼5.46 pp</span>, a 33.5% relative decline) — the steepest efficiency loss in this report; a huge increase in pitches converted into proportionally far fewer closes.`,
   `<b>Working Days</b> were identical at 21 in both periods, so every other change reflects genuine activity shifts, not calendar effects.`,
-  `<b>Campaigns/Day</b> held roughly flat (269→272, <span class="up">▲1.12%</span>), while <b>Leads/Day</b> rose from 1,034 to 1,497 (<span class="up">▲44.78%</span>) and <b>Pitches/Day</b> rose from 581 to 895 (<span class="up">▲54.04%</span>) — daily tempo confirms the same campaign base producing much more downstream activity.`,
+  `<b>Campaigns/Day</b> held roughly flat (269→272, <span class="up">▲1.12%</span>), while <b>Leads/Day</b> rose from 1,034 to 1,497 (<span class="up">▲44.78%</span>) and <b>Pitches/Day</b> rose from 497 to 895 (<span class="up">▲80.08%</span>) — daily tempo confirms the same campaign base producing substantially more downstream activity.`,
   `<b>Revenue/Day</b> rose from ₹4,46,724 to ₹5,29,881 (<span class="up">▲18.61%</span>), matching total revenue's growth exactly since working days were unchanged.`,
   `<b>Head Count</b> grew from 115 to 155 (<span class="up">▲34.78%</span>) — a large capacity expansion that outpaced revenue growth by a wide margin.`,
   `<b>Productivity (Revenue per Head)</b> fell from ₹81,576 to ₹71,790 (<span class="down">▼12.00%</span>) — headcount grew nearly twice as fast as revenue, so each person is generating meaningfully less on average; alongside the Conversion Rate and P to C declines, this is the key efficiency story of the year.`,
@@ -694,12 +694,12 @@ t1AnalysisPoints.forEach(p=>{ const li=document.createElement('li'); li.innerHTM
 
 /* ---- Table 1 charts ---- */
 renderChart('chartFunnel', [
-  {name:'Jul 2–25, 2025', color:NAVY, data:[5650,21711,12193]},
+  {name:'Jul 2–25, 2025', color:NAVY, data:[5650,21711,10434]},
   {name:'Jul 3–26, 2026', color:GOLD, data:[5710,31436,18787]},
 ], 'bar', ['Campaigns','Leads','Pitches'], {valFmt:v=>fmtNum(v)});
 
 renderChart('chartRates', [
-  {name:'Jul 2–25, 2025', color:NAVY, data:[7.83,13.93]},
+  {name:'Jul 2–25, 2025', color:NAVY, data:[7.83,16.28]},
   {name:'Jul 3–26, 2026', color:CORAL, data:[6.47,10.82]},
 ], 'bar', ['Conversion Rate','P to C'], {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
 
@@ -709,20 +709,20 @@ renderChart('chartRevProd', [
 ], 'line', ['Jul 2–25, 2025','Jul 3–26, 2026'], {valFmt:v=>v.toFixed(1), axisFmt:v=>v.toFixed(0)});
 
 renderChart('chartDaily', [
-  {name:'Jul 2–25, 2025', color:NAVY, data:[269,1034,581]},
+  {name:'Jul 2–25, 2025', color:NAVY, data:[269,1034,497]},
   {name:'Jul 3–26, 2026', color:TEAL, data:[272,1497,895]},
 ], 'bar', ['Campaigns/Day','Leads/Day','Pitches/Day'], {valFmt:v=>fmtNum(v)});
 
 /* ============ TABLE 2 DATA ============ */
 const t2 = [
-  {name:'Law + New Businesses', rev25:1468000, leads25:3975, camp25:670, pitch25:2048, rev26:1888000, leads26:4789, camp26:1186, pitch26:3686, aov25:5457, units25:269, conv25:6.77, lpc25:5.93, p2c25:13.13, aov26:5117, units26:369, conv26:7.71, lpc26:4.04, p2c26:10.01},
-  {name:'Medical Cluster', rev25:1457500, leads25:5315, camp25:994, pitch25:2151, rev26:1307500, leads26:6175, camp26:927, pitch26:2728, aov25:4686, units25:311, conv25:5.85, lpc25:5.35, p2c25:14.46, aov26:4402, units26:297, conv26:4.81, lpc26:6.66, p2c26:10.89},
-  {name:'Nagpur Cluster', rev25:930000, leads25:1244, camp25:819, pitch25:597, rev26:1904000, leads26:5023, camp26:612, pitch26:2644, aov25:6159, units25:151, conv25:12.14, lpc25:1.52, p2c25:25.29, aov26:5551, units26:343, conv26:6.83, lpc26:8.21, p2c26:12.97},
-  {name:'North Cluster', rev25:766500, leads25:2339, camp25:682, pitch25:1697, rev26:1175500, leads26:3748, camp26:524, pitch26:1709, aov25:5807, units25:132, conv25:5.64, lpc25:3.43, p2c25:7.78, aov26:5907, units26:199, conv26:5.31, lpc26:7.15, p2c26:11.64},
-  {name:'South Cluster', rev25:2856200, leads25:6794, camp25:1929, pitch25:4880, rev26:3479000, leads26:8358, camp26:1555, pitch26:5846, aov25:5260, units25:543, conv25:7.99, lpc25:3.52, p2c25:11.13, aov26:5798, units26:600, conv26:7.18, lpc26:5.37, p2c26:10.26},
-  {name:'WCC Cluster', rev25:1903000, leads25:2044, camp25:556, pitch25:820, rev26:1373500, leads26:3343, camp26:906, pitch26:2174, aov25:6495, units25:293, conv25:14.33, lpc25:3.68, p2c25:35.73, aov26:6104, units26:225, conv26:6.73, lpc26:3.69, p2c26:10.35},
+  {name:'Law + New Businesses', rev25:1468000, leads25:3975, camp25:670, pitch25:1856, rev26:1888000, leads26:4789, camp26:1186, pitch26:3686, aov25:5457, units25:269, conv25:6.77, lpc25:5.93, p2c25:14.49, aov26:5117, units26:369, conv26:7.71, lpc26:4.04, p2c26:10.01},
+  {name:'Medical Cluster', rev25:1457500, leads25:5315, camp25:994, pitch25:2119, rev26:1307500, leads26:6175, camp26:927, pitch26:2728, aov25:4686, units25:311, conv25:5.85, lpc25:5.35, p2c25:14.68, aov26:4402, units26:297, conv26:4.81, lpc26:6.66, p2c26:10.89},
+  {name:'Nagpur Cluster', rev25:930000, leads25:1244, camp25:819, pitch25:589, rev26:1904000, leads26:5023, camp26:612, pitch26:2644, aov25:6159, units25:151, conv25:12.14, lpc25:1.52, p2c25:25.64, aov26:5551, units26:343, conv26:6.83, lpc26:8.21, p2c26:12.97},
+  {name:'North Cluster', rev25:766500, leads25:2339, camp25:682, pitch25:1358, rev26:1175500, leads26:3748, camp26:524, pitch26:1709, aov25:5807, units25:132, conv25:5.64, lpc25:3.43, p2c25:9.72, aov26:5907, units26:199, conv26:5.31, lpc26:7.15, p2c26:11.64},
+  {name:'South Cluster', rev25:2856200, leads25:6794, camp25:1929, pitch25:3635, rev26:3479000, leads26:8358, camp26:1555, pitch26:5846, aov25:5260, units25:543, conv25:7.99, lpc25:3.52, p2c25:14.94, aov26:5798, units26:600, conv26:7.18, lpc26:5.37, p2c26:10.26},
+  {name:'WCC Cluster', rev25:1903000, leads25:2044, camp25:556, pitch25:877, rev26:1373500, leads26:3343, camp26:906, pitch26:2174, aov25:6495, units25:293, conv25:14.33, lpc25:3.68, p2c25:33.41, aov26:6104, units26:225, conv26:6.73, lpc26:3.69, p2c26:10.35},
 ];
-const t2Total = {name:'Grand Total', rev25:9381200, leads25:21711, camp25:5650, pitch25:12193, rev26:11127500, leads26:31436, camp26:5710, pitch26:18787, aov25:5522, units25:1699, conv25:7.83, lpc25:3.84, p2c25:13.93, aov26:5473, units26:2033, conv26:6.47, lpc26:5.51, p2c26:10.82};
+const t2Total = {name:'Grand Total', rev25:9381200, leads25:21711, camp25:5650, pitch25:10434, rev26:11127500, leads26:31436, camp26:5710, pitch26:18787, aov25:5522, units25:1699, conv25:7.83, lpc25:3.84, p2c25:16.28, aov26:5473, units26:2033, conv26:6.47, lpc26:5.51, p2c26:10.82};
 
 function rowHtmlVol(c){
   return `<td class="label">${c.name}</td>
@@ -767,33 +767,33 @@ renderChart('chartClusterP2C', [
 /* ---- Per-cluster blocks with mini-metrics + written analysis ---- */
 const clusterAnalysis = {
   'Law + New Businesses': [
-    `Revenue grew from ₹14.68L to ₹18.88L (<span class="up">▲28.6%</span>), but it took far more activity to get there — campaigns nearly doubled (670→1,186, ▲77.0%) while pitches grew 80.0% (2,048→3,686).`,
-    `LPC fell from 5.93 to 4.04 (<span class="down">▼31.9%</span>) even as Conversion Rate improved slightly (6.77%→7.71%) — each campaign now generates fewer leads, but a bit more of what it does generate converts.`,
-    `P to C fell from 13.13% to 10.01% (<span class="down">▼3.12 pp</span>) — strong revenue growth masked a real drop in back‑end funnel efficiency.`,
+    `Revenue grew from ₹14.68L to ₹18.88L (<span class="up">▲28.6%</span>), but it took far more activity to get there — campaigns nearly doubled (670→1,186, ▲77.0%) while pitches nearly doubled too (1,856→3,686, ▲98.6%).`,
+    `LPC fell from 5.93 to 4.04 (<span class="down">▼31.9%</span>) even as Conversion Rate improved (6.77%→7.71%) — each campaign now generates fewer leads, but more of what it does generate converts.`,
+    `P to C fell from 14.49% to 10.01% (<span class="down">▼4.48 pp</span>) — strong revenue growth masked a real drop in back‑end funnel efficiency.`,
   ],
   'Medical Cluster': [
     `Revenue fell from ₹14.58L to ₹13.08L (<span class="down">▼10.3%</span>) even as leads grew 16.2% (5,315→6,175) — a bigger lead pool converted less effectively than a year ago.`,
-    `Conversion Rate fell from 5.85% to 4.81% and P to C fell from 14.46% to 10.89% (<span class="down">▼3.57 pp</span>) — a genuine efficiency loss on both fronts despite more raw activity.`,
+    `Conversion Rate fell from 5.85% to 4.81% and P to C fell from 14.68% to 10.89% (<span class="down">▼3.79 pp</span>) — a genuine efficiency loss on both fronts despite more raw activity.`,
     `LPC actually improved, from 5.35 to 6.66 (<span class="up">▲24.5%</span>), showing lead generation got more efficient even as conversion of those leads got worse.`,
   ],
   'Nagpur Cluster': [
     `Revenue more than doubled, from ₹9.30L to ₹19.04L (<span class="up">▲104.7%</span>), the strongest growth of any region — leads more than quadrupled (1,244→5,023, ▲303.8%) even as campaigns fell 25.3%.`,
     `LPC surged from 1.52 to 8.21 (<span class="up">▲440.1%</span>), by far the largest LPC improvement in the table — dramatically more efficient lead generation per campaign.`,
-    `That scale came at a steep efficiency cost: Conversion Rate fell from 12.14% to 6.83% (<span class="down">▼5.31 pp</span>) and P to C nearly halved, from 25.29% to 12.97% (<span class="down">▼12.32 pp</span>) — the biggest P2C decline of any region.`,
+    `That scale came at a steep efficiency cost: Conversion Rate fell from 12.14% to 6.83% (<span class="down">▼5.31 pp</span>) and P to C nearly halved, from 25.64% to 12.97% (<span class="down">▼12.67 pp</span>) — the biggest P2C decline of any region.`,
   ],
   'North Cluster': [
     `Revenue grew from ₹7.67L to ₹11.76L (<span class="up">▲53.4%</span>) on leads up 60.2% (2,339→3,748) — one of the strongest all‑round improvements in the table.`,
-    `P to C rose from 7.78% to 11.64% (<span class="up">▲3.86 pp</span>) even as Conversion Rate eased slightly (5.64%→5.31%) — North was one of the only regions where back‑end efficiency improved.`,
+    `P to C rose from 9.72% to 11.64% (<span class="up">▲1.92 pp</span>) even as Conversion Rate eased slightly (5.64%→5.31%) — North was one of the only regions where back‑end efficiency improved.`,
     `Units rose from 132 to 199 (<span class="up">▲50.8%</span>) while AOV held roughly flat (₹5,807→₹5,907) — growth here was almost entirely volume‑driven.`,
   ],
   'South Cluster': [
-    `Revenue grew from ₹28.56L to ₹34.79L (<span class="up">▲21.8%</span>) — the largest region by revenue in both periods — on leads up 23.0% and pitches up 19.8%, a broad funnel expansion.`,
-    `Conversion Rate fell from 7.99% to 7.18% (<span class="down">▼0.81 pp</span>) and P to C fell from 11.13% to 10.26% (<span class="down">▼0.87 pp</span>) — a modest efficiency softening, the smallest of any region, alongside solid growth.`,
+    `Revenue grew from ₹28.56L to ₹34.79L (<span class="up">▲21.8%</span>) — the largest region by revenue in both periods — on leads up 23.0% and pitches up 60.8% (3,635→5,846), a broad funnel expansion.`,
+    `Conversion Rate fell from 7.99% to 7.18% (<span class="down">▼0.81 pp</span>) and P to C fell from 14.94% to 10.26% (<span class="down">▼4.68 pp</span>) — a real efficiency softening alongside solid revenue growth.`,
     `AOV rose from ₹5,260 to ₹5,798 (<span class="up">▲10.2%</span>) and Units rose from 543 to 600 (<span class="up">▲10.5%</span>) — both price and volume contributed to the gain.`,
   ],
   'WCC Cluster': [
-    `Revenue fell from ₹19.03L to ₹13.74L (<span class="down">▼27.8%</span>), the steepest regional decline, even as leads grew 63.6% (2,044→3,343) and pitches nearly tripled (820→2,174, ▲165.1%).`,
-    `P to C collapsed from 35.73% to 10.35% (<span class="down">▼25.38 pp</span>), by a wide margin the largest efficiency loss anywhere in this report — WCC went from converting over a third of pitches to roughly a tenth.`,
+    `Revenue fell from ₹19.03L to ₹13.74L (<span class="down">▼27.8%</span>), the steepest regional decline, even as leads grew 63.6% (2,044→3,343) and pitches nearly tripled (877→2,174, ▲147.9%).`,
+    `P to C collapsed from 33.41% to 10.35% (<span class="down">▼23.06 pp</span>), by a wide margin the largest efficiency loss anywhere in this report — WCC went from converting a third of pitches to roughly a tenth.`,
     `Conversion Rate fell from 14.33% to 6.73% and Units dropped from 293 to 225 (<span class="down">▼23.2%</span>) — much more funnel activity produced a smaller, far less efficient outcome.`,
   ],
 };
