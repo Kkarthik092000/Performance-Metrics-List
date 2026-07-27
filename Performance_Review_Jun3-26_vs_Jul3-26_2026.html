@@ -190,7 +190,7 @@
 <header class="hero" id="overview">
   <div class="eyebrow">Jun 3–26 → Jul 3–26, 2026 · 21 working days each</div>
   <h1>Revenue up 27.6%, <em>with real efficiency gains across the board</em>.</h1>
-  <p class="lede">Revenue grew 27.65% on a much bigger funnel — leads up 10.9%, pitches up 22.1% — even as campaigns fell 14.8%, meaning each campaign worked far harder (LPC up 30.3%). Conversion Rate improved from 5.64% to 6.47% and Pitch‑to‑Close improved from 10.39% to 10.82%. Headcount grew 16.5%, but revenue grew faster still, so Revenue per Boe rose 9.5%. This report breaks down the overall funnel, all six regions, sub‑clusters, and all teams.</p>
+  <p class="lede">Revenue grew 27.65% on a much bigger funnel — campaigns up 13.5%, leads up 10.9%, pitches up 22.1%. Conversion Rate improved from 5.64% to 6.47% and Pitch‑to‑Close improved from 10.39% to 10.82%. Headcount grew 16.5%, but revenue grew faster still, so Revenue per Boe rose 9.5%. This report breaks down the overall funnel, all six regions, sub‑clusters, and all teams.</p>
 
   <div class="stat-strip">
     <div class="stat">
@@ -484,11 +484,11 @@
   <div class="insight-grid">
     <div class="insight-card good">
       <div class="num">+27.65%</div>
-      <p><b>Strongest revenue growth of any report so far.</b> Total revenue rose from ₹87,17,500 to ₹1,11,27,500 even as campaigns fell 14.8% — leads still rose 10.9% and pitches rose 22.1%, meaning the funnel got dramatically more efficient rather than just bigger.</p>
+      <p><b>Strongest revenue growth of any report so far.</b> Total revenue rose from ₹87,17,500 to ₹1,11,27,500 on a broader push across the funnel — campaigns up 13.5%, leads up 10.9% and pitches up 22.1%.</p>
     </div>
-    <div class="insight-card good">
-      <div class="num">+30.26%</div>
-      <p><b>Leads Per Campaign jumped sharply.</b> LPC rose from 4.23 to 5.51 — fewer campaigns (6,703→5,710) produced meaningfully more leads each, the standout efficiency story in this report.</p>
+    <div class="insight-card">
+      <div class="num">-2.36%</div>
+      <p><b>Leads Per Campaign eased slightly.</b> LPC dipped from 4.23 to 4.13 — campaigns grew a touch faster (6,703→7,608, ▲13.5%) than leads did (▲10.9%), so each campaign pulled in marginally fewer leads on average even as total volume grew across the board.</p>
     </div>
     <div class="insight-card good">
       <div class="num">+0.83pp</div>
@@ -737,13 +737,13 @@ const t1 = [
   {name:'Average Order Value (AOV)', v25:5451.84, v26:5473.44, type:'cur2'},
   {name:'Total Units', v25:1599, v26:2033, type:'num'},
   {name:'Conversion Rate', v25:5.64, v26:6.47, type:'pct'},
-  {name:'Total Campaigns', v25:6703, v26:5710, type:'num'},
+  {name:'Total Campaigns', v25:6703, v26:7608, type:'num'},
   {name:'Total Leads', v25:28341, v26:31436, type:'num'},
-  {name:'Leads Per Campaign (LPC)', v25:4.23, v26:5.51, type:'dec'},
+  {name:'Leads Per Campaign (LPC)', v25:4.23, v26:4.13, type:'dec'},
   {name:'Pitches', v25:15388, v26:18787, type:'num'},
   {name:'P to C', v25:10.39, v26:10.82, type:'pct'},
   {name:'Working Days', v25:21, v26:21, type:'num'},
-  {name:'Campaigns Per Day', v25:319, v26:272, type:'num'},
+  {name:'Campaigns Per Day', v25:319, v26:362, type:'num'},
   {name:'Leads Per Day', v25:1350, v26:1497, type:'num'},
   {name:'Pitches Per Day', v25:733, v26:895, type:'num'},
   {name:'Revenue Per Day', v25:415119, v26:529881, type:'cur'},
@@ -806,17 +806,17 @@ kpiSet.forEach(name=>{
 
 /* ---- Table 1 written analysis ---- */
 const t1AnalysisPoints = [
-  `<b>Total Revenue</b> grew from ₹87,17,500 to ₹1,11,27,500, up <span class="up">▲27.65%</span> — the strongest headline growth of any report so far, on a leaner but far more productive funnel.`,
+  `<b>Total Revenue</b> grew from ₹87,17,500 to ₹1,11,27,500, up <span class="up">▲27.65%</span> — the strongest headline growth of any report so far, on a bigger and busier funnel.`,
   `<b>Average Order Value</b> held essentially flat, ₹5,451.84 → ₹5,473.44 (<span class="up">▲0.40%</span>) — this period's revenue growth came almost entirely from more units sold, not a higher ticket size.`,
   `<b>Total Units</b> sold rose from 1,599 to 2,033 (<span class="up">▲27.14%</span>), tracking almost exactly with revenue growth and confirming the gain was volume‑driven.`,
   `<b>Conversion Rate</b> improved from 5.64% to 6.47% (<span class="up">▲0.83 pp</span>, a 14.7% relative gain) — a real, substantial efficiency improvement.`,
-  `<b>Total Campaigns</b> actually fell from 6,703 to 5,710 (<span class="down">▼14.81%</span>) — fewer campaigns were run, yet every downstream metric grew, the clearest sign of a much more efficient funnel.`,
-  `<b>Total Leads</b> rose from 28,341 to 31,436 (<span class="up">▲10.92%</span>) despite fewer campaigns — each campaign is generating substantially more leads than before.`,
-  `<b>Leads Per Campaign</b> jumped from 4.23 to 5.51 (<span class="up">▲30.26%</span>), the standout efficiency gain in this report — fewer campaigns are now producing meaningfully more leads each.`,
+  `<b>Total Campaigns</b> rose from 6,703 to 7,608 (<span class="up">▲13.50%</span>) — a genuine scale‑up in outreach activity, not a pullback.`,
+  `<b>Total Leads</b> rose from 28,341 to 31,436 (<span class="up">▲10.92%</span>) — solid growth, though slightly behind the pace of campaign growth.`,
+  `<b>Leads Per Campaign</b> eased slightly from 4.23 to 4.13 (<span class="down">▼2.36%</span>) — campaigns grew a bit faster than leads did, so each campaign is pulling in marginally fewer leads on average, even as total lead volume grew.`,
   `<b>Pitches</b> rose from 15,388 to 18,787 (<span class="up">▲22.09%</span>), keeping pace with the larger, higher‑quality lead pool.`,
   `<b>P to C</b> improved from 10.39% to 10.82% (<span class="up">▲0.43 pp</span>, a 4.1% relative gain) — a modest but genuine improvement at the back end of the funnel, alongside the Conversion Rate gain.`,
   `<b>Working Days</b> were identical at 21 in both periods, so every other change reflects genuine activity shifts, not calendar effects.`,
-  `<b>Campaigns/Day</b> fell from 319 to 272 (<span class="down">▼14.73%</span>), while <b>Leads/Day</b> rose from 1,350 to 1,497 (<span class="up">▲10.89%</span>) and <b>Pitches/Day</b> rose from 733 to 895 (<span class="up">▲22.10%</span>) — daily tempo confirms fewer, more productive campaigns driving a busier funnel downstream.`,
+  `<b>Campaigns/Day</b> rose from 319 to 362 (<span class="up">▲13.48%</span>), while <b>Leads/Day</b> rose from 1,350 to 1,497 (<span class="up">▲10.89%</span>) and <b>Pitches/Day</b> rose from 733 to 895 (<span class="up">▲22.10%</span>) — daily tempo confirms a busier funnel across every stage.`,
   `<b>Revenue/Day</b> rose from ₹4,15,119 to ₹5,29,881 (<span class="up">▲27.65%</span>), matching total revenue's growth exactly since working days were unchanged.`,
   `<b>Head Count</b> grew from 133 to 155 (<span class="up">▲16.54%</span>) — a meaningful capacity expansion, but this time revenue grew considerably faster.`,
   `<b>Revenue Per Boe</b> rose from ₹65,545.11 to ₹71,790.32 (<span class="up">▲9.53%</span>) — unlike prior reports, revenue growth outpaced headcount growth this period, so output per person actually improved alongside the stronger Conversion Rate and P to C.`,
@@ -827,7 +827,7 @@ t1AnalysisPoints.forEach(p=>{ const li=document.createElement('li'); li.innerHTM
 /* ---- Table 1 charts ---- */
 renderChart('chartFunnel', [
   {name:'Jun 3–26', color:NAVY, data:[6703,28341,15388]},
-  {name:'Jul 3–26', color:GOLD, data:[5710,31436,18787]},
+  {name:'Jul 3–26', color:GOLD, data:[7608,31436,18787]},
 ], 'bar', ['Campaigns','Leads','Pitches'], {valFmt:v=>fmtNum(v)});
 
 renderChart('chartRates', [
@@ -842,19 +842,19 @@ renderChart('chartRevProd', [
 
 renderChart('chartDaily', [
   {name:'Jun 3–26', color:NAVY, data:[319,1350,733]},
-  {name:'Jul 3–26', color:TEAL, data:[272,1497,895]},
+  {name:'Jul 3–26', color:TEAL, data:[362,1497,895]},
 ], 'bar', ['Campaigns/Day','Leads/Day','Pitches/Day'], {valFmt:v=>fmtNum(v)});
 
 /* ============ TABLE 2 DATA ============ */
 const t2 = [
-  {name:'Law + New Businesses', rev25:1763500, leads25:4409, camp25:1586, pitch25:3413, rev26:1888000, leads26:4789, camp26:1186, pitch26:3686, aov25:4690, units25:376, conv25:8.53, lpc25:2.78, p2c25:11.02, aov26:5117, units26:369, conv26:7.71, lpc26:4.04, p2c26:10.01},
-  {name:'Medical Cluster', rev25:1149500, leads25:7386, camp25:986, pitch25:2614, rev26:1307500, leads26:6175, camp26:927, pitch26:2728, aov25:4673, units25:246, conv25:3.33, lpc25:7.49, p2c25:9.41, aov26:4402, units26:297, conv26:4.81, lpc26:6.66, p2c26:10.89},
-  {name:'Nagpur Cluster', rev25:1599000, leads25:4258, camp25:1141, pitch25:2181, rev26:1904000, leads26:5023, camp26:612, pitch26:2644, aov25:5773, units25:277, conv25:6.51, lpc25:3.73, p2c25:12.70, aov26:5551, units26:343, conv26:6.83, lpc26:8.21, p2c26:12.97},
-  {name:'North Cluster', rev25:839000, leads25:3755, camp25:639, pitch25:1641, rev26:1175500, leads26:3748, camp26:524, pitch26:1709, aov25:5244, units25:160, conv25:4.26, lpc25:5.88, p2c25:9.75, aov26:5907, units26:199, conv26:5.31, lpc26:7.15, p2c26:11.64},
-  {name:'South Cluster', rev25:2318500, leads25:6343, camp25:1683, pitch25:4219, rev26:3479000, leads26:8358, camp26:1555, pitch26:5846, aov25:5739, units25:404, conv25:6.37, lpc25:3.77, p2c25:9.58, aov26:5798, units26:600, conv26:7.18, lpc26:5.37, p2c26:10.26},
-  {name:'WCC Cluster', rev25:1048000, leads25:2190, camp25:668, pitch25:1320, rev26:1373500, leads26:3343, camp26:906, pitch26:2174, aov25:7706, units25:136, conv25:6.21, lpc25:3.28, p2c25:10.30, aov26:6104, units26:225, conv26:6.73, lpc26:3.69, p2c26:10.35},
+  {name:'Law + New Businesses', rev25:1763500, leads25:4409, camp25:1586, pitch25:3413, rev26:1888000, leads26:4789, camp26:1597, pitch26:3686, aov25:4690, units25:376, conv25:8.53, lpc25:2.78, p2c25:11.02, aov26:5117, units26:369, conv26:7.71, lpc26:3.00, p2c26:10.01},
+  {name:'Medical Cluster', rev25:1149500, leads25:7386, camp25:986, pitch25:2614, rev26:1307500, leads26:6175, camp26:1215, pitch26:2728, aov25:4673, units25:246, conv25:3.33, lpc25:7.49, p2c25:9.41, aov26:4402, units26:297, conv26:4.81, lpc26:5.08, p2c26:10.89},
+  {name:'Nagpur Cluster', rev25:1599000, leads25:4258, camp25:1141, pitch25:2181, rev26:1904000, leads26:5023, camp26:943, pitch26:2644, aov25:5773, units25:277, conv25:6.51, lpc25:3.73, p2c25:12.70, aov26:5551, units26:343, conv26:6.83, lpc26:5.33, p2c26:12.97},
+  {name:'North Cluster', rev25:839000, leads25:3755, camp25:639, pitch25:1641, rev26:1175500, leads26:3748, camp26:686, pitch26:1709, aov25:5244, units25:160, conv25:4.26, lpc25:5.88, p2c25:9.75, aov26:5907, units26:199, conv26:5.31, lpc26:5.46, p2c26:11.64},
+  {name:'South Cluster', rev25:2318500, leads25:6343, camp25:1683, pitch25:4219, rev26:3479000, leads26:8358, camp26:2007, pitch26:5846, aov25:5739, units25:404, conv25:6.37, lpc25:3.77, p2c25:9.58, aov26:5798, units26:600, conv26:7.18, lpc26:4.16, p2c26:10.26},
+  {name:'WCC Cluster', rev25:1048000, leads25:2190, camp25:668, pitch25:1320, rev26:1373500, leads26:3343, camp26:1160, pitch26:2174, aov25:7706, units25:136, conv25:6.21, lpc25:3.28, p2c25:10.30, aov26:6104, units26:225, conv26:6.73, lpc26:2.88, p2c26:10.35},
 ];
-const t2Total = {name:'Grand Total', rev25:8717500, leads25:28341, camp25:6703, pitch25:15388, rev26:11127500, leads26:31436, camp26:5710, pitch26:18787, aov25:5452, units25:1599, conv25:5.64, lpc25:4.23, p2c25:10.39, aov26:5473, units26:2033, conv26:6.47, lpc26:5.51, p2c26:10.82};
+const t2Total = {name:'Grand Total', rev25:8717500, leads25:28341, camp25:6703, pitch25:15388, rev26:11127500, leads26:31436, camp26:7608, pitch26:18787, aov25:5452, units25:1599, conv25:5.64, lpc25:4.23, p2c25:10.39, aov26:5473, units26:2033, conv26:6.47, lpc26:4.13, p2c26:10.82};
 
 const t2BodyVol = document.getElementById('t2-body-vol');
 const t2BodyRatio = document.getElementById('t2-body-ratio');
@@ -899,32 +899,32 @@ renderChart('chartClusterP2C', [
 /* ---- Per-cluster blocks with mini-metrics + written analysis ---- */
 const clusterAnalysis = {
   'Law + New Businesses': [
-    `Revenue grew from ₹17.64L to ₹18.88L (<span class="up">▲7.1%</span>) even as campaigns fell 25.2% (1,586→1,186) — the region did more with less outreach.`,
-    `LPC jumped from 2.78 to 4.04 (<span class="up">▲45.3%</span>) — each campaign generated substantially more leads, though Conversion Rate eased from 8.53% to 7.71% and P to C fell from 11.02% to 10.01%.`,
+    `Revenue grew from ₹17.64L to ₹18.88L (<span class="up">▲7.1%</span>) with campaigns essentially flat (1,586→1,597, ▲0.7%) — the region grew revenue without materially scaling outreach.`,
+    `LPC rose from 2.78 to 3.00 (<span class="up">▲7.9%</span>) — each campaign generated a few more leads on average, though Conversion Rate eased from 8.53% to 7.71% and P to C fell from 11.02% to 10.01%.`,
     `Units held roughly flat (376→369, <span class="down">▼1.9%</span>) while AOV rose 9.1% (₹4,690→₹5,117) — revenue growth here leaned more on ticket size than volume.`,
   ],
   'Medical Cluster': [
-    `Revenue grew from ₹11.50L to ₹13.08L (<span class="up">▲13.8%</span>) even as leads fell 16.4% (7,386→6,175) — a smaller lead pool converted meaningfully better.`,
+    `Revenue grew from ₹11.50L to ₹13.08L (<span class="up">▲13.8%</span>) even as leads fell 16.4% (7,386→6,175) and campaigns rose 23.2% (986→1,215) — a smaller lead pool, generated from more campaigns, converted meaningfully better.`,
     `Conversion Rate improved from 3.33% to 4.81% (<span class="up">▲1.48 pp</span>, ▲44.4% relative) and P to C rose from 9.41% to 10.89% (<span class="up">▲1.48 pp</span>) — a strong efficiency turnaround on both fronts.`,
-    `Units rose from 246 to 297 (<span class="up">▲20.7%</span>) despite fewer leads and a lower AOV (₹4,673→₹4,402, ▼5.8%) — Medical sold more units at a slightly lower price point, more efficiently.`,
+    `Units rose from 246 to 297 (<span class="up">▲20.7%</span>) despite fewer leads and a lower AOV (₹4,673→₹4,402, ▼5.8%) — Medical sold more units at a slightly lower price point, more efficiently. LPC fell from 7.49 to 5.08 (<span class="down">▼32.2%</span>) as more campaigns chased a smaller lead pool.`,
   ],
   'Nagpur Cluster': [
-    `Revenue grew from ₹15.99L to ₹19.04L (<span class="up">▲19.1%</span>) with leads up 18.0% (4,258→5,023) even as campaigns fell 46.4% (1,141→612) — a dramatic efficiency gain in lead generation.`,
-    `LPC more than doubled, from 3.73 to 8.21 (<span class="up">▲120.1%</span>), the largest LPC improvement in the table by a wide margin.`,
+    `Revenue grew from ₹15.99L to ₹19.04L (<span class="up">▲19.1%</span>) with leads up 18.0% (4,258→5,023) even as campaigns fell 17.4% (1,141→943) — a genuine efficiency gain in lead generation.`,
+    `LPC rose from 3.73 to 5.33 (<span class="up">▲42.9%</span>), the largest LPC improvement in the table.`,
     `Conversion Rate ticked up from 6.51% to 6.83% and P to C held essentially flat (12.70%→12.97%) — Nagpur combined volume growth with stable-to-improving efficiency, unlike in prior reports.`,
   ],
   'North Cluster': [
-    `Revenue grew from ₹8.39L to ₹11.76L (<span class="up">▲40.1%</span>) even as leads stayed almost flat (3,755→3,748, ▼0.2%) and campaigns fell 18.0% — the strongest efficiency‑driven regional gain in this report.`,
+    `Revenue grew from ₹8.39L to ₹11.76L (<span class="up">▲40.1%</span>) even as leads stayed almost flat (3,755→3,748, ▼0.2%) and campaigns rose modestly (639→686, ▲7.4%) — a strong efficiency‑driven regional gain in this report.`,
     `Conversion Rate rose from 4.26% to 5.31% (<span class="up">▲1.05 pp</span>, ▲24.7% relative) and P to C rose from 9.75% to 11.64% (<span class="up">▲1.89 pp</span>) — both efficiency metrics improved substantially.`,
-    `AOV rose from ₹5,244 to ₹5,907 (<span class="up">▲12.6%</span>) alongside more units (160→199, ▲24.4%) — North improved on price, volume and efficiency together.`,
+    `AOV rose from ₹5,244 to ₹5,907 (<span class="up">▲12.6%</span>) alongside more units (160→199, ▲24.4%) — North improved on price and volume together, even as LPC eased slightly from 5.88 to 5.46 (<span class="down">▼7.1%</span>).`,
   ],
   'South Cluster': [
-    `Revenue grew from ₹23.19L to ₹34.79L (<span class="up">▲50.1%</span>) — the largest region by revenue in both periods and the fastest‑growing in absolute terms — on leads up 31.8% and pitches up 38.6%.`,
-    `Conversion Rate rose from 6.37% to 7.18% (<span class="up">▲0.81 pp</span>) and P to C rose from 9.58% to 10.26% (<span class="up">▲0.68 pp</span>) — growth here came with genuine efficiency gains, not just scale.`,
+    `Revenue grew from ₹23.19L to ₹34.79L (<span class="up">▲50.1%</span>) — the largest region by revenue in both periods and the fastest‑growing in absolute terms — on campaigns up 19.3% (1,683→2,007), leads up 31.8% and pitches up 38.6%.`,
+    `Conversion Rate rose from 6.37% to 7.18% (<span class="up">▲0.81 pp</span>) and P to C rose from 9.58% to 10.26% (<span class="up">▲0.68 pp</span>) — growth here came with genuine efficiency gains, not just scale. LPC also improved, from 3.77 to 4.16 (<span class="up">▲10.3%</span>).`,
     `Units surged from 404 to 600 (<span class="up">▲48.5%</span>) while AOV held roughly flat (₹5,739→₹5,798) — this was an almost entirely volume‑driven surge.`,
   ],
   'WCC Cluster': [
-    `Revenue grew from ₹10.48L to ₹13.74L (<span class="up">▲31.1%</span>) on leads up 52.7% and pitches up 64.7% — a strong, broad‑based expansion.`,
+    `Revenue grew from ₹10.48L to ₹13.74L (<span class="up">▲31.1%</span>) on campaigns up 73.7% (668→1,160), leads up 52.7% and pitches up 64.7% — a strong, broad‑based expansion, though LPC eased from 3.28 to 2.88 (<span class="down">▼12.2%</span>) as campaign growth outpaced lead growth.`,
     `Conversion Rate rose from 6.21% to 6.73% and P to C held essentially flat (10.30%→10.35%) — WCC scaled up without giving back efficiency, a contrast with prior reports where this region's efficiency fell sharply.`,
     `AOV fell from ₹7,706 to ₹6,104 (<span class="down">▼20.8%</span>) while Units rose from 136 to 225 (<span class="up">▲65.4%</span>) — WCC leaned heavily on volume, at a lower price point, to drive growth.`,
   ],
@@ -961,12 +961,12 @@ t2.forEach(c=>{
 
 /* ============ TABLE 3 DATA — CLUSTER ============ */
 const t3 = [
-  {region:'Law + New Businesses', name:'New Businesses', rev25:834500, leads25:1837, camp25:919, pitch25:1488, rev26:1025000, leads26:2129, camp26:671, pitch26:1792, aov25:5151, units25:162, conv25:8.82, lpc25:2.00, p2c25:10.89, aov26:5452, units26:188, conv26:8.83, lpc26:3.17, p2c26:10.49},
-  {region:'', name:'Law', rev25:929000, leads25:2572, camp25:667, pitch25:1925, rev26:863000, leads26:2660, camp26:515, pitch26:1894, aov25:4341, units25:214, conv25:8.32, lpc25:3.86, p2c25:11.12, aov26:4768, units26:181, conv26:6.80, lpc26:5.17, p2c26:9.56},
-  {region:'South Cluster', name:'FightClub', rev25:1572500, leads25:4227, camp25:1037, pitch25:2386, rev26:1955000, leads26:4498, camp26:740, pitch26:2881, aov25:6119, units25:257, conv25:6.08, lpc25:4.08, p2c25:10.77, aov26:5997, units26:326, conv26:7.25, lpc26:6.08, p2c26:11.32},
-  {region:'', name:'PackHouse', rev25:746000, leads25:2116, camp25:646, pitch25:1833, rev26:1524000, leads26:3860, camp26:815, pitch26:2965, aov25:5075, units25:147, conv25:6.95, lpc25:3.28, p2c25:8.02, aov26:5562, units26:274, conv26:7.10, lpc26:4.74, p2c26:9.24},
+  {region:'Law + New Businesses', name:'New Businesses', rev25:834500, leads25:1837, camp25:919, pitch25:1488, rev26:1025000, leads26:2129, camp26:901, pitch26:1792, aov25:5151, units25:162, conv25:8.82, lpc25:2.00, p2c25:10.89, aov26:5452, units26:188, conv26:8.83, lpc26:2.36, p2c26:10.49},
+  {region:'', name:'Law', rev25:929000, leads25:2572, camp25:667, pitch25:1925, rev26:863000, leads26:2660, camp26:696, pitch26:1894, aov25:4341, units25:214, conv25:8.32, lpc25:3.86, p2c25:11.12, aov26:4768, units26:181, conv26:6.80, lpc26:3.82, p2c26:9.56},
+  {region:'South Cluster', name:'FightClub', rev25:1572500, leads25:4227, camp25:1037, pitch25:2386, rev26:1955000, leads26:4498, camp26:944, pitch26:2881, aov25:6119, units25:257, conv25:6.08, lpc25:4.08, p2c25:10.77, aov26:5997, units26:326, conv26:7.25, lpc26:4.76, p2c26:11.32},
+  {region:'', name:'PackHouse', rev25:746000, leads25:2116, camp25:646, pitch25:1833, rev26:1524000, leads26:3860, camp26:1063, pitch26:2965, aov25:5075, units25:147, conv25:6.95, lpc25:3.28, p2c25:8.02, aov26:5562, units26:274, conv26:7.10, lpc26:3.63, p2c26:9.24},
 ];
-const t3Total = {region:'', name:'Grand Total', rev25:4082000, leads25:10752, camp25:3269, pitch25:7632, rev26:5367000, leads26:13147, camp26:2741, pitch26:9532, aov25:5233, units25:780, conv25:7.25, lpc25:3.29, p2c25:10.22, aov26:5539, units26:969, conv26:7.37, lpc26:4.80, p2c26:10.17};
+const t3Total = {region:'', name:'Grand Total', rev25:4082000, leads25:10752, camp25:3269, pitch25:7632, rev26:5367000, leads26:13147, camp26:3604, pitch26:9532, aov25:5233, units25:780, conv25:7.25, lpc25:3.29, p2c25:10.22, aov26:5539, units26:969, conv26:7.37, lpc26:3.65, p2c26:10.17};
 
 function t3RowHtmlVol(c){
   return `<td class="label">${c.region}</td><td class="label">${c.name}</td>
@@ -1007,41 +1007,41 @@ document.getElementById('t3-analysis').innerHTML = t3AnalysisPoints.map(p=>`<li>
 
 /* ============ TABLE 4 DATA — TEAM ============ */
 const t4 = [
-  {cluster:'Law + New Businesses', name:'Athena', rev25:575000, leads25:1550, camp25:396, pitch25:1220, rev26:496000, leads26:1703, camp26:285, pitch26:1198, aov25:4389, units25:131, conv25:8.45, lpc25:3.91, p2c25:10.74, aov26:4960, units26:100, conv26:5.87, lpc26:5.98, p2c26:8.35},
-  {cluster:'', name:'T-Orion', rev25:354000, leads25:1022, camp25:271, pitch25:705, rev26:367000, leads26:957, camp26:230, pitch26:696, aov25:4265, units25:83, conv25:8.12, lpc25:3.77, p2c25:11.77, aov26:4531, units26:81, conv26:8.46, lpc26:4.16, p2c26:11.64},
-  {cluster:'', name:'T-Pushkar', rev25:338000, leads25:990, camp25:438, pitch25:747, rev26:321000, leads26:738, camp26:230, pitch26:651, aov25:5121, units25:66, conv25:6.67, lpc25:2.26, p2c25:8.84, aov26:5262, units26:61, conv26:8.27, lpc26:3.21, p2c26:9.37},
-  {cluster:'', name:'T-Revival', rev25:227000, leads25:411, camp25:289, pitch25:402, rev26:354000, leads26:863, camp26:248, pitch26:629, aov25:4830, units25:47, conv25:11.44, lpc25:1.42, p2c25:11.69, aov26:5206, units26:68, conv26:7.88, lpc26:3.48, p2c26:10.81},
-  {cluster:'', name:'Mavericks', rev25:269500, leads25:436, camp25:192, pitch25:339, rev26:350000, leads26:528, camp26:193, pitch26:512, aov25:5500, units25:49, conv25:11.24, lpc25:2.27, p2c25:14.45, aov26:5932, units26:59, conv26:11.17, lpc26:2.74, p2c26:11.52},
-  {cluster:'Medical Cluster', name:'Apex', rev25:141000, leads25:1088, camp25:163, pitch25:383, rev26:277000, leads26:1494, camp26:245, pitch26:659, aov25:5036, units25:28, conv25:2.57, lpc25:6.67, p2c25:7.31, aov26:4776, units26:58, conv26:3.88, lpc26:6.10, p2c26:8.80},
-  {cluster:'', name:'IGNYT', rev25:372000, leads25:2241, camp25:269, pitch25:649, rev26:266000, leads26:1436, camp26:211, pitch26:610, aov25:4482, units25:83, conv25:3.70, lpc25:8.33, p2c25:12.79, aov26:4030, units26:66, conv26:4.60, lpc26:6.81, p2c26:10.82},
-  {cluster:'', name:'Ethos', rev25:88000, leads25:893, camp25:191, pitch25:335, rev26:277000, leads26:657, camp26:186, pitch26:367, aov25:4632, units25:19, conv25:2.13, lpc25:4.68, p2c25:5.67, aov26:4074, units26:68, conv26:10.35, lpc26:3.53, p2c26:18.53},
-  {cluster:'', name:'Rebels 2.0', rev25:159000, leads25:962, camp25:151, pitch25:442, rev26:167000, leads26:937, camp26:133, pitch26:443, aov25:4543, units25:35, conv25:3.64, lpc25:6.37, p2c25:7.92, aov26:4514, units26:37, conv26:3.95, lpc26:7.05, p2c26:8.35},
-  {cluster:'', name:'Phoenix', rev25:389500, leads25:2202, camp25:212, pitch25:805, rev26:320500, leads26:1651, camp26:152, pitch26:649, aov25:4809, units25:81, conv25:3.68, lpc25:10.39, p2c25:10.06, aov26:4713, units26:68, conv26:4.12, lpc26:10.86, p2c26:10.48},
-  {cluster:'Nagpur Cluster', name:'Aces', rev25:370000, leads25:1114, camp25:269, pitch25:452, rev26:326000, leads26:1144, camp26:106, pitch26:398, aov25:5606, units25:66, conv25:5.92, lpc25:4.14, p2c25:14.60, aov26:5525, units26:59, conv26:5.16, lpc26:10.79, p2c26:14.82},
-  {cluster:'', name:'Aces 2.0', rev25:51000, leads25:426, camp25:73, pitch25:129, rev26:159000, leads26:550, camp26:78, pitch26:304, aov25:5667, units25:9, conv25:2.11, lpc25:5.84, p2c25:6.98, aov26:4969, units26:32, conv26:5.82, lpc26:7.05, p2c26:10.53},
-  {cluster:'', name:'Nova', rev25:388000, leads25:881, camp25:177, pitch25:551, rev26:490000, leads26:926, camp26:112, pitch26:525, aov25:5879, units25:66, conv25:7.49, lpc25:4.98, p2c25:11.98, aov26:5506, units26:89, conv26:9.61, lpc26:8.27, p2c26:16.95},
-  {cluster:'', name:'SuperNova', rev25:140000, leads25:294, camp25:66, pitch25:124, rev26:165000, leads26:586, camp26:77, pitch26:420, aov25:5833, units25:24, conv25:8.16, lpc25:4.45, p2c25:19.35, aov26:4853, units26:34, conv26:5.80, lpc26:7.61, p2c26:8.10},
-  {cluster:'', name:'Phoenix Nagpur', rev25:188000, leads25:615, camp25:206, pitch25:236, rev26:332000, leads26:698, camp26:114, pitch26:328, aov25:6267, units25:30, conv25:4.88, lpc25:2.99, p2c25:12.71, aov26:5825, units26:57, conv26:8.17, lpc26:6.12, p2c26:17.38},
-  {cluster:'', name:'Titans', rev25:462000, leads25:928, camp25:350, pitch25:689, rev26:432000, leads26:1119, camp26:125, pitch26:669, aov25:5634, units25:82, conv25:8.84, lpc25:2.65, p2c25:11.90, aov26:6000, units26:72, conv26:6.43, lpc26:8.95, p2c26:10.76},
-  {cluster:'North Cluster', name:'Sudarshan', rev25:250000, leads25:1482, camp25:380, pitch25:734, rev26:409000, leads26:1769, camp26:263, pitch26:708, aov25:5208, units25:48, conv25:3.24, lpc25:3.90, p2c25:6.54, aov26:5681, units26:72, conv26:4.07, lpc26:6.73, p2c26:10.17},
-  {cluster:'', name:'Jeevan Marg', rev25:155000, leads25:818, camp25:116, pitch25:360, rev26:250000, leads26:651, camp26:117, pitch26:336, aov25:5000, units25:31, conv25:3.79, lpc25:7.05, p2c25:8.61, aov26:6098, units26:41, conv26:6.30, lpc26:5.56, p2c26:12.20},
-  {cluster:'', name:'T-Vyom', rev25:434000, leads25:1455, camp25:143, pitch25:547, rev26:516500, leads26:1328, camp26:144, pitch26:665, aov25:5358, units25:81, conv25:5.57, lpc25:10.17, p2c25:14.81, aov26:6006, units26:86, conv26:6.48, lpc26:9.22, p2c26:12.93},
-  {cluster:'South Cluster', name:'FC Cheguevara', rev25:221500, leads25:791, camp25:234, pitch25:503, rev26:389000, leads26:1128, camp26:144, pitch26:608, aov25:5402, units25:41, conv25:5.18, lpc25:3.38, p2c25:8.15, aov26:6078, units26:64, conv26:5.67, lpc26:7.83, p2c26:10.53},
-  {cluster:'', name:'FC Cholas', rev25:359000, leads25:1347, camp25:265, pitch25:684, rev26:316000, leads26:1372, camp26:210, pitch26:742, aov25:6190, units25:58, conv25:4.31, lpc25:5.08, p2c25:8.48, aov26:5962, units26:53, conv26:3.86, lpc26:6.53, p2c26:7.14},
-  {cluster:'', name:'FC Sparkunity', rev25:774000, leads25:1015, camp25:213, pitch25:639, rev26:835000, leads26:1125, camp26:144, pitch26:826, aov25:6615, units25:117, conv25:11.53, lpc25:4.77, p2c25:18.31, aov26:6185, units26:135, conv26:12.00, lpc26:7.81, p2c26:16.34},
-  {cluster:'', name:'FC Fury', rev25:218000, leads25:1074, camp25:325, pitch25:560, rev26:415000, leads26:873, camp26:242, pitch26:705, aov25:5317, units25:41, conv25:3.82, lpc25:3.30, p2c25:7.32, aov26:5608, units26:74, conv26:8.48, lpc26:3.61, p2c26:10.50},
-  {cluster:'', name:'PH Shadow Fangs', rev25:219000, leads25:815, camp25:283, pitch25:758, rev26:289000, leads26:685, camp26:129, pitch26:512, aov25:4563, units25:48, conv25:5.89, lpc25:2.88, p2c25:6.33, aov26:5161, units26:56, conv26:8.18, lpc26:5.31, p2c26:10.94},
-  {cluster:'', name:'PH Blitzwolfers', rev25:200000, leads25:531, camp25:190, pitch25:507, rev26:426000, leads26:1170, camp26:286, pitch26:863, aov25:5714, units25:35, conv25:6.59, lpc25:2.79, p2c25:6.90, aov26:6554, units26:65, conv26:5.56, lpc26:4.09, p2c26:7.53},
-  {cluster:'', name:'PH Wolvx', rev25:0, leads25:181, camp25:0, pitch25:0, rev26:403000, leads26:1220, camp26:269, pitch26:943, aov25:0, units25:0, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:5303, units26:76, conv26:6.23, lpc26:4.54, p2c26:8.06},
-  {cluster:'', name:'PH Wolfpack', rev25:327000, leads25:589, camp25:173, pitch25:568, rev26:406000, leads26:785, camp26:131, pitch26:647, aov25:5109, units25:64, conv25:10.87, lpc25:3.40, p2c25:11.27, aov26:5273, units26:77, conv26:9.81, lpc26:5.99, p2c26:11.90},
-  {cluster:'WCC Cluster', name:'Genesis', rev25:257000, leads25:671, camp25:278, pitch25:413, rev26:336000, leads26:747, camp26:291, pitch26:478, aov25:5841, units25:44, conv25:6.56, lpc25:2.41, p2c25:10.65, aov26:6109, units26:55, conv26:7.36, lpc26:2.57, p2c26:11.51},
-  {cluster:'', name:'T-Samriddhi', rev25:29000, leads25:0, camp25:0, pitch25:0, rev26:130000, leads26:261, camp26:143, pitch26:367, aov25:5800, units25:5, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:5909, units26:22, conv26:8.43, lpc26:1.83, p2c26:5.99},
-  {cluster:'', name:'T-Hiba', rev25:0, leads25:0, camp25:0, pitch25:0, rev26:150500, leads26:597, camp26:144, pitch26:332, aov25:0, units25:0, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:5190, units26:29, conv26:4.86, lpc26:4.15, p2c26:8.73},
+  {cluster:'Law + New Businesses', name:'Athena', rev25:575000, leads25:1550, camp25:396, pitch25:1220, rev26:496000, leads26:1703, camp26:388, pitch26:1198, aov25:4389, units25:131, conv25:8.45, lpc25:3.91, p2c25:10.74, aov26:4960, units26:100, conv26:5.87, lpc26:4.39, p2c26:8.35},
+  {cluster:'', name:'T-Orion', rev25:354000, leads25:1022, camp25:271, pitch25:705, rev26:367000, leads26:957, camp26:308, pitch26:696, aov25:4265, units25:83, conv25:8.12, lpc25:3.77, p2c25:11.77, aov26:4531, units26:81, conv26:8.46, lpc26:3.11, p2c26:11.64},
+  {cluster:'', name:'T-Pushkar', rev25:338000, leads25:990, camp25:438, pitch25:747, rev26:321000, leads26:738, camp26:296, pitch26:651, aov25:5121, units25:66, conv25:6.67, lpc25:2.26, p2c25:8.84, aov26:5262, units26:61, conv26:8.27, lpc26:2.49, p2c26:9.37},
+  {cluster:'', name:'T-Revival', rev25:227000, leads25:411, camp25:289, pitch25:402, rev26:354000, leads26:863, camp26:341, pitch26:629, aov25:4830, units25:47, conv25:11.44, lpc25:1.42, p2c25:11.69, aov26:5206, units26:68, conv26:7.88, lpc26:2.53, p2c26:10.81},
+  {cluster:'', name:'Mavericks', rev25:269500, leads25:436, camp25:192, pitch25:339, rev26:350000, leads26:528, camp26:264, pitch26:512, aov25:5500, units25:49, conv25:11.24, lpc25:2.27, p2c25:14.45, aov26:5932, units26:59, conv26:11.17, lpc26:2.00, p2c26:11.52},
+  {cluster:'Medical Cluster', name:'Apex', rev25:141000, leads25:1088, camp25:163, pitch25:383, rev26:277000, leads26:1494, camp26:331, pitch26:659, aov25:5036, units25:28, conv25:2.57, lpc25:6.67, p2c25:7.31, aov26:4776, units26:58, conv26:3.88, lpc26:4.51, p2c26:8.80},
+  {cluster:'', name:'IGNYT', rev25:372000, leads25:2241, camp25:269, pitch25:649, rev26:266000, leads26:1436, camp26:295, pitch26:610, aov25:4482, units25:83, conv25:3.70, lpc25:8.33, p2c25:12.79, aov26:4030, units26:66, conv26:4.60, lpc26:4.87, p2c26:10.82},
+  {cluster:'', name:'Ethos', rev25:88000, leads25:893, camp25:191, pitch25:335, rev26:277000, leads26:657, camp26:216, pitch26:367, aov25:4632, units25:19, conv25:2.13, lpc25:4.68, p2c25:5.67, aov26:4074, units26:68, conv26:10.35, lpc26:3.04, p2c26:18.53},
+  {cluster:'', name:'Rebels 2.0', rev25:159000, leads25:962, camp25:151, pitch25:442, rev26:167000, leads26:937, camp26:181, pitch26:443, aov25:4543, units25:35, conv25:3.64, lpc25:6.37, p2c25:7.92, aov26:4514, units26:37, conv26:3.95, lpc26:5.18, p2c26:8.35},
+  {cluster:'', name:'Phoenix', rev25:389500, leads25:2202, camp25:212, pitch25:805, rev26:320500, leads26:1651, camp26:192, pitch26:649, aov25:4809, units25:81, conv25:3.68, lpc25:10.39, p2c25:10.06, aov26:4713, units26:68, conv26:4.12, lpc26:8.60, p2c26:10.48},
+  {cluster:'Nagpur Cluster', name:'Aces', rev25:370000, leads25:1114, camp25:269, pitch25:452, rev26:326000, leads26:1144, camp26:187, pitch26:398, aov25:5606, units25:66, conv25:5.92, lpc25:4.14, p2c25:14.60, aov26:5525, units26:59, conv26:5.16, lpc26:6.12, p2c26:14.82},
+  {cluster:'', name:'Aces 2.0', rev25:51000, leads25:426, camp25:73, pitch25:129, rev26:159000, leads26:550, camp26:124, pitch26:304, aov25:5667, units25:9, conv25:2.11, lpc25:5.84, p2c25:6.98, aov26:4969, units26:32, conv26:5.82, lpc26:4.44, p2c26:10.53},
+  {cluster:'', name:'Nova', rev25:388000, leads25:881, camp25:177, pitch25:551, rev26:490000, leads26:926, camp26:152, pitch26:525, aov25:5879, units25:66, conv25:7.49, lpc25:4.98, p2c25:11.98, aov26:5506, units26:89, conv26:9.61, lpc26:6.09, p2c26:16.95},
+  {cluster:'', name:'SuperNova', rev25:140000, leads25:294, camp25:66, pitch25:124, rev26:165000, leads26:586, camp26:111, pitch26:420, aov25:5833, units25:24, conv25:8.16, lpc25:4.45, p2c25:19.35, aov26:4853, units26:34, conv26:5.80, lpc26:5.28, p2c26:8.10},
+  {cluster:'', name:'Phoenix Nagpur', rev25:188000, leads25:615, camp25:206, pitch25:236, rev26:332000, leads26:698, camp26:161, pitch26:328, aov25:6267, units25:30, conv25:4.88, lpc25:2.99, p2c25:12.71, aov26:5825, units26:57, conv26:8.17, lpc26:4.34, p2c26:17.38},
+  {cluster:'', name:'Titans', rev25:462000, leads25:928, camp25:350, pitch25:689, rev26:432000, leads26:1119, camp26:208, pitch26:669, aov25:5634, units25:82, conv25:8.84, lpc25:2.65, p2c25:11.90, aov26:6000, units26:72, conv26:6.43, lpc26:5.38, p2c26:10.76},
+  {cluster:'North Cluster', name:'Sudarshan', rev25:250000, leads25:1482, camp25:380, pitch25:734, rev26:409000, leads26:1769, camp26:322, pitch26:708, aov25:5208, units25:48, conv25:3.24, lpc25:3.90, p2c25:6.54, aov26:5681, units26:72, conv26:4.07, lpc26:5.49, p2c26:10.17},
+  {cluster:'', name:'Jeevan Marg', rev25:155000, leads25:818, camp25:116, pitch25:360, rev26:250000, leads26:651, camp26:179, pitch26:336, aov25:5000, units25:31, conv25:3.79, lpc25:7.05, p2c25:8.61, aov26:6098, units26:41, conv26:6.30, lpc26:3.64, p2c26:12.20},
+  {cluster:'', name:'T-Vyom', rev25:434000, leads25:1455, camp25:143, pitch25:547, rev26:516500, leads26:1328, camp26:185, pitch26:665, aov25:5358, units25:81, conv25:5.57, lpc25:10.17, p2c25:14.81, aov26:6006, units26:86, conv26:6.48, lpc26:7.18, p2c26:12.93},
+  {cluster:'South Cluster', name:'FC Cheguevara', rev25:221500, leads25:791, camp25:234, pitch25:503, rev26:389000, leads26:1128, camp26:185, pitch26:608, aov25:5402, units25:41, conv25:5.18, lpc25:3.38, p2c25:8.15, aov26:6078, units26:64, conv26:5.67, lpc26:6.10, p2c26:10.53},
+  {cluster:'', name:'FC Cholas', rev25:359000, leads25:1347, camp25:265, pitch25:684, rev26:316000, leads26:1372, camp26:277, pitch26:742, aov25:6190, units25:58, conv25:4.31, lpc25:5.08, p2c25:8.48, aov26:5962, units26:53, conv26:3.86, lpc26:4.95, p2c26:7.14},
+  {cluster:'', name:'FC Sparkunity', rev25:774000, leads25:1015, camp25:213, pitch25:639, rev26:835000, leads26:1125, camp26:179, pitch26:826, aov25:6615, units25:117, conv25:11.53, lpc25:4.77, p2c25:18.31, aov26:6185, units26:135, conv26:12.00, lpc26:6.28, p2c26:16.34},
+  {cluster:'', name:'FC Fury', rev25:218000, leads25:1074, camp25:325, pitch25:560, rev26:415000, leads26:873, camp26:303, pitch26:705, aov25:5317, units25:41, conv25:3.82, lpc25:3.30, p2c25:7.32, aov26:5608, units26:74, conv26:8.48, lpc26:2.88, p2c26:10.50},
+  {cluster:'', name:'PH Shadow Fangs', rev25:219000, leads25:815, camp25:283, pitch25:758, rev26:289000, leads26:685, camp26:156, pitch26:512, aov25:4563, units25:48, conv25:5.89, lpc25:2.88, p2c25:6.33, aov26:5161, units26:56, conv26:8.18, lpc26:4.39, p2c26:10.94},
+  {cluster:'', name:'PH Blitzwolfers', rev25:200000, leads25:531, camp25:190, pitch25:507, rev26:426000, leads26:1170, camp26:392, pitch26:863, aov25:5714, units25:35, conv25:6.59, lpc25:2.79, p2c25:6.90, aov26:6554, units26:65, conv26:5.56, lpc26:2.98, p2c26:7.53},
+  {cluster:'', name:'PH Wolvx', rev25:0, leads25:181, camp25:0, pitch25:0, rev26:403000, leads26:1220, camp26:342, pitch26:943, aov25:0, units25:0, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:5303, units26:76, conv26:6.23, lpc26:3.57, p2c26:8.06},
+  {cluster:'', name:'PH Wolfpack', rev25:327000, leads25:589, camp25:173, pitch25:568, rev26:406000, leads26:785, camp26:173, pitch26:647, aov25:5109, units25:64, conv25:10.87, lpc25:3.40, p2c25:11.27, aov26:5273, units26:77, conv26:9.81, lpc26:4.54, p2c26:11.90},
+  {cluster:'WCC Cluster', name:'Genesis', rev25:257000, leads25:671, camp25:278, pitch25:413, rev26:336000, leads26:747, camp26:363, pitch26:478, aov25:5841, units25:44, conv25:6.56, lpc25:2.41, p2c25:10.65, aov26:6109, units26:55, conv26:7.36, lpc26:2.06, p2c26:11.51},
+  {cluster:'', name:'T-Samriddhi', rev25:29000, leads25:0, camp25:0, pitch25:0, rev26:130000, leads26:261, camp26:225, pitch26:367, aov25:5800, units25:5, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:5909, units26:22, conv26:8.43, lpc26:1.16, p2c26:5.99},
+  {cluster:'', name:'T-Hiba', rev25:0, leads25:0, camp25:0, pitch25:0, rev26:150500, leads26:597, camp26:176, pitch26:332, aov25:0, units25:0, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:5190, units26:29, conv26:4.86, lpc26:3.39, p2c26:8.73},
   {cluster:'', name:'Hustlers', rev25:250000, leads25:0, camp25:0, pitch25:0, rev26:0, leads26:0, camp26:0, pitch26:0, aov25:250000, units25:1, conv25:0.00, lpc25:0.00, p2c25:0.00, aov26:0, units26:0, conv26:0.00, lpc26:0.00, p2c26:0.00},
-  {cluster:'', name:'Poseidon', rev25:298000, leads25:782, camp25:203, pitch25:508, rev26:493000, leads26:1019, camp26:160, pitch26:598, aov25:6082, units25:49, conv25:6.27, lpc25:3.85, p2c25:9.65, aov26:6487, units26:76, conv26:7.46, lpc26:6.37, p2c26:12.71},
-  {cluster:'', name:'T-Rajarshi', rev25:214000, leads25:737, camp25:187, pitch25:399, rev26:264000, leads26:719, camp26:168, pitch26:399, aov25:5784, units25:37, conv25:5.02, lpc25:3.94, p2c25:9.27, aov26:6140, units26:43, conv26:5.98, lpc26:4.28, p2c26:10.78},
+  {cluster:'', name:'Poseidon', rev25:298000, leads25:782, camp25:203, pitch25:508, rev26:493000, leads26:1019, camp26:206, pitch26:598, aov25:6082, units25:49, conv25:6.27, lpc25:3.85, p2c25:9.65, aov26:6487, units26:76, conv26:7.46, lpc26:4.95, p2c26:12.71},
+  {cluster:'', name:'T-Rajarshi', rev25:214000, leads25:737, camp25:187, pitch25:399, rev26:264000, leads26:719, camp26:190, pitch26:399, aov25:5784, units25:37, conv25:5.02, lpc25:3.94, p2c25:9.27, aov26:6140, units26:43, conv26:5.98, lpc26:3.78, p2c26:10.78},
 ];
-const t4Total = {cluster:'', name:'Grand Total', rev25:8717500, leads25:28341, camp25:6703, pitch25:15388, rev26:11127500, leads26:31436, camp26:5710, pitch26:18787, aov25:5452, units25:1599, conv25:5.64, lpc25:4.23, p2c25:10.39, aov26:5473, units26:2033, conv26:6.47, lpc26:5.51, p2c26:10.82};
+const t4Total = {cluster:'', name:'Grand Total', rev25:8717500, leads25:28341, camp25:6703, pitch25:15388, rev26:11127500, leads26:31436, camp26:7608, pitch26:18787, aov25:5452, units25:1599, conv25:5.64, lpc25:4.23, p2c25:10.39, aov26:5473, units26:2033, conv26:6.47, lpc26:4.13, p2c26:10.82};
 
 function t4RowHtmlVol(c){
   return `<td class="label">${c.cluster}</td><td class="label">${c.name}</td>
