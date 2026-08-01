@@ -1,242 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Performance Review · Report Index</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F6F3EC;
-    --panel:#FFFFFF;
-    --ink:#1C2530;
-    --ink-soft:#5B6472;
-    --line:#E4DFD3;
-    --navy:#28425A;
-    --navy-deep:#17242F;
-    --teal:#2E8B76;
-    --teal-soft:#E4F2ED;
-    --coral:#B84B32;
-    --coral-soft:#F7E7E1;
-    --gold:#C79A2E;
-    --gold-soft:#FBF2DC;
-    --radius:14px;
-    --shadow:0 1px 2px rgba(28,37,48,.04), 0 8px 24px -12px rgba(28,37,48,.12);
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,h4{font-family:'Fraunces',serif; margin:0; letter-spacing:-0.01em;}
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  a{color:inherit; text-decoration:none;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Review · Report Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F6F3EC;
+      --panel: #FFFFFF;
+      --ink: #1C2530;
+      --ink-soft: #5B6472;
+      --line: #E4DFD3;
+      --navy: #28425A;
+      --navy-deep: #17242F;
+      --teal: #2E8B76;
+      --teal-soft: #E4F2ED;
+      --coral: #B84B32;
+      --coral-soft: #F7E7E1;
+      --gold: #C79A2E;
+      --gold-soft: #FBF2DC;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(28, 37, 48, .04), 0 8px 24px -12px rgba(28, 37, 48, .12);
+    }
 
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(246,243,236,.92); backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:1180px; margin:0 auto; padding:14px 24px;
-    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
-  }
-  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:17px;}
-  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--coral); flex:none;}
+    * {
+      box-sizing: border-box;
+    }
 
-  .hero{max-width:1180px; margin:0 auto; padding:56px 24px 8px;}
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace;
-    font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--coral);
-    background:var(--coral-soft); padding:6px 12px; border-radius:100px; margin-bottom:20px;
-  }
-  .hero h1{font-size:clamp(28px,4.6vw,44px); font-weight:600; max-width:760px; line-height:1.1;}
-  .hero p.lede{max-width:640px; color:var(--ink-soft); font-size:16px; margin-top:14px;}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ===== TABS ===== */
-  .tabbar{max-width:1180px; margin:32px auto 0; padding:0 24px; display:flex; gap:6px; flex-wrap:wrap; border-bottom:1px solid var(--line);}
-  .tabbtn{
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
-    color:var(--ink-soft); background:transparent; border:none; cursor:pointer;
-    padding:12px 18px; border-bottom:3px solid transparent; transition:.15s;
-  }
-  .tabbtn:hover{color:var(--ink);}
-  .tabbtn.active{color:var(--navy); border-bottom-color:var(--gold);}
-  .tabbtn .count{
-    display:inline-block; margin-left:6px; background:var(--gold-soft); color:var(--gold);
-    border-radius:100px; padding:1px 7px; font-size:11px;
-  }
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Fraunces', serif;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
 
-  main{max-width:1180px; margin:0 auto; padding:32px 24px 80px;}
-  .tabpanel{display:none;}
-  .tabpanel.active{display:block;}
-  .panel-sub{color:var(--ink-soft); font-size:14.5px; max-width:680px; margin-bottom:26px;}
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
 
-  /* ===== REPORT CARDS ===== */
-  .report-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px;}
-  .report-card{
-    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
-    padding:20px 22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
-    transition:.15s; border-top:4px solid var(--navy);
-  }
-  .report-card:hover{transform:translateY(-2px); box-shadow:0 4px 6px rgba(28,37,48,.06), 0 14px 30px -10px rgba(28,37,48,.18);}
-  .report-card.yoy{border-top-color:var(--teal);}
-  .report-card.mom{border-top-color:var(--navy);}
-  .card-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
-  .badge{
-    font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-    padding:3px 9px; border-radius:100px;
-  }
-  .badge.mom{background:var(--teal-soft); color:var(--teal);}
-  .badge.yoy{background:var(--gold-soft); color:var(--gold);}
-  .card-date{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft);}
-  .report-card h3{font-size:18px; font-weight:600;}
-  .report-card .meta{font-size:12.5px; color:var(--ink-soft);}
-  .report-card .open-btn{
-    margin-top:6px; align-self:flex-start;
-    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.03em;
-    color:#fff; background:var(--navy); padding:9px 16px; border-radius:100px;
-    display:inline-flex; align-items:center; gap:6px; transition:.15s;
-  }
-  .report-card:hover .open-btn{background:var(--navy-deep);}
-  .report-card.missing{opacity:.55; border-style:dashed;}
-  .report-card.missing .open-btn{background:var(--ink-soft); pointer-events:none;}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .empty-state{
-    border:1px dashed var(--line); border-radius:var(--radius); padding:40px 24px; text-align:center; color:var(--ink-soft);
-    background:var(--panel);
-  }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(246, 243, 236, .92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
 
-  .howto{
-    background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:var(--radius);
-    padding:20px 22px; margin-top:40px; box-shadow:var(--shadow);
-  }
-  .howto h4{font-size:14.5px; font-weight:700; margin-bottom:8px;}
-  .howto ol{margin:0; padding-left:18px; font-size:13.8px; color:#2c3742;}
-  .howto li{margin-bottom:6px;}
-  .howto code{background:var(--gold-soft); padding:1px 6px; border-radius:4px; font-family:'IBM Plex Mono',monospace; font-size:12.5px;}
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-  footer{max-width:1180px; margin:0 auto; padding:30px 24px 60px; color:var(--ink-soft); font-size:12.5px;}
-</style>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    .brand .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex: none;
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 56px 24px 8px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      background: var(--coral-soft);
+      padding: 6px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4.6vw, 44px);
+      font-weight: 600;
+      max-width: 760px;
+      line-height: 1.1;
+    }
+
+    .hero p.lede {
+      max-width: 640px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      margin-top: 14px;
+    }
+
+    /* ===== TABS ===== */
+    .tabbar {
+      max-width: 1180px;
+      margin: 32px auto 0;
+      padding: 0 24px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tabbtn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-bottom: 3px solid transparent;
+      transition: .15s;
+    }
+
+    .tabbtn:hover {
+      color: var(--ink);
+    }
+
+    .tabbtn.active {
+      color: var(--navy);
+      border-bottom-color: var(--gold);
+    }
+
+    .tabbtn .count {
+      display: inline-block;
+      margin-left: 6px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      border-radius: 100px;
+      padding: 1px 7px;
+      font-size: 11px;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    .tabpanel {
+      display: none;
+    }
+
+    .tabpanel.active {
+      display: block;
+    }
+
+    .panel-sub {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      max-width: 680px;
+      margin-bottom: 26px;
+    }
+
+    /* ===== REPORT CARDS ===== */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .report-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: .15s;
+      border-top: 4px solid var(--navy);
+    }
+
+    .report-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(28, 37, 48, .06), 0 14px 30px -10px rgba(28, 37, 48, .18);
+    }
+
+    .report-card.yoy {
+      border-top-color: var(--teal);
+    }
+
+    .report-card.mom {
+      border-top-color: var(--navy);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+    }
+
+    .badge.mom {
+      background: var(--teal-soft);
+      color: var(--teal);
+    }
+
+    .badge.yoy {
+      background: var(--gold-soft);
+      color: var(--gold);
+    }
+
+    .card-date {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      color: var(--ink-soft);
+    }
+
+    .report-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .report-card .meta {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+    }
+
+    .report-card .open-btn {
+      margin-top: 6px;
+      align-self: flex-start;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      color: #fff;
+      background: var(--navy);
+      padding: 9px 16px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: .15s;
+    }
+
+    .report-card:hover .open-btn {
+      background: var(--navy-deep);
+    }
+
+    .report-card.missing {
+      opacity: .55;
+      border-style: dashed;
+    }
+
+    .report-card.missing .open-btn {
+      background: var(--ink-soft);
+      pointer-events: none;
+    }
+
+    .empty-state {
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--ink-soft);
+      background: var(--panel);
+    }
+
+    .howto {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-top: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .howto h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .howto ol {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13.8px;
+      color: #2c3742;
+    }
+
+    .howto li {
+      margin-bottom: 6px;
+    }
+
+    .howto code {
+      background: var(--gold-soft);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+    }
+
+    footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 30px 24px 60px;
+      color: var(--ink-soft);
+      font-size: 12.5px;
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <div class="brand"><span class="dot"></span>Performance Review · Report Index</div>
-    <div class="mono" style="font-size:12px; color:var(--ink-soft);">Updated weekly</div>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand"><span class="dot"></span>Performance Review · Report Index</div>
+      <div class="mono" style="font-size:12px; color:var(--ink-soft);">Updated weekly</div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Report Hub</div>
+    <h1>All performance reports, in one place.</h1>
+    <p class="lede">This page indexes every Performance Review report — month‑over‑month and year‑over‑year — as new
+      ones are added each week. Pick a tab, then open a report.</p>
+  </header>
+
+  <div class="tabbar">
+    <button class="tabbtn active" data-tab="mom">Month-over-Month <span class="count" id="count-mom"></span></button>
+    <button class="tabbtn" data-tab="yoy">Year-over-Year <span class="count" id="count-yoy"></span></button>
+    <button class="tabbtn" data-tab="all">All Reports <span class="count" id="count-all"></span></button>
   </div>
-</nav>
 
-<header class="hero">
-  <div class="eyebrow">Report Hub</div>
-  <h1>All performance reports, in one place.</h1>
-  <p class="lede">This page indexes every Performance Review report — month‑over‑month and year‑over‑year — as new ones are added each week. Pick a tab, then open a report.</p>
-</header>
+  <main>
+    <section class="tabpanel active" id="panel-mom">
+      <div class="panel-sub">Compares the current month against the immediately preceding month (e.g. June 2026 vs July
+        2026). Same working‑day window (8 days) on both sides of every comparison.</div>
+      <div class="report-grid" id="grid-mom"></div>
+    </section>
 
-<div class="tabbar">
-  <button class="tabbtn active" data-tab="mom">Month-over-Month <span class="count" id="count-mom"></span></button>
-  <button class="tabbtn" data-tab="yoy">Year-over-Year <span class="count" id="count-yoy"></span></button>
-  <button class="tabbtn" data-tab="all">All Reports <span class="count" id="count-all"></span></button>
-</div>
+    <section class="tabpanel" id="panel-yoy">
+      <div class="panel-sub">Compares the current month against the same month one year earlier (e.g. July 2025 vs July
+        2026). Same working‑day window (8 days) on both sides of every comparison.</div>
+      <div class="report-grid" id="grid-yoy"></div>
+    </section>
 
-<main>
-  <section class="tabpanel active" id="panel-mom">
-    <div class="panel-sub">Compares the current month against the immediately preceding month (e.g. June 2026 vs July 2026). Same working‑day window (8 days) on both sides of every comparison.</div>
-    <div class="report-grid" id="grid-mom"></div>
-  </section>
+    <section class="tabpanel" id="panel-all">
+      <div class="panel-sub">Every report listed here, newest first, regardless of type.</div>
+      <div class="report-grid" id="grid-all"></div>
+    </section>
 
-  <section class="tabpanel" id="panel-yoy">
-    <div class="panel-sub">Compares the current month against the same month one year earlier (e.g. July 2025 vs July 2026). Same working‑day window (8 days) on both sides of every comparison.</div>
-    <div class="report-grid" id="grid-yoy"></div>
-  </section>
+    <div class="howto">
+      <h4>📌 How to add next week's reports</h4>
+      <ol>
+        <li>Drop the new report <code>.html</code> file into this same folder, next to <code>index.html</code>.</li>
+        <li>Open <code>index.html</code> in a text editor and find the <code>const reports = [ ... ]</code> list near
+          the bottom of the file.</li>
+        <li>Copy one existing entry, paste it as a new line, and edit <code>type</code> (<code>'mom'</code> or
+          <code>'yoy'</code>), <code>title</code>, <code>date</code>, <code>workingDays</code>, and <code>file</code>
+          (the exact filename you just added).
+        </li>
+        <li>Save — no other changes needed. The new report will automatically appear in the right tab and in "All
+          Reports", sorted by date.</li>
+      </ol>
+    </div>
+  </main>
 
-  <section class="tabpanel" id="panel-all">
-    <div class="panel-sub">Every report listed here, newest first, regardless of type.</div>
-    <div class="report-grid" id="grid-all"></div>
-  </section>
+  <footer>
+    Performance Review Report Index · Keep this file and every report <code>.html</code> file in the same folder for the
+    links to work.
+  </footer>
 
-  <div class="howto">
-    <h4>📌 How to add next week's reports</h4>
-    <ol>
-      <li>Drop the new report <code>.html</code> file into this same folder, next to <code>index.html</code>.</li>
-      <li>Open <code>index.html</code> in a text editor and find the <code>const reports = [ ... ]</code> list near the bottom of the file.</li>
-      <li>Copy one existing entry, paste it as a new line, and edit <code>type</code> (<code>'mom'</code> or <code>'yoy'</code>), <code>title</code>, <code>date</code>, <code>workingDays</code>, and <code>file</code> (the exact filename you just added).</li>
-      <li>Save — no other changes needed. The new report will automatically appear in the right tab and in "All Reports", sorted by date.</li>
-    </ol>
-  </div>
-</main>
+  <script>
+    /* ================================================================
+       REPORT LIST — add one entry per report, then save this file.
+       type: 'mom' (month-over-month) or 'yoy' (year-over-year)
+       date: the "as of" date for the report, format YYYY-MM-DD (used for sorting, newest first)
+       file: the exact filename of the report .html, sitting in this same folder
+    ================================================================ */
+    const reports = [
+      {
+        type: 'mom',
+        title: 'June 2026 vs July 2026',
+        date: '2026-07-15',
+        workingDays: 8,
+        file: 'Performance_Review_June_vs_July_2026.html'
+      },
+      {
+        type: 'mom',
+        title: 'Jun 3–19 vs Jul 3–19, 2026',
+        date: '2026-07-20',
+        workingDays: 14,
+        file: 'Performance_Review_Jun3-19_vs_Jul3-19_2026.html'
+      },
+      {
+        type: 'mom',
+        title: 'Jun 3–26 vs Jul 3–26, 2026',
+        date: '2026-07-27',
+        workingDays: 21,
+        file: 'Performance_Review_Jun3-26_vs_Jul3-26_2026.html'
+      },
 
-<footer>
-  Performance Review Report Index · Keep this file and every report <code>.html</code> file in the same folder for the links to work.
-</footer>
+      {
+        type: 'mom',
+        title: 'Jun 3– Jul 1 vs Jul 3–31, 2026',
+        date: '2026-08-01',
+        workingDays: 26,
+        file: 'Performance_Review_June_vs_July_2026_Full.html'
+      },
+      {
+        type: 'yoy',
+        title: 'July 2025 vs July 2026',
+        date: '2026-07-15',
+        workingDays: 8,
+        file: 'Performance_Review_July2025_vs_July2026.html'
+      },
+      {
+        type: 'yoy',
+        title: 'Jul 2–17, 2025 vs Jul 3–19, 2026',
+        date: '2026-07-20',
+        workingDays: 14,
+        file: 'Performance_Review_Jul2025_vs_Jul2026_wk3.html'
+      },
+      {
+        type: 'yoy',
+        title: 'Jul 2–25, 2025 vs Jul 3–26, 2026 (+ Market Analysis)',
+        date: '2026-07-27',
+        workingDays: 21,
+        file: 'Performance_Review_Jul2025_vs_Jul2026_wk4_market.html'
+      },
 
-<script>
-/* ================================================================
-   REPORT LIST — add one entry per report, then save this file.
-   type: 'mom' (month-over-month) or 'yoy' (year-over-year)
-   date: the "as of" date for the report, format YYYY-MM-DD (used for sorting, newest first)
-   file: the exact filename of the report .html, sitting in this same folder
-================================================================ */
-const reports = [
-  {
-    type: 'mom',
-    title: 'June 2026 vs July 2026',
-    date: '2026-07-15',
-    workingDays: 8,
-    file: 'Performance_Review_June_vs_July_2026.html'
-  },
-  {
-    type: 'mom',
-    title: 'Jun 3–19 vs Jul 3–19, 2026',
-    date: '2026-07-20',
-    workingDays: 14,
-    file: 'Performance_Review_Jun3-19_vs_Jul3-19_2026.html'
-  },
-  {
-    type: 'mom',
-    title: 'Jun 3–26 vs Jul 3–26, 2026',
-    date: '2026-07-27',
-    workingDays: 21,
-    file: 'Performance_Review_Jun3-26_vs_Jul3-26_2026.html'
-  },
-  {
-    type: 'yoy',
-    title: 'July 2025 vs July 2026',
-    date: '2026-07-15',
-    workingDays: 8,
-    file: 'Performance_Review_July2025_vs_July2026.html'
-  },
-  {
-    type: 'yoy',
-    title: 'Jul 2–17, 2025 vs Jul 3–19, 2026',
-    date: '2026-07-20',
-    workingDays: 14,
-    file: 'Performance_Review_Jul2025_vs_Jul2026_wk3.html'
-  },
-  {
-    type: 'yoy',
-    title: 'Jul 2–25, 2025 vs Jul 3–26, 2026',
-    date: '2026-07-27',
-    workingDays: 21,
-    file: 'Performance_Review_Jul2025_vs_Jul2026_wk4_market.html'
-  },
-];
-/* ================================================================ */
+      {
+        type: 'yoy',
+        title: 'Jul 2–30, 2025 vs Jul 3–31, 2026 (+ Market Analysis)',
+        date: '2026-08-01',
+        workingDays: 26,
+        file: 'Performance_Review_Jul302025_vs_Jul312026_market.html'
+      },
+    ];
+    /* ================================================================ */
 
-function fmtDate(d){
-  const dt = new Date(d + 'T00:00:00');
-  return dt.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
-}
+    function fmtDate(d) {
+      const dt = new Date(d + 'T00:00:00');
+      return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
 
-function cardHtml(r){
-  const typeLabel = r.type === 'mom' ? 'Month-over-Month' : 'Year-over-Year';
-  return `
+    function cardHtml(r) {
+      const typeLabel = r.type === 'mom' ? 'Month-over-Month' : 'Year-over-Year';
+      return `
     <a class="report-card ${r.type}" href="${r.file}" target="_blank" rel="noopener">
       <div class="card-top">
         <span class="badge ${r.type}">${typeLabel}</span>
@@ -246,36 +505,37 @@ function cardHtml(r){
       <div class="meta">${r.workingDays} working days · both periods</div>
       <span class="open-btn">Open Report →</span>
     </a>`;
-}
+    }
 
-function emptyStateHtml(msg){
-  return `<div class="empty-state">${msg}</div>`;
-}
+    function emptyStateHtml(msg) {
+      return `<div class="empty-state">${msg}</div>`;
+    }
 
-function render(){
-  const sorted = [...reports].sort((a,b)=> new Date(b.date) - new Date(a.date));
-  const mom = sorted.filter(r=>r.type==='mom');
-  const yoy = sorted.filter(r=>r.type==='yoy');
+    function render() {
+      const sorted = [...reports].sort((a, b) => new Date(b.date) - new Date(a.date));
+      const mom = sorted.filter(r => r.type === 'mom');
+      const yoy = sorted.filter(r => r.type === 'yoy');
 
-  document.getElementById('grid-mom').innerHTML = mom.length ? mom.map(cardHtml).join('') : emptyStateHtml('No month-over-month reports yet. Add one to the <code>reports</code> list in this file.');
-  document.getElementById('grid-yoy').innerHTML = yoy.length ? yoy.map(cardHtml).join('') : emptyStateHtml('No year-over-year reports yet. Add one to the <code>reports</code> list in this file.');
-  document.getElementById('grid-all').innerHTML = sorted.length ? sorted.map(cardHtml).join('') : emptyStateHtml('No reports yet.');
+      document.getElementById('grid-mom').innerHTML = mom.length ? mom.map(cardHtml).join('') : emptyStateHtml('No month-over-month reports yet. Add one to the <code>reports</code> list in this file.');
+      document.getElementById('grid-yoy').innerHTML = yoy.length ? yoy.map(cardHtml).join('') : emptyStateHtml('No year-over-year reports yet. Add one to the <code>reports</code> list in this file.');
+      document.getElementById('grid-all').innerHTML = sorted.length ? sorted.map(cardHtml).join('') : emptyStateHtml('No reports yet.');
 
-  document.getElementById('count-mom').textContent = mom.length;
-  document.getElementById('count-yoy').textContent = yoy.length;
-  document.getElementById('count-all').textContent = sorted.length;
-}
-render();
+      document.getElementById('count-mom').textContent = mom.length;
+      document.getElementById('count-yoy').textContent = yoy.length;
+      document.getElementById('count-all').textContent = sorted.length;
+    }
+    render();
 
-/* ---- Tab switching ---- */
-document.querySelectorAll('.tabbtn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tabpanel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-  });
-});
-</script>
+    /* ---- Tab switching ---- */
+    document.querySelectorAll('.tabbtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
+
 </html>
