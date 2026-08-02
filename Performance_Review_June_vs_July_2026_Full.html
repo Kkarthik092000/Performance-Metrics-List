@@ -301,12 +301,12 @@
       <thead>
         <tr>
           <th rowspan="2" style="vertical-align:bottom;">Region / Department</th>
-          <th class="num" colspan="4" style="text-align:center;">Jun 3 – Jul 1, 2026</th>
-          <th class="num" colspan="4" style="text-align:center;">Jul 3 – 31, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Jun 3 – Jul 1, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Jul 3 – 31, 2026</th>
         </tr>
         <tr>
-          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th>
-          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
         </tr>
       </thead>
       <tbody id="t2-body-vol"></tbody>
@@ -372,12 +372,12 @@
         <tr>
           <th rowspan="2" style="vertical-align:bottom;">Region</th>
           <th rowspan="2" style="vertical-align:bottom;">Cluster</th>
-          <th class="num" colspan="4" style="text-align:center;">Jun 3 – Jul 1, 2026</th>
-          <th class="num" colspan="4" style="text-align:center;">Jul 3 – 31, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Jun 3 – Jul 1, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Jul 3 – 31, 2026</th>
         </tr>
         <tr>
-          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th>
-          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
         </tr>
       </thead>
       <tbody id="t3-body-vol"></tbody>
@@ -437,12 +437,12 @@
         <tr>
           <th rowspan="2" style="vertical-align:bottom;">Cluster</th>
           <th rowspan="2" style="vertical-align:bottom;">Team</th>
-          <th class="num" colspan="4" style="text-align:center;">Jun 3 – Jul 1, 2026</th>
-          <th class="num" colspan="4" style="text-align:center;">Jul 3 – 31, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Jun 3 – Jul 1, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Jul 3 – 31, 2026</th>
         </tr>
         <tr>
-          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th>
-          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
         </tr>
       </thead>
       <tbody id="t4-body-vol"></tbody>
@@ -995,18 +995,18 @@ renderChart('chartDaily', [
 ], 'bar', ['Campaigns/Day','Leads/Day','Pitches/Day'], {valFmt:v=>fmtNum(v)});
 
 const t2 = [
-  {name:'Law + New Businesses', rev25:2264500, leads25:5434, camp25:1985, pitch25:4274, rev26:2362000, leads26:5959, camp26:2011, pitch26:4694, aov25:4747.38, units25:477, conv25:8.78, lpc25:2.74, p2c25:11.16, boe25:24, aov26:5123.64, units26:461, conv26:7.74, lpc26:2.96, p2c26:9.82, boe26:25},
-  {name:'Medical Cluster', rev25:1433000, leads25:9380, camp25:1267, pitch25:3323, rev26:1692000, leads26:7621, camp26:1493, pitch26:3583, aov25:4592.95, units25:312, conv25:3.33, lpc25:7.4, p2c25:9.39, boe25:18, aov26:4429.32, units26:382, conv26:5.01, lpc26:5.1, p2c26:10.66, boe26:20},
-  {name:'Nagpur Cluster', rev25:2031000, leads25:5262, camp25:1361, pitch25:2689, rev26:2260000, leads26:5943, camp26:1182, pitch26:3406, aov25:5673.18, units25:358, conv25:6.8, lpc25:3.87, p2c25:13.31, boe25:29, aov26:5552.83, units26:407, conv26:6.85, lpc26:5.03, p2c26:11.95, boe26:31},
-  {name:'North Cluster', rev25:1135000, leads25:4372, camp25:753, pitch25:2053, rev26:1568500, leads26:4729, camp26:776, pitch26:2178, aov25:5230.41, units25:217, conv25:4.96, lpc25:5.81, p2c25:10.57, boe25:15, aov26:5986.64, units26:262, conv26:5.54, lpc26:6.09, p2c26:12.03, boe26:17},
-  {name:'South Cluster', rev25:2998500, leads25:7731, camp25:2195, pitch25:5402, rev26:4474000, leads26:9499, camp26:2469, pitch26:7381, aov25:5811.05, units25:516, conv25:6.67, lpc25:3.52, p2c25:9.55, boe25:15, aov26:5810.39, units26:770, conv26:8.11, lpc26:3.85, p2c26:10.43, boe26:43},
-  {name:'WCC Cluster', rev25:1296000, leads25:2716, camp25:795, pitch25:1666, rev26:1711500, leads26:3999, camp26:1449, pitch26:2731, aov25:7240.22, units25:179, conv25:6.59, lpc25:3.42, p2c25:10.74, boe25:15, aov26:6134.41, units26:279, conv26:6.98, lpc26:2.76, p2c26:10.22, boe26:21},
+  {name:'Law + New Businesses', rev25:2264500, leads25:5434, camp25:1985, pitch25:4274, rev26:2362000, leads26:5959, camp26:2011, pitch26:4694, aov25:4747.38, units25:477, conv25:8.78, lpc25:2.74, p2c25:11.16, boe25:24, prod25:94354.17, aov26:5123.64, units26:461, conv26:7.74, lpc26:2.96, p2c26:9.82, boe26:25, prod26:94480},
+  {name:'Medical Cluster', rev25:1433000, leads25:9380, camp25:1267, pitch25:3323, rev26:1692000, leads26:7621, camp26:1493, pitch26:3583, aov25:4592.95, units25:312, conv25:3.33, lpc25:7.4, p2c25:9.39, boe25:18, prod25:79611.11, aov26:4429.32, units26:382, conv26:5.01, lpc26:5.1, p2c26:10.66, boe26:20, prod26:84600},
+  {name:'Nagpur Cluster', rev25:2031000, leads25:5262, camp25:1361, pitch25:2689, rev26:2260000, leads26:5943, camp26:1182, pitch26:3406, aov25:5673.18, units25:358, conv25:6.8, lpc25:3.87, p2c25:13.31, boe25:29, prod25:70034.48, aov26:5552.83, units26:407, conv26:6.85, lpc26:5.03, p2c26:11.95, boe26:31, prod26:72903.23},
+  {name:'North Cluster', rev25:1135000, leads25:4372, camp25:753, pitch25:2053, rev26:1568500, leads26:4729, camp26:776, pitch26:2178, aov25:5230.41, units25:217, conv25:4.96, lpc25:5.81, p2c25:10.57, boe25:15, prod25:75666.67, aov26:5986.64, units26:262, conv26:5.54, lpc26:6.09, p2c26:12.03, boe26:17, prod26:92264.71},
+  {name:'South Cluster', rev25:2998500, leads25:7731, camp25:2195, pitch25:5402, rev26:4474000, leads26:9499, camp26:2469, pitch26:7381, aov25:5811.05, units25:516, conv25:6.67, lpc25:3.52, p2c25:9.55, boe25:15, prod25:199900, aov26:5810.39, units26:770, conv26:8.11, lpc26:3.85, p2c26:10.43, boe26:43, prod26:104046.51},
+  {name:'WCC Cluster', rev25:1296000, leads25:2716, camp25:795, pitch25:1666, rev26:1711500, leads26:3999, camp26:1449, pitch26:2731, aov25:7240.22, units25:179, conv25:6.59, lpc25:3.42, p2c25:10.74, boe25:15, prod25:86400, aov26:6134.41, units26:279, conv26:6.98, lpc26:2.76, p2c26:10.22, boe26:21, prod26:81500},
 ];
-const t2Total = {name:'Grand Total', rev25:11158000, leads25:34895, camp25:8356, pitch25:19407, rev26:14068000, leads26:37750, camp26:9380, pitch26:23973, aov25:5419.14, units25:2059, conv25:5.90, lpc25:4.18, p2c25:10.61, boe25:138, aov26:5493.17, units26:2561, conv26:6.78, lpc26:4.02, p2c26:10.68, boe26:157};
+const t2Total = {name:'Grand Total', rev25:11158000, leads25:34895, camp25:8356, pitch25:19407, rev26:14068000, leads26:37750, camp26:9380, pitch26:23973, aov25:5419.14, units25:2059, conv25:5.90, lpc25:4.18, p2c25:10.61, boe25:138, prod25:80855.07, aov26:5493.17, units26:2561, conv26:6.78, lpc26:4.02, p2c26:10.68, boe26:157, prod26:89605.10};
 function rowHtmlVol(c){
   return `<td class="label">${c.name}</td>
-    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td>
-    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td>`;
+    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
+    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
 }
 function rowHtmlRatioBoe(c){
   return `<td class="label">${c.name}</td>
@@ -1105,15 +1105,15 @@ t2.forEach(c=>{
 });
 
 const t3 = [
-  {region:'Law + New Businesses', name:'New Businesses', rev25:1077500, leads25:2453, camp25:1142, pitch25:1872, rev26:1286000, leads26:2728, camp26:1135, pitch26:2367, aov25:5155.5, units25:209, conv25:8.52, lpc25:2.15, p2c25:11.16, boe25:11, aov26:5380.75, units26:239, conv26:8.76, lpc26:2.4, p2c26:10.1, boe26:14},
-  {region:'', name:'Law', rev25:1187000, leads25:2981, camp25:843, pitch25:2402, rev26:1076000, leads26:3231, camp26:876, pitch26:2327, aov25:4429.1, units25:268, conv25:8.99, lpc25:3.54, p2c25:11.16, boe25:13, aov26:4846.85, units26:222, conv26:6.87, lpc26:3.69, p2c26:9.54, boe26:11},
-  {region:'South Cluster', name:'FightClub', rev25:2043500, leads25:4999, camp25:1358, pitch25:3042, rev26:2474000, leads26:5500, camp26:1157, pitch26:3682, aov25:6118.26, units25:334, conv25:6.68, lpc25:3.68, p2c25:10.98, boe25:22, aov26:5990.31, units26:413, conv26:7.51, lpc26:4.75, p2c26:11.22, boe26:25},
-  {region:'', name:'PackHouse', rev25:955000, leads25:2732, camp25:837, pitch25:2360, rev26:2000000, leads26:3999, camp26:1312, pitch26:3699, aov25:5247.25, units25:182, conv25:6.66, lpc25:3.26, p2c25:7.71, boe25:15, aov26:5602.24, units26:357, conv26:8.93, lpc26:3.05, p2c26:9.65, boe26:18},
+  {region:'Law + New Businesses', name:'New Businesses', rev25:1077500, leads25:2453, camp25:1142, pitch25:1872, rev26:1286000, leads26:2728, camp26:1135, pitch26:2367, aov25:5155.5, units25:209, conv25:8.52, lpc25:2.15, p2c25:11.16, boe25:11, prod25:97954.55, aov26:5380.75, units26:239, conv26:8.76, lpc26:2.4, p2c26:10.1, boe26:14, prod26:91857.14},
+  {region:'', name:'Law', rev25:1187000, leads25:2981, camp25:843, pitch25:2402, rev26:1076000, leads26:3231, camp26:876, pitch26:2327, aov25:4429.1, units25:268, conv25:8.99, lpc25:3.54, p2c25:11.16, boe25:13, prod25:91307.69, aov26:4846.85, units26:222, conv26:6.87, lpc26:3.69, p2c26:9.54, boe26:11, prod26:97818.18},
+  {region:'South Cluster', name:'FightClub', rev25:2043500, leads25:4999, camp25:1358, pitch25:3042, rev26:2474000, leads26:5500, camp26:1157, pitch26:3682, aov25:6118.26, units25:334, conv25:6.68, lpc25:3.68, p2c25:10.98, boe25:22, prod25:92886.36, aov26:5990.31, units26:413, conv26:7.51, lpc26:4.75, p2c26:11.22, boe26:25, prod26:98960},
+  {region:'', name:'PackHouse', rev25:955000, leads25:2732, camp25:837, pitch25:2360, rev26:2000000, leads26:3999, camp26:1312, pitch26:3699, aov25:5247.25, units25:182, conv25:6.66, lpc25:3.26, p2c25:7.71, boe25:15, prod25:63666.67, aov26:5602.24, units26:357, conv26:8.93, lpc26:3.05, p2c26:9.65, boe26:18, prod26:111111.11},
 ];
-const t3Total = {region:'', name:'Grand Total', rev25:5263000, leads25:13165, camp25:4180, pitch25:9676, rev26:6836000, leads26:15458, camp26:4480, pitch26:12075, aov25:5300.10, units25:993, conv25:7.54, lpc25:3.15, p2c25:10.26, boe25:61, aov26:5553.21, units26:1231, conv26:7.96, lpc26:3.45, p2c26:10.19, boe26:68};function t3RowHtmlVol(c){
+const t3Total = {region:'', name:'Grand Total', rev25:5263000, leads25:13165, camp25:4180, pitch25:9676, rev26:6836000, leads26:15458, camp26:4480, pitch26:12075, aov25:5300.10, units25:993, conv25:7.54, lpc25:3.15, p2c25:10.26, boe25:61, prod25:86278.69, aov26:5553.21, units26:1231, conv26:7.96, lpc26:3.45, p2c26:10.19, boe26:68, prod26:100529.41};function t3RowHtmlVol(c){
   return `<td class="label">${c.region}</td><td class="label">${c.name}</td>
-    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td>
-    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td>`;
+    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
+    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
 }
 function t3RowHtmlRatio(c){
   return `<td class="label">${c.region}</td><td class="label">${c.name}</td>
@@ -1148,45 +1148,45 @@ const t3AnalysisPoints = [
 document.getElementById('t3-analysis').innerHTML = t3AnalysisPoints.map(p=>`<li>${p}</li>`).join('');
 
 const t4 = [
-  {cluster:'Law + New Businesses', name:'Athena', rev25:689000, leads25:1805, camp25:503, pitch25:1484, rev26:625000, leads26:1949, camp26:507, pitch26:1456, aov25:4445.16, units25:155, conv25:8.59, lpc25:3.59, p2c25:10.44, boe25:7, aov26:5040.32, units26:124, conv26:6.36, lpc26:3.84, p2c26:8.52, boe26:7},
-  {cluster:'', name:'T-Orion', rev25:498000, leads25:1176, camp25:340, pitch25:918, rev26:451000, leads26:1282, camp26:369, pitch26:871, aov25:4407.08, units25:113, conv25:9.61, lpc25:3.46, p2c25:12.31, boe25:6, aov26:4602.04, units26:98, conv26:7.64, lpc26:3.47, p2c26:11.25, boe26:4},
-  {cluster:'', name:'T-Pushkar', rev25:433000, leads25:1323, camp25:514, pitch25:929, rev26:396000, leads26:950, camp26:362, pitch26:909, aov25:5154.76, units25:84, conv25:6.35, lpc25:2.57, p2c25:9.04, boe25:5, aov26:5351.35, units26:74, conv26:7.79, lpc26:2.62, p2c26:8.14, boe26:5},
-  {cluster:'', name:'T-Revival', rev25:280000, leads25:623, camp25:381, pitch25:517, rev26:453000, leads26:1079, camp26:438, pitch26:789, aov25:4745.76, units25:59, conv25:9.47, lpc25:1.64, p2c25:11.41, boe25:3, aov26:5089.89, units26:89, conv26:8.25, lpc26:2.46, p2c26:11.28, boe26:5},
-  {cluster:'', name:'Mavericks', rev25:364500, leads25:507, camp25:247, pitch25:426, rev26:437000, leads26:699, camp26:335, pitch26:669, aov25:5522.73, units25:66, conv25:13.02, lpc25:2.05, p2c25:15.49, boe25:3, aov26:5750.0, units26:76, conv26:10.87, lpc26:2.09, p2c26:11.36, boe26:4},
-  {cluster:'Medical Cluster', name:'Apex', rev25:196000, leads25:1304, camp25:244, pitch25:484, rev26:347500, leads26:1767, camp26:415, pitch26:896, aov25:4780.49, units25:41, conv25:3.14, lpc25:5.34, p2c25:8.47, boe25:3, aov26:4760.27, units26:73, conv26:4.13, lpc26:4.26, p2c26:8.15, boe26:6},
-  {cluster:'', name:'IGNYT', rev25:465000, leads25:2750, camp25:333, pitch25:842, rev26:328000, leads26:1754, camp26:345, pitch26:731, aov25:4428.57, units25:105, conv25:3.82, lpc25:8.26, p2c25:12.47, boe25:5, aov26:4205.13, units26:78, conv26:4.45, lpc26:5.08, p2c26:10.67, boe26:5},
-  {cluster:'', name:'Ethos', rev25:120000, leads25:1100, camp25:249, pitch25:416, rev26:346500, leads26:916, camp26:271, pitch26:512, aov25:4615.38, units25:26, conv25:2.36, lpc25:4.42, p2c25:6.25, boe25:2, aov26:4125.0, units26:84, conv26:9.17, lpc26:3.38, p2c26:16.41, boe26:2},
-  {cluster:'', name:'Rebels 2.0', rev25:216500, leads25:1285, camp25:182, pitch25:547, rev26:257000, leads26:1101, camp26:231, pitch26:633, aov25:4510.42, units25:48, conv25:3.74, lpc25:7.06, p2c25:8.78, boe25:3, aov26:4508.77, units26:57, conv26:5.18, lpc26:4.77, p2c26:9.0, boe26:3},
-  {cluster:'', name:'Phoenix', rev25:435500, leads25:2941, camp25:259, pitch25:1034, rev26:413000, leads26:2083, camp26:231, pitch26:811, aov25:4733.7, units25:92, conv25:3.13, lpc25:11.36, p2c25:8.9, boe25:5, aov26:4588.89, units26:90, conv26:4.32, lpc26:9.02, p2c26:11.1, boe26:4},
-  {cluster:'Nagpur Cluster', name:'Aces', rev25:433000, leads25:1311, camp25:311, pitch25:551, rev26:430000, leads26:1382, camp26:218, pitch26:557, aov25:5551.28, units25:78, conv25:5.95, lpc25:4.22, p2c25:14.16, boe25:6, aov26:5512.82, units26:78, conv26:5.64, lpc26:6.34, p2c26:14.0, boe26:7},
-  {cluster:'', name:'Aces 2.0', rev25:99000, leads25:534, camp25:96, pitch25:214, rev26:196000, leads26:699, camp26:148, pitch26:381, aov25:5210.53, units25:19, conv25:3.56, lpc25:5.56, p2c25:8.88, boe25:3, aov26:4900.0, units26:40, conv26:5.72, lpc26:4.72, p2c26:10.5, boe26:2},
-  {cluster:'', name:'Nova', rev25:555000, leads25:1118, camp25:219, pitch25:651, rev26:559000, leads26:1023, camp26:186, pitch26:644, aov25:5842.11, units25:95, conv25:8.5, lpc25:5.11, p2c25:14.59, boe25:6, aov26:5590.0, units26:100, conv26:9.78, lpc26:5.5, p2c26:15.53, boe26:7},
-  {cluster:'', name:'SuperNova', rev25:150000, leads25:325, camp25:82, pitch25:150, rev26:196000, leads26:651, camp26:140, pitch26:524, aov25:5769.23, units25:26, conv25:8.0, lpc25:3.96, p2c25:17.33, boe25:3, aov26:5025.64, units26:39, conv26:5.99, lpc26:4.65, p2c26:7.44, boe26:3},
-  {cluster:'', name:'Phoenix Nagpur', rev25:248000, leads25:733, camp25:246, pitch25:250, rev26:393000, leads26:882, camp26:226, pitch26:461, aov25:5767.44, units25:43, conv25:5.87, lpc25:2.98, p2c25:17.2, boe25:4, aov26:5779.41, units26:68, conv26:7.71, lpc26:3.9, p2c26:14.75, boe26:6},
-  {cluster:'', name:'Titans', rev25:546000, leads25:1241, camp25:407, pitch25:873, rev26:486000, leads26:1306, camp26:264, pitch26:839, aov25:5628.87, units25:97, conv25:7.82, lpc25:3.05, p2c25:11.11, boe25:7, aov26:5926.83, units26:82, conv26:6.28, lpc26:4.95, p2c26:9.77, boe26:6},
-  {cluster:'North Cluster', name:'Sudarshan', rev25:341000, leads25:1757, camp25:457, pitch25:943, rev26:551000, leads26:2221, camp26:358, pitch26:897, aov25:5328.12, units25:64, conv25:3.64, lpc25:3.84, p2c25:6.79, boe25:6, aov26:5800.0, units26:95, conv26:4.28, lpc26:6.2, p2c26:10.59, boe26:7},
-  {cluster:'', name:'Jeevan Marg', rev25:231000, leads25:1104, camp25:133, pitch25:462, rev26:336000, leads26:798, camp26:215, pitch26:445, aov25:4914.89, units25:47, conv25:4.26, lpc25:8.3, p2c25:10.17, boe25:3, aov26:6222.22, units26:54, conv26:6.77, lpc26:3.71, p2c26:12.13, boe26:4},
-  {cluster:'', name:'T-Vyom', rev25:563000, leads25:1511, camp25:163, pitch25:648, rev26:681500, leads26:1710, camp26:203, pitch26:836, aov25:5311.32, units25:106, conv25:7.02, lpc25:9.27, p2c25:16.36, boe25:6, aov26:6030.97, units26:113, conv26:6.61, lpc26:8.42, p2c26:13.52, boe26:6},
-  {cluster:'South Cluster', name:'FC Cheguevara', rev25:301500, leads25:1033, camp25:309, pitch25:614, rev26:450000, leads26:1494, camp26:231, pitch26:810, aov25:5583.33, units25:54, conv25:5.23, lpc25:3.34, p2c25:8.79, boe25:5, aov26:6000.0, units26:75, conv26:5.02, lpc26:6.47, p2c26:9.26, boe26:6},
-  {cluster:'', name:'FC Cholas', rev25:503000, leads25:1352, camp25:344, pitch25:896, rev26:419000, leads26:1492, camp26:351, pitch26:948, aov25:6209.88, units25:81, conv25:5.99, lpc25:3.93, p2c25:9.04, boe25:6, aov26:5985.71, units26:70, conv26:4.69, lpc26:4.25, p2c26:7.38, boe26:6},
-  {cluster:'', name:'FC Sparkunity', rev25:948000, leads25:1200, camp25:273, pitch25:789, rev26:1039000, leads26:1437, camp26:226, pitch26:1041, aov25:6583.33, units25:144, conv25:12.0, lpc25:4.4, p2c25:18.25, boe25:6, aov26:6184.52, units26:168, conv26:11.69, lpc26:6.36, p2c26:16.14, boe26:7},
-  {cluster:'', name:'FC Fury', rev25:291000, leads25:1414, camp25:432, pitch25:743, rev26:566000, leads26:1077, camp26:349, pitch26:883, aov25:5290.91, units25:55, conv25:3.89, lpc25:3.27, p2c25:7.4, boe25:5, aov26:5660.0, units26:100, conv26:9.29, lpc26:3.09, p2c26:11.33, boe26:6},
-  {cluster:'', name:'PH Shadow Fangs', rev25:287000, leads25:1051, camp25:358, pitch25:952, rev26:368000, leads26:663, camp26:194, pitch26:630, aov25:4704.92, units25:61, conv25:5.8, lpc25:2.94, p2c25:6.41, boe25:5, aov26:5257.14, units26:70, conv26:10.56, lpc26:3.42, p2c26:11.11, boe26:4},
-  {cluster:'', name:'PH Blitzwolfers', rev25:265000, leads25:729, camp25:256, pitch25:675, rev26:550000, leads26:1348, camp26:485, pitch26:1066, aov25:6022.73, units25:44, conv25:6.04, lpc25:2.85, p2c25:6.52, boe25:7, aov26:6547.62, units26:84, conv26:6.23, lpc26:2.78, p2c26:7.88, boe26:6},
-  {cluster:'', name:'PH Wolvx', rev25:0, leads25:241, camp25:0, pitch25:0, rev26:544000, leads26:1156, camp26:416, pitch26:1164, aov25:0, units25:0, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:0, aov26:5281.55, units26:103, conv26:8.91, lpc26:2.78, p2c26:8.85, boe26:5},
-  {cluster:'', name:'PH Wolfpack', rev25:403000, leads25:711, camp25:223, pitch25:733, rev26:538000, leads26:832, camp26:217, pitch26:839, aov25:5233.77, units25:77, conv25:10.83, lpc25:3.19, p2c25:10.5, boe25:3, aov26:5380.0, units26:100, conv26:12.02, lpc26:3.83, p2c26:11.92, boe26:3},
-  {cluster:'WCC Cluster', name:'Genesis', rev25:324000, leads25:868, camp25:321, pitch25:503, rev26:425000, leads26:1027, camp26:431, pitch26:616, aov25:6000.0, units25:54, conv25:6.22, lpc25:2.7, p2c25:10.74, boe25:5, aov26:6071.43, units26:70, conv26:6.82, lpc26:2.38, p2c26:11.36, boe26:5},
-  {cluster:'', name:'T-Samriddhi', rev25:50000, leads25:0, camp25:0, pitch25:0, rev26:184000, leads26:297, camp26:316, pitch26:492, aov25:5555.56, units25:9, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:2, aov26:5935.48, units26:31, conv26:10.44, lpc26:0.94, p2c26:6.3, boe26:4},
-  {cluster:'', name:'T-Hiba', rev25:0, leads25:0, camp25:0, pitch25:0, rev26:156500, leads26:682, camp26:217, pitch26:422, aov25:0, units25:0, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:0, aov26:5216.67, units26:30, conv26:4.4, lpc26:3.14, p2c26:7.11, boe26:4},
-  {cluster:'', name:'Hustlers', rev25:250000, leads25:0, camp25:0, pitch25:0, rev26:0, leads26:0, camp26:0, pitch26:0, aov25:250000.0, units25:1, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:0, aov26:0, units26:0, conv26:0.0, lpc26:0.0, p2c26:0.0, boe26:0},
-  {cluster:'', name:'Poseidon', rev25:435000, leads25:958, camp25:236, pitch25:684, rev26:597000, leads26:1097, camp26:250, pitch26:713, aov25:5878.38, units25:74, conv25:7.72, lpc25:4.06, p2c25:10.82, boe25:4, aov26:6489.13, units26:92, conv26:8.39, lpc26:4.39, p2c26:12.9, boe26:4},
-  {cluster:'', name:'T-Rajarshi', rev25:237000, leads25:890, camp25:238, pitch25:479, rev26:349000, leads26:896, camp26:235, pitch26:488, aov25:5780.49, units25:41, conv25:4.61, lpc25:3.74, p2c25:8.56, boe25:4, aov26:6232.14, units26:56, conv26:6.25, lpc26:3.81, p2c26:11.48, boe26:4},
+  {cluster:'Law + New Businesses', name:'Athena', rev25:689000, leads25:1805, camp25:503, pitch25:1484, rev26:625000, leads26:1949, camp26:507, pitch26:1456, aov25:4445.16, units25:155, conv25:8.59, lpc25:3.59, p2c25:10.44, boe25:7, prod25:98428.57, aov26:5040.32, units26:124, conv26:6.36, lpc26:3.84, p2c26:8.52, boe26:7, prod26:89285.71},
+  {cluster:'', name:'T-Orion', rev25:498000, leads25:1176, camp25:340, pitch25:918, rev26:451000, leads26:1282, camp26:369, pitch26:871, aov25:4407.08, units25:113, conv25:9.61, lpc25:3.46, p2c25:12.31, boe25:6, prod25:83000, aov26:4602.04, units26:98, conv26:7.64, lpc26:3.47, p2c26:11.25, boe26:4, prod26:112750},
+  {cluster:'', name:'T-Pushkar', rev25:433000, leads25:1323, camp25:514, pitch25:929, rev26:396000, leads26:950, camp26:362, pitch26:909, aov25:5154.76, units25:84, conv25:6.35, lpc25:2.57, p2c25:9.04, boe25:5, prod25:86600, aov26:5351.35, units26:74, conv26:7.79, lpc26:2.62, p2c26:8.14, boe26:5, prod26:79200},
+  {cluster:'', name:'T-Revival', rev25:280000, leads25:623, camp25:381, pitch25:517, rev26:453000, leads26:1079, camp26:438, pitch26:789, aov25:4745.76, units25:59, conv25:9.47, lpc25:1.64, p2c25:11.41, boe25:3, prod25:93333.33, aov26:5089.89, units26:89, conv26:8.25, lpc26:2.46, p2c26:11.28, boe26:5, prod26:90600},
+  {cluster:'', name:'Mavericks', rev25:364500, leads25:507, camp25:247, pitch25:426, rev26:437000, leads26:699, camp26:335, pitch26:669, aov25:5522.73, units25:66, conv25:13.02, lpc25:2.05, p2c25:15.49, boe25:3, prod25:121500, aov26:5750.0, units26:76, conv26:10.87, lpc26:2.09, p2c26:11.36, boe26:4, prod26:109250},
+  {cluster:'Medical Cluster', name:'Apex', rev25:196000, leads25:1304, camp25:244, pitch25:484, rev26:347500, leads26:1767, camp26:415, pitch26:896, aov25:4780.49, units25:41, conv25:3.14, lpc25:5.34, p2c25:8.47, boe25:3, prod25:65333.33, aov26:4760.27, units26:73, conv26:4.13, lpc26:4.26, p2c26:8.15, boe26:6, prod26:57916.67},
+  {cluster:'', name:'IGNYT', rev25:465000, leads25:2750, camp25:333, pitch25:842, rev26:328000, leads26:1754, camp26:345, pitch26:731, aov25:4428.57, units25:105, conv25:3.82, lpc25:8.26, p2c25:12.47, boe25:5, prod25:93000, aov26:4205.13, units26:78, conv26:4.45, lpc26:5.08, p2c26:10.67, boe26:5, prod26:65600},
+  {cluster:'', name:'Ethos', rev25:120000, leads25:1100, camp25:249, pitch25:416, rev26:346500, leads26:916, camp26:271, pitch26:512, aov25:4615.38, units25:26, conv25:2.36, lpc25:4.42, p2c25:6.25, boe25:2, prod25:60000, aov26:4125.0, units26:84, conv26:9.17, lpc26:3.38, p2c26:16.41, boe26:2, prod26:173250},
+  {cluster:'', name:'Rebels 2.0', rev25:216500, leads25:1285, camp25:182, pitch25:547, rev26:257000, leads26:1101, camp26:231, pitch26:633, aov25:4510.42, units25:48, conv25:3.74, lpc25:7.06, p2c25:8.78, boe25:3, prod25:72166.67, aov26:4508.77, units26:57, conv26:5.18, lpc26:4.77, p2c26:9.0, boe26:3, prod26:85666.67},
+  {cluster:'', name:'Phoenix', rev25:435500, leads25:2941, camp25:259, pitch25:1034, rev26:413000, leads26:2083, camp26:231, pitch26:811, aov25:4733.7, units25:92, conv25:3.13, lpc25:11.36, p2c25:8.9, boe25:5, prod25:87100, aov26:4588.89, units26:90, conv26:4.32, lpc26:9.02, p2c26:11.1, boe26:4, prod26:103250},
+  {cluster:'Nagpur Cluster', name:'Aces', rev25:433000, leads25:1311, camp25:311, pitch25:551, rev26:430000, leads26:1382, camp26:218, pitch26:557, aov25:5551.28, units25:78, conv25:5.95, lpc25:4.22, p2c25:14.16, boe25:6, prod25:72166.67, aov26:5512.82, units26:78, conv26:5.64, lpc26:6.34, p2c26:14.0, boe26:7, prod26:61428.57},
+  {cluster:'', name:'Aces 2.0', rev25:99000, leads25:534, camp25:96, pitch25:214, rev26:196000, leads26:699, camp26:148, pitch26:381, aov25:5210.53, units25:19, conv25:3.56, lpc25:5.56, p2c25:8.88, boe25:3, prod25:33000, aov26:4900.0, units26:40, conv26:5.72, lpc26:4.72, p2c26:10.5, boe26:2, prod26:98000},
+  {cluster:'', name:'Nova', rev25:555000, leads25:1118, camp25:219, pitch25:651, rev26:559000, leads26:1023, camp26:186, pitch26:644, aov25:5842.11, units25:95, conv25:8.5, lpc25:5.11, p2c25:14.59, boe25:6, prod25:92500, aov26:5590.0, units26:100, conv26:9.78, lpc26:5.5, p2c26:15.53, boe26:7, prod26:79857.14},
+  {cluster:'', name:'SuperNova', rev25:150000, leads25:325, camp25:82, pitch25:150, rev26:196000, leads26:651, camp26:140, pitch26:524, aov25:5769.23, units25:26, conv25:8.0, lpc25:3.96, p2c25:17.33, boe25:3, prod25:50000, aov26:5025.64, units26:39, conv26:5.99, lpc26:4.65, p2c26:7.44, boe26:3, prod26:65333.33},
+  {cluster:'', name:'Phoenix Nagpur', rev25:248000, leads25:733, camp25:246, pitch25:250, rev26:393000, leads26:882, camp26:226, pitch26:461, aov25:5767.44, units25:43, conv25:5.87, lpc25:2.98, p2c25:17.2, boe25:4, prod25:62000, aov26:5779.41, units26:68, conv26:7.71, lpc26:3.9, p2c26:14.75, boe26:6, prod26:65500},
+  {cluster:'', name:'Titans', rev25:546000, leads25:1241, camp25:407, pitch25:873, rev26:486000, leads26:1306, camp26:264, pitch26:839, aov25:5628.87, units25:97, conv25:7.82, lpc25:3.05, p2c25:11.11, boe25:7, prod25:78000, aov26:5926.83, units26:82, conv26:6.28, lpc26:4.95, p2c26:9.77, boe26:6, prod26:81000},
+  {cluster:'North Cluster', name:'Sudarshan', rev25:341000, leads25:1757, camp25:457, pitch25:943, rev26:551000, leads26:2221, camp26:358, pitch26:897, aov25:5328.12, units25:64, conv25:3.64, lpc25:3.84, p2c25:6.79, boe25:6, prod25:56833.33, aov26:5800.0, units26:95, conv26:4.28, lpc26:6.2, p2c26:10.59, boe26:7, prod26:78714.29},
+  {cluster:'', name:'Jeevan Marg', rev25:231000, leads25:1104, camp25:133, pitch25:462, rev26:336000, leads26:798, camp26:215, pitch26:445, aov25:4914.89, units25:47, conv25:4.26, lpc25:8.3, p2c25:10.17, boe25:3, prod25:77000, aov26:6222.22, units26:54, conv26:6.77, lpc26:3.71, p2c26:12.13, boe26:4, prod26:84000},
+  {cluster:'', name:'T-Vyom', rev25:563000, leads25:1511, camp25:163, pitch25:648, rev26:681500, leads26:1710, camp26:203, pitch26:836, aov25:5311.32, units25:106, conv25:7.02, lpc25:9.27, p2c25:16.36, boe25:6, prod25:93833.33, aov26:6030.97, units26:113, conv26:6.61, lpc26:8.42, p2c26:13.52, boe26:6, prod26:113583.33},
+  {cluster:'South Cluster', name:'FC Cheguevara', rev25:301500, leads25:1033, camp25:309, pitch25:614, rev26:450000, leads26:1494, camp26:231, pitch26:810, aov25:5583.33, units25:54, conv25:5.23, lpc25:3.34, p2c25:8.79, boe25:5, prod25:60300, aov26:6000.0, units26:75, conv26:5.02, lpc26:6.47, p2c26:9.26, boe26:6, prod26:75000},
+  {cluster:'', name:'FC Cholas', rev25:503000, leads25:1352, camp25:344, pitch25:896, rev26:419000, leads26:1492, camp26:351, pitch26:948, aov25:6209.88, units25:81, conv25:5.99, lpc25:3.93, p2c25:9.04, boe25:6, prod25:83833.33, aov26:5985.71, units26:70, conv26:4.69, lpc26:4.25, p2c26:7.38, boe26:6, prod26:69833.33},
+  {cluster:'', name:'FC Sparkunity', rev25:948000, leads25:1200, camp25:273, pitch25:789, rev26:1039000, leads26:1437, camp26:226, pitch26:1041, aov25:6583.33, units25:144, conv25:12.0, lpc25:4.4, p2c25:18.25, boe25:6, prod25:158000, aov26:6184.52, units26:168, conv26:11.69, lpc26:6.36, p2c26:16.14, boe26:7, prod26:148428.57},
+  {cluster:'', name:'FC Fury', rev25:291000, leads25:1414, camp25:432, pitch25:743, rev26:566000, leads26:1077, camp26:349, pitch26:883, aov25:5290.91, units25:55, conv25:3.89, lpc25:3.27, p2c25:7.4, boe25:5, prod25:58200, aov26:5660.0, units26:100, conv26:9.29, lpc26:3.09, p2c26:11.33, boe26:6, prod26:94333.33},
+  {cluster:'', name:'PH Shadow Fangs', rev25:287000, leads25:1051, camp25:358, pitch25:952, rev26:368000, leads26:663, camp26:194, pitch26:630, aov25:4704.92, units25:61, conv25:5.8, lpc25:2.94, p2c25:6.41, boe25:5, prod25:57400, aov26:5257.14, units26:70, conv26:10.56, lpc26:3.42, p2c26:11.11, boe26:4, prod26:92000},
+  {cluster:'', name:'PH Blitzwolfers', rev25:265000, leads25:729, camp25:256, pitch25:675, rev26:550000, leads26:1348, camp26:485, pitch26:1066, aov25:6022.73, units25:44, conv25:6.04, lpc25:2.85, p2c25:6.52, boe25:7, prod25:37857.14, aov26:6547.62, units26:84, conv26:6.23, lpc26:2.78, p2c26:7.88, boe26:6, prod26:91666.67},
+  {cluster:'', name:'PH Wolvx', rev25:0, leads25:241, camp25:0, pitch25:0, rev26:544000, leads26:1156, camp26:416, pitch26:1164, aov25:0, units25:0, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:0, prod25:0, aov26:5281.55, units26:103, conv26:8.91, lpc26:2.78, p2c26:8.85, boe26:5, prod26:108800},
+  {cluster:'', name:'PH Wolfpack', rev25:403000, leads25:711, camp25:223, pitch25:733, rev26:538000, leads26:832, camp26:217, pitch26:839, aov25:5233.77, units25:77, conv25:10.83, lpc25:3.19, p2c25:10.5, boe25:3, prod25:134333.33, aov26:5380.0, units26:100, conv26:12.02, lpc26:3.83, p2c26:11.92, boe26:3, prod26:179333.33},
+  {cluster:'WCC Cluster', name:'Genesis', rev25:324000, leads25:868, camp25:321, pitch25:503, rev26:425000, leads26:1027, camp26:431, pitch26:616, aov25:6000.0, units25:54, conv25:6.22, lpc25:2.7, p2c25:10.74, boe25:5, prod25:64800, aov26:6071.43, units26:70, conv26:6.82, lpc26:2.38, p2c26:11.36, boe26:5, prod26:85000},
+  {cluster:'', name:'T-Samriddhi', rev25:50000, leads25:0, camp25:0, pitch25:0, rev26:184000, leads26:297, camp26:316, pitch26:492, aov25:5555.56, units25:9, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:2, prod25:25000, aov26:5935.48, units26:31, conv26:10.44, lpc26:0.94, p2c26:6.3, boe26:4, prod26:46000},
+  {cluster:'', name:'T-Hiba', rev25:0, leads25:0, camp25:0, pitch25:0, rev26:156500, leads26:682, camp26:217, pitch26:422, aov25:0, units25:0, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:0, prod25:0, aov26:5216.67, units26:30, conv26:4.4, lpc26:3.14, p2c26:7.11, boe26:4, prod26:39125},
+  {cluster:'', name:'Hustlers', rev25:250000, leads25:0, camp25:0, pitch25:0, rev26:0, leads26:0, camp26:0, pitch26:0, aov25:250000.0, units25:1, conv25:0.0, lpc25:0.0, p2c25:0.0, boe25:0, prod25:0, aov26:0, units26:0, conv26:0.0, lpc26:0.0, p2c26:0.0, boe26:0, prod26:0},
+  {cluster:'', name:'Poseidon', rev25:435000, leads25:958, camp25:236, pitch25:684, rev26:597000, leads26:1097, camp26:250, pitch26:713, aov25:5878.38, units25:74, conv25:7.72, lpc25:4.06, p2c25:10.82, boe25:4, prod25:108750, aov26:6489.13, units26:92, conv26:8.39, lpc26:4.39, p2c26:12.9, boe26:4, prod26:149250},
+  {cluster:'', name:'T-Rajarshi', rev25:237000, leads25:890, camp25:238, pitch25:479, rev26:349000, leads26:896, camp26:235, pitch26:488, aov25:5780.49, units25:41, conv25:4.61, lpc25:3.74, p2c25:8.56, boe25:4, prod25:59250, aov26:6232.14, units26:56, conv26:6.25, lpc26:3.81, p2c26:11.48, boe26:4, prod26:87250},
 ];
-const t4Total = {cluster:'', name:'Grand Total', rev25:11158000, leads25:34895, camp25:8356, pitch25:19407, rev26:14068000, leads26:37750, camp26:9380, pitch26:23973, aov25:5419.14, units25:2059, conv25:5.90, lpc25:4.18, p2c25:10.61, boe25:138, aov26:5493.17, units26:2561, conv26:6.78, lpc26:4.02, p2c26:10.68, boe26:157};
+const t4Total = {cluster:'', name:'Grand Total', rev25:11158000, leads25:34895, camp25:8356, pitch25:19407, rev26:14068000, leads26:37750, camp26:9380, pitch26:23973, aov25:5419.14, units25:2059, conv25:5.90, lpc25:4.18, p2c25:10.61, boe25:138, prod25:80855.07, aov26:5493.17, units26:2561, conv26:6.78, lpc26:4.02, p2c26:10.68, boe26:157, prod26:89605.10};
 function t4RowHtmlVol(c){
   return `<td class="label">${c.cluster}</td><td class="label">${c.name}</td>
-    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td>
-    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td>`;
+    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
+    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
 }
 function t4RowHtmlRatio(c){
   return `<td class="label">${c.cluster}</td><td class="label">${c.name}</td>
