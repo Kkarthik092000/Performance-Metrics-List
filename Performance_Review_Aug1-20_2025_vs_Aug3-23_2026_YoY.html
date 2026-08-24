@@ -412,7 +412,7 @@
       <div class="table-wrap market-table" style="box-shadow:none; border:none;">
         <table>
           <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
-          <tbody id="market-top-Aug"></tbody>
+          <tbody id="market-top-june"></tbody>
         </table>
       </div>
     </div>
@@ -422,7 +422,7 @@
       <div class="table-wrap market-table" style="box-shadow:none; border:none;">
         <table>
           <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
-          <tbody id="market-top-Aug"></tbody>
+          <tbody id="market-top-july"></tbody>
         </table>
       </div>
     </div>
@@ -495,22 +495,22 @@
 
   <div class="chart-grid" style="margin-top:24px; grid-template-columns:1fr 1fr;">
     <div class="chart-card">
-      <h4 id="mcAugTitle">Top Colleges — Aug 1–20, 2025</h4>
+      <h4 id="mcJuneTitle">Top Colleges — Aug 1–20, 2025</h4>
       <div class="cap">Aug 1–20, 2025</div>
       <div class="table-wrap market-table" style="box-shadow:none; border:none;">
         <table>
           <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
-          <tbody id="mc-Aug-body"></tbody>
+          <tbody id="mc-june-body"></tbody>
         </table>
       </div>
     </div>
     <div class="chart-card">
-      <h4 id="mcAugTitle">Top Colleges — Aug 3–23, 2026</h4>
+      <h4 id="mcJulyTitle">Top Colleges — Aug 3–23, 2026</h4>
       <div class="cap">Aug 2 – 9, 2026</div>
       <div class="table-wrap market-table" style="box-shadow:none; border:none;">
         <table>
           <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
-          <tbody id="mc-Aug-body"></tbody>
+          <tbody id="mc-july-body"></tbody>
         </table>
       </div>
     </div>
@@ -969,7 +969,7 @@ t2.forEach(c=>{
     </div>`;
   clusterBlocks.appendChild(block);
 });
-const TOP_Aug = [
+const TOP_JUNE = [
   ['Mit World Peace University Pune',72,482000],
   ['Nmims Mumbai',43,297000],
   ['Parul University',43,255000],
@@ -986,7 +986,7 @@ const TOP_Aug = [
   ['Sharada Yoga And Naturopathy Medical College',21,105000],
   ['Jd Birla Institute',18,102000],
 ];
-const TOP_Aug = [
+const TOP_JULY = [
   ['Parul University',78,434000],
   ['Lovely Professional University',56,348000],
   ['University Of Petroleum And Energy Studies',43,261000],
@@ -1092,8 +1092,8 @@ function marketRowDelta(row){
   const dir = delta>=0?'up':'down';
   return `<tr><td class="label">${name}</td><td class="num">${fmtCur(jun)}</td><td class="num">${fmtCur(jul)}</td><td class="num"><span class="delta-pill ${dir}">${delta>=0?'▲':'▼'} ${fmtCur(Math.abs(delta))}</span></td></tr>`;
 }
-document.getElementById('market-top-Aug').innerHTML = TOP_Aug.map(marketRowSimple).join('');
-document.getElementById('market-top-Aug').innerHTML = TOP_Aug.map(marketRowSimple).join('');
+document.getElementById('market-top-june').innerHTML = TOP_JUNE.map(marketRowSimple).join('');
+document.getElementById('market-top-july').innerHTML = TOP_JULY.map(marketRowSimple).join('');
 document.getElementById('market-gainers').innerHTML = GAINERS.map(marketRowDelta).join('');
 document.getElementById('market-decliners').innerHTML = DECLINERS.map(marketRowDelta).join('');
 document.getElementById('market-new').innerHTML = NEW_ENTRANTS.map(marketRowSimple).join('');
@@ -1112,34 +1112,34 @@ document.getElementById('market-analysis').innerHTML = marketAnalysisPoints.map(
 
 const CLUSTER_MARKET = {
   'Law + New Businesses': {
-    Aug: [['St Xavier\'s College',13,100000], ['Alliance University',17,96000], ['National Law University And Judicial Academy Assam',8,46000], ['Karnavati University',6,43000], ['Tamil Nadu National Law University',7,42000], ['National Law University Odisha Cuttack',6,36000], ['Manipal University Jaipur',6,36000], ['Amity University Chhattisgarh',7,35000]],
-    Aug: [['University Of Petroleum And Energy Studies',40,240000], ['Damodaram Sanjivayya National Law University',24,140000], ['Manipal Academy Of Higher Education',23,138000], ['Nmims Hyderabad',18,109000], ['Lovely Professional University',16,95000], ['Goa College Of Architecture',16,80000], ['Ms Ramaiah Institute Of Applied Sciences',15,75000], ['Maulana Azad National Institute Of Technology',12,67000]],
-    AugCount: 68, AugCount: 111,
+    june: [['St Xavier\'s College',13,100000], ['Alliance University',17,96000], ['National Law University And Judicial Academy Assam',8,46000], ['Karnavati University',6,43000], ['Tamil Nadu National Law University',7,42000], ['National Law University Odisha Cuttack',6,36000], ['Manipal University Jaipur',6,36000], ['Amity University Chhattisgarh',7,35000]],
+    july: [['University Of Petroleum And Energy Studies',40,240000], ['Damodaram Sanjivayya National Law University',24,140000], ['Manipal Academy Of Higher Education',23,138000], ['Nmims Hyderabad',18,109000], ['Lovely Professional University',16,95000], ['Goa College Of Architecture',16,80000], ['Ms Ramaiah Institute Of Applied Sciences',15,75000], ['Maulana Azad National Institute Of Technology',12,67000]],
+    juneCount: 68, julyCount: 111,
   },
   'Medical Cluster': {
-    Aug: [['Sharada Yoga And Naturopathy Medical College',21,105000], ['Tapovana Medical College Of Naturopathy And Yogic Science',22,88000], ['Government Cuddalore Medical College',12,59000], ['Yenepoya Naturopathy College',14,55000], ['Mamata Dental College',11,53000], ['Nmims Mumbai',8,52000], ['Saveetha Dental College',9,45000], ['Op Jindal Global University',6,40000]],
-    Aug: [['Nandha Naturopathy And Yoga Medical College',20,80000], ['S Thangapazham Medical College Of Naturopathy And Yogic Sciences',19,76000], ['Dr Dy Patil University',9,57000], ['Banasthali University',10,49000], ['Manipal College Of Pharmacy',8,46000], ['Nims University Jaipur',9,45000], ['Manipal College Of Nursing',9,45000], ['Apollo Chitoor Medical College',11,44000]],
-    AugCount: 63, AugCount: 81,
+    june: [['Sharada Yoga And Naturopathy Medical College',21,105000], ['Tapovana Medical College Of Naturopathy And Yogic Science',22,88000], ['Government Cuddalore Medical College',12,59000], ['Yenepoya Naturopathy College',14,55000], ['Mamata Dental College',11,53000], ['Nmims Mumbai',8,52000], ['Saveetha Dental College',9,45000], ['Op Jindal Global University',6,40000]],
+    july: [['Nandha Naturopathy And Yoga Medical College',20,80000], ['S Thangapazham Medical College Of Naturopathy And Yogic Sciences',19,76000], ['Dr Dy Patil University',9,57000], ['Banasthali University',10,49000], ['Manipal College Of Pharmacy',8,46000], ['Nims University Jaipur',9,45000], ['Manipal College Of Nursing',9,45000], ['Apollo Chitoor Medical College',11,44000]],
+    juneCount: 63, julyCount: 81,
   },
   'Nagpur Cluster': {
-    Aug: [['Karnavati University',21,153000], ['Mit World Peace University Pune',15,100000], ['Amity University Noida',10,65000], ['Banasthali University',12,57000], ['Jhulelal Institute Of Technology',7,49000], ['Mop Vaishnav College For Women',4,31000], ['Jai Hind College',4,28000], ['Working Professional',2,27000]],
-    Aug: [['Parul University',29,160000], ['Manipal University',24,144000], ['Lovely Professional University',16,94000], ['Avinash College Of Commerce',15,90000], ['Badruka College Of Commerce & Arts',15,89000], ['Mit World Peace University Pune',11,75000], ['Bml Munjal',10,70000], ['BK College',10,58000]],
-    AugCount: 52, AugCount: 77,
+    june: [['Karnavati University',21,153000], ['Mit World Peace University Pune',15,100000], ['Amity University Noida',10,65000], ['Banasthali University',12,57000], ['Jhulelal Institute Of Technology',7,49000], ['Mop Vaishnav College For Women',4,31000], ['Jai Hind College',4,28000], ['Working Professional',2,27000]],
+    july: [['Parul University',29,160000], ['Manipal University',24,144000], ['Lovely Professional University',16,94000], ['Avinash College Of Commerce',15,90000], ['Badruka College Of Commerce & Arts',15,89000], ['Mit World Peace University Pune',11,75000], ['Bml Munjal',10,70000], ['BK College',10,58000]],
+    juneCount: 52, julyCount: 77,
   },
   'North Cluster': {
-    Aug: [['Upes',21,132000], ['Jd Birla Institute',18,102000], ['Model Institute Of Engineering And Technology',8,50000], ['Cms Jain',6,40000], ['St Xavier\'s College',6,37000], ['Gargi College',5,31000], ['Sister Nivedita University',5,29000], ['Manav Rachna University',5,29000]],
-    Aug: [['Mcm Dav',36,236000], ['Hl College Of Commerece',29,199000], ['Parul University',33,190000], ['Lovely Professional University',20,135000], ['Manav Rachna University',13,74000], ['J D Birla Institute',10,65000], ['Chandigarh University',10,56000], ['Shri Shikshayatan College',8,42000]],
-    AugCount: 33, AugCount: 40,
+    june: [['Upes',21,132000], ['Jd Birla Institute',18,102000], ['Model Institute Of Engineering And Technology',8,50000], ['Cms Jain',6,40000], ['St Xavier\'s College',6,37000], ['Gargi College',5,31000], ['Sister Nivedita University',5,29000], ['Manav Rachna University',5,29000]],
+    july: [['Mcm Dav',36,236000], ['Hl College Of Commerece',29,199000], ['Parul University',33,190000], ['Lovely Professional University',20,135000], ['Manav Rachna University',13,74000], ['J D Birla Institute',10,65000], ['Chandigarh University',10,56000], ['Shri Shikshayatan College',8,42000]],
+    juneCount: 33, julyCount: 40,
   },
   'South Cluster': {
-    Aug: [['Ms Ramaiah College Of Arts Science And Commerce',29,168000], ['Pushpagiri Medical College',20,100000], ['Parul University',16,99000], ['St Ann\'s College For Women Hyderabad',19,92000], ['Women\'s Christian College',14,89000], ['Presidency University',15,84000], ['Kpr College Of Arts Science And Research',18,82000], ['Mount Zion Medical College Adoor',16,79000]],
-    Aug: [['Gitam University',35,255000], ['Pes University Bengaluru',25,168000], ['St Joseph University',21,153000], ['Mes College Of Arts Commerce And Science',18,101000], ['Icfai University',12,87000], ['St Teresa\'s College',13,80000], ['Srm University',11,73000], ['Sn College Chempazhanthy',14,70000]],
-    AugCount: 104, AugCount: 123,
+    june: [['Ms Ramaiah College Of Arts Science And Commerce',29,168000], ['Pushpagiri Medical College',20,100000], ['Parul University',16,99000], ['St Ann\'s College For Women Hyderabad',19,92000], ['Women\'s Christian College',14,89000], ['Presidency University',15,84000], ['Kpr College Of Arts Science And Research',18,82000], ['Mount Zion Medical College Adoor',16,79000]],
+    july: [['Gitam University',35,255000], ['Pes University Bengaluru',25,168000], ['St Joseph University',21,153000], ['Mes College Of Arts Commerce And Science',18,101000], ['Icfai University',12,87000], ['St Teresa\'s College',13,80000], ['Srm University',11,73000], ['Sn College Chempazhanthy',14,70000]],
+    juneCount: 104, julyCount: 123,
   },
   'WCC Cluster': {
-    Aug: [['Mit World Peace University Pune',52,349000], ['Nmims Mumbai',35,245000], ['Presidency University',22,143000], ['Parul University',22,127000], ['Pes University Bengaluru',17,116000], ['Ajeenkya Dy Patil University',19,107000], ['Atlas Skilltech University',14,101000], ['Mody University Of Science And Technology',15,74500]],
-    Aug: [['People\'s Education Society University (Pesu)',13,91000], ['Amity University Noida',15,88000], ['Mit Art Design And Technology University',15,79000], ['Symbiosis Statistics Institute',8,54000], ['St Xavier\'s College',6,41000], ['Op Jindal Global University',6,41000], ['Karnavati University',7,41000], ['Chanakya University',6,39000]],
-    AugCount: 37, AugCount: 48,
+    june: [['Mit World Peace University Pune',52,349000], ['Nmims Mumbai',35,245000], ['Presidency University',22,143000], ['Parul University',22,127000], ['Pes University Bengaluru',17,116000], ['Ajeenkya Dy Patil University',19,107000], ['Atlas Skilltech University',14,101000], ['Mody University Of Science And Technology',15,74500]],
+    july: [['People\'s Education Society University (Pesu)',13,91000], ['Amity University Noida',15,88000], ['Mit Art Design And Technology University',15,79000], ['Symbiosis Statistics Institute',8,54000], ['St Xavier\'s College',6,41000], ['Op Jindal Global University',6,41000], ['Karnavati University',7,41000], ['Chanakya University',6,39000]],
+    juneCount: 37, julyCount: 48,
   },
 };
 /* ---- Market by Cluster: dropdown-driven ---- */
@@ -1162,31 +1162,31 @@ Object.keys(CLUSTER_MARKET).forEach(key=>{
 function renderMarketCluster(){
   const key = mcSelect.value;
   const d = CLUSTER_MARKET[key];
-  document.getElementById('mcAugTitle').textContent = 'Top Colleges — Aug 1–20, 2025 (' + (mcClusterLabels[key]||key) + ')';
-  document.getElementById('mcAugTitle').textContent = 'Top Colleges — Aug 3–23, 2026 (' + (mcClusterLabels[key]||key) + ')';
-  document.getElementById('mc-Aug-body').innerHTML = d.Aug.map(marketRowSimple).join('');
-  document.getElementById('mc-Aug-body').innerHTML = d.Aug.map(marketRowSimple).join('');
-  const AugRevSum = d.Aug.reduce((s,r)=>s+r[2],0);
-  const AugRevSum = d.Aug.reduce((s,r)=>s+r[2],0);
+  document.getElementById('mcJuneTitle').textContent = 'Top Colleges — Aug 1–20, 2025 (' + (mcClusterLabels[key]||key) + ')';
+  document.getElementById('mcJulyTitle').textContent = 'Top Colleges — Aug 3–23, 2026 (' + (mcClusterLabels[key]||key) + ')';
+  document.getElementById('mc-june-body').innerHTML = d.june.map(marketRowSimple).join('');
+  document.getElementById('mc-july-body').innerHTML = d.july.map(marketRowSimple).join('');
+  const juneRevSum = d.june.reduce((s,r)=>s+r[2],0);
+  const julyRevSum = d.july.reduce((s,r)=>s+r[2],0);
   const summary = document.getElementById('mcSummary');
   summary.innerHTML = `
-    <div class="card"><div class="k">Active Colleges</div><div class="v">${d.AugCount} → ${d.AugCount}</div></div>
-    <div class="card"><div class="k">Top‑8 Revenue — Aug 1–20, 2025</div><div class="v">${fmtCur(AugRevSum)}</div></div>
-    <div class="card"><div class="k">Top‑8 Revenue — Aug 3–23, 2026</div><div class="v">${fmtCur(AugRevSum)}</div></div>
+    <div class="card"><div class="k">Active Colleges</div><div class="v">${d.juneCount} → ${d.julyCount}</div></div>
+    <div class="card"><div class="k">Top‑8 Revenue — Aug 1–20, 2025</div><div class="v">${fmtCur(juneRevSum)}</div></div>
+    <div class="card"><div class="k">Top‑8 Revenue — Aug 3–23, 2026</div><div class="v">${fmtCur(julyRevSum)}</div></div>
   `;
 }
 mcSelect.addEventListener('change', renderMarketCluster);
 renderMarketCluster();
 
-const DAILY_OVERALL = {Aug: [[803,183,70,407000,476],[1102,198,85,481500,590],[147,3,0,0,77],[893,248,82,472000,592],[1047,236,81,467000,561],[1085,250,85,496500,561],[1080,237,94,549000,655],[1353,232,70,396000,731],[765,176,85,521000,400],[105,0,0,0,34],[1582,265,75,448000,835],[1372,235,118,653000,729],[1627,232,118,670500,815],[973,173,117,695000,503],[148,10,0,0,99],[959,154,98,559000,620],[381,12,0,0,176],[1421,218,102,582500,785],[1346,236,99,583000,764],[1585,232,104,577000,773],[0,0,0,0,0]], Aug: [[1247,323,62,356000,725],[1611,380,82,461000,964],[1705,386,98,558000,1072],[1834,373,100,590000,986],[1229,376,90,531000,1056],[1680,299,110,608000,1127],[328,16,0,0,0],[1775,372,78,434500,1049],[1650,359,131,728000,1059],[1833,328,110,619000,1117],[1478,276,101,572000,1005],[1376,284,109,630000,1025],[269,6,0,0,0],[268,0,0,0,0],[1635,320,137,795000,1007],[2349,334,111,612500,1091],[1423,309,126,721000,1051],[1832,301,154,900000,1079],[1521,280,123,714500,1028],[1567,239,167,950000,1106],[347,0,0,0,0]]};
+const DAILY_OVERALL = {june: [[803,183,70,407000,476],[1102,198,85,481500,590],[147,3,0,0,77],[893,248,82,472000,592],[1047,236,81,467000,561],[1085,250,85,496500,561],[1080,237,94,549000,655],[1353,232,70,396000,731],[765,176,85,521000,400],[105,0,0,0,34],[1582,265,75,448000,835],[1372,235,118,653000,729],[1627,232,118,670500,815],[973,173,117,695000,503],[148,10,0,0,99],[959,154,98,559000,620],[381,12,0,0,176],[1421,218,102,582500,785],[1346,236,99,583000,764],[1585,232,104,577000,773],[0,0,0,0,0]], july: [[1247,323,62,356000,725],[1611,380,82,461000,964],[1705,386,98,558000,1072],[1834,373,100,590000,986],[1229,376,90,531000,1056],[1680,299,110,608000,1127],[328,16,0,0,0],[1775,372,78,434500,1049],[1650,359,131,728000,1059],[1833,328,110,619000,1117],[1478,276,101,572000,1005],[1376,284,109,630000,1025],[269,6,0,0,0],[268,0,0,0,0],[1635,320,137,795000,1007],[2349,334,111,612500,1091],[1423,309,126,721000,1051],[1832,301,154,900000,1079],[1521,280,123,714500,1028],[1567,239,167,950000,1106],[347,0,0,0,0]]};
 const DAILY_REGION = {
-  'Medical Cluster': {Aug: [[216,42,4,21000,96],[238,46,14,68500,92],[40,0,0,0,11],[154,49,20,100000,94],[305,46,18,103000,107],[210,36,12,60000,81],[145,56,11,56000,80],[257,48,8,38000,99],[184,30,5,24000,42],[57,0,0,0,11],[219,61,5,24000,71],[329,49,22,107000,120],[254,60,14,66000,89],[220,36,18,91000,84],[5,0,0,0,4],[133,41,9,47000,56],[21,0,0,0,12],[316,62,17,92500,158],[261,48,19,94000,101],[109,60,15,68000,42],[0,0,0,0,0]], Aug: [[176,43,5,23000,103],[356,49,15,72000,148],[288,50,13,66000,173],[437,44,14,66000,164],[238,56,12,58000,160],[231,42,19,85000,182],[24,0,0,0,0],[272,54,17,77000,155],[370,47,24,110000,160],[239,54,16,71000,162],[187,32,22,100000,171],[387,43,19,91000,171],[28,0,0,0,0],[46,0,0,0,0],[286,37,16,74000,167],[518,47,21,94000,185],[198,41,22,100000,153],[321,51,23,104000,165],[168,34,12,64000,120],[235,38,28,144000,145],[4,0,0,0,0]]},
-  'Law + New Businesses': {Aug: [[97,37,9,51000,58],[269,36,11,62000,145],[13,0,0,0,7],[110,46,10,59000,67],[111,37,10,56000,78],[254,38,12,72000,86],[76,32,17,95000,50],[157,33,9,49000,105],[121,32,8,39000,81],[6,0,0,0,2],[201,42,7,42000,126],[142,41,12,71000,79],[456,38,12,68000,184],[153,25,13,71000,54],[15,0,0,0,7],[98,18,17,97000,70],[51,0,0,0,20],[276,31,9,52000,113],[185,24,17,97000,114],[418,28,18,103000,133],[0,0,0,0,0]], Aug: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]},
-  'North Cluster': {Aug: [[122,36,5,27000,82],[108,17,5,35000,60],[16,0,0,0,12],[172,23,2,14000,135],[100,20,5,26000,66],[83,22,8,47000,49],[221,25,12,69000,142],[186,11,9,52000,107],[53,9,11,70000,39],[10,0,0,0,7],[149,19,10,53000,112],[269,17,2,11000,155],[134,25,6,35000,75],[97,12,9,57000,77],[18,0,0,0,16],[139,6,8,54000,89],[93,2,0,0,79],[194,24,15,90000,131],[134,18,9,57000,74],[207,13,8,48000,132],[0,0,0,0,0]], Aug: [[315,32,13,87000,102],[178,11,11,76000,115],[256,25,10,68000,104],[227,19,9,59000,101],[114,28,12,77000,110],[134,8,15,95000,101],[18,0,0,0,0],[179,25,6,35000,100],[161,39,11,67000,94],[352,16,18,102000,111],[201,12,12,69000,80],[196,14,15,86000,97],[22,0,0,0,0],[10,0,0,0,0],[275,16,16,93000,86],[393,14,15,90000,108],[202,9,14,87000,102],[124,15,13,83000,114],[263,24,27,164500,104],[279,13,14,88000,117],[21,0,0,0,0]]},
-  'Nagpur Cluster': {Aug: [[20,7,5,27000,12],[21,29,2,11000,5],[14,3,0,0,4],[93,35,7,44000,49],[36,24,4,30000,19],[69,61,9,54000,34],[32,15,9,58000,23],[82,22,5,33000,27],[31,16,6,48000,13],[1,0,0,0,0],[119,19,5,31000,59],[101,27,16,102000,34],[55,22,15,111000,22],[41,17,19,126000,20],[11,7,0,0,4],[26,27,7,48000,17],[156,0,0,0,28],[51,17,11,74000,23],[140,36,10,66000,62],[86,17,8,51000,37],[0,0,0,0,0]], Aug: [[81,50,5,29000,57],[215,70,10,56000,110],[299,53,9,53000,116],[204,62,13,82000,127],[200,73,11,64000,157],[469,44,17,87000,167],[189,16,0,0,0],[212,62,10,50000,153],[228,49,16,94000,151],[264,56,10,55000,155],[290,59,16,93000,145],[202,38,16,92000,125],[151,6,0,0,0],[125,0,0,0,0],[202,45,40,235000,145],[411,59,18,103000,172],[192,37,31,191000,157],[224,39,22,137000,136],[248,35,23,141000,165],[216,27,20,114000,155],[172,0,0,0,0]]},
-  'South Cluster': {Aug: [[278,44,22,116000,182],[297,44,31,162000,199],[26,0,0,0,18],[248,74,27,155000,183],[354,80,29,159000,234],[388,64,29,163500,274],[378,81,22,127000,245],[457,93,24,130000,319],[318,66,41,234000,202],[30,0,0,0,14],[670,97,27,152000,388],[363,74,44,217000,277],[544,67,42,213000,345],[227,64,31,168000,158],[64,0,0,0,55],[463,48,37,203500,331],[53,0,0,0,36],[327,57,31,157000,225],[493,83,28,154000,345],[365,84,34,186000,240],[0,0,0,0,0]], Aug: [[367,91,20,106000,232],[401,123,17,93000,305],[451,111,32,186000,343],[559,103,28,168000,290],[353,96,28,170000,289],[383,99,32,186000,330],[29,0,0,0,0],[450,114,23,145000,296],[340,105,31,184000,313],[483,106,22,134000,332],[470,91,28,186000,297],[281,93,31,202000,332],[50,0,0,0,0],[21,0,0,0,0],[407,100,29,182000,285],[568,99,19,117000,306],[418,115,31,185000,330],[473,98,43,263000,332],[404,99,23,135000,340],[319,94,29,188000,367],[72,0,0,0,0]]},
-  'WCC Cluster': {Aug: [[70,17,25,165000,46],[169,26,22,143000,89],[38,0,0,0,25],[116,21,16,100000,64],[141,29,15,93000,57],[81,29,15,100000,37],[228,28,23,144000,115],[214,25,15,94000,74],[58,23,14,106000,23],[1,0,0,0,0],[224,27,21,146000,79],[168,27,22,145000,64],[184,20,29,177500,100],[235,19,27,182000,110],[35,3,0,0,13],[100,14,20,109500,57],[7,10,0,0,1],[257,27,19,117000,135],[133,27,16,115000,68],[400,30,21,121000,189],[0,0,0,0,0]], Aug: [[149,46,9,57000,104],[201,58,7,43000,111],[129,56,9,56000,129],[182,63,8,50000,124],[117,52,10,61000,140],[180,46,7,44000,139],[15,0,0,0,0],[186,41,3,17000,106],[169,47,9,51000,135],[216,34,19,120000,136],[99,34,2,13000,125],[186,38,9,52000,117],[4,0,0,0,0],[19,0,0,0,0],[187,42,14,88000,118],[123,30,8,56000,108],[161,26,9,56000,111],[221,30,8,51000,110],[150,32,13,77000,108],[146,32,14,87000,119],[41,0,0,0,0]]},
-  'Law Cluster': {Aug: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], Aug: [[159,61,10,54000,127],[260,69,22,121000,175],[282,91,25,129000,207],[225,82,28,165000,180],[207,71,17,101000,200],[283,60,20,111000,208],[53,0,0,0,0],[476,76,19,110500,239],[382,72,40,222000,206],[279,62,25,137000,221],[231,48,21,111000,187],[124,58,19,107000,183],[14,0,0,0,0],[47,0,0,0,0],[278,80,22,123000,206],[336,85,30,152500,212],[252,81,19,102000,198],[469,68,45,262000,222],[288,56,25,133000,191],[372,35,62,329000,203],[37,0,0,0,0]]},
+  'Medical Cluster': {june: [[216,42,4,21000,96],[238,46,14,68500,92],[40,0,0,0,11],[154,49,20,100000,94],[305,46,18,103000,107],[210,36,12,60000,81],[145,56,11,56000,80],[257,48,8,38000,99],[184,30,5,24000,42],[57,0,0,0,11],[219,61,5,24000,71],[329,49,22,107000,120],[254,60,14,66000,89],[220,36,18,91000,84],[5,0,0,0,4],[133,41,9,47000,56],[21,0,0,0,12],[316,62,17,92500,158],[261,48,19,94000,101],[109,60,15,68000,42],[0,0,0,0,0]], july: [[176,43,5,23000,103],[356,49,15,72000,148],[288,50,13,66000,173],[437,44,14,66000,164],[238,56,12,58000,160],[231,42,19,85000,182],[24,0,0,0,0],[272,54,17,77000,155],[370,47,24,110000,160],[239,54,16,71000,162],[187,32,22,100000,171],[387,43,19,91000,171],[28,0,0,0,0],[46,0,0,0,0],[286,37,16,74000,167],[518,47,21,94000,185],[198,41,22,100000,153],[321,51,23,104000,165],[168,34,12,64000,120],[235,38,28,144000,145],[4,0,0,0,0]]},
+  'Law + New Businesses': {june: [[97,37,9,51000,58],[269,36,11,62000,145],[13,0,0,0,7],[110,46,10,59000,67],[111,37,10,56000,78],[254,38,12,72000,86],[76,32,17,95000,50],[157,33,9,49000,105],[121,32,8,39000,81],[6,0,0,0,2],[201,42,7,42000,126],[142,41,12,71000,79],[456,38,12,68000,184],[153,25,13,71000,54],[15,0,0,0,7],[98,18,17,97000,70],[51,0,0,0,20],[276,31,9,52000,113],[185,24,17,97000,114],[418,28,18,103000,133],[0,0,0,0,0]], july: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]},
+  'North Cluster': {june: [[122,36,5,27000,82],[108,17,5,35000,60],[16,0,0,0,12],[172,23,2,14000,135],[100,20,5,26000,66],[83,22,8,47000,49],[221,25,12,69000,142],[186,11,9,52000,107],[53,9,11,70000,39],[10,0,0,0,7],[149,19,10,53000,112],[269,17,2,11000,155],[134,25,6,35000,75],[97,12,9,57000,77],[18,0,0,0,16],[139,6,8,54000,89],[93,2,0,0,79],[194,24,15,90000,131],[134,18,9,57000,74],[207,13,8,48000,132],[0,0,0,0,0]], july: [[315,32,13,87000,102],[178,11,11,76000,115],[256,25,10,68000,104],[227,19,9,59000,101],[114,28,12,77000,110],[134,8,15,95000,101],[18,0,0,0,0],[179,25,6,35000,100],[161,39,11,67000,94],[352,16,18,102000,111],[201,12,12,69000,80],[196,14,15,86000,97],[22,0,0,0,0],[10,0,0,0,0],[275,16,16,93000,86],[393,14,15,90000,108],[202,9,14,87000,102],[124,15,13,83000,114],[263,24,27,164500,104],[279,13,14,88000,117],[21,0,0,0,0]]},
+  'Nagpur Cluster': {june: [[20,7,5,27000,12],[21,29,2,11000,5],[14,3,0,0,4],[93,35,7,44000,49],[36,24,4,30000,19],[69,61,9,54000,34],[32,15,9,58000,23],[82,22,5,33000,27],[31,16,6,48000,13],[1,0,0,0,0],[119,19,5,31000,59],[101,27,16,102000,34],[55,22,15,111000,22],[41,17,19,126000,20],[11,7,0,0,4],[26,27,7,48000,17],[156,0,0,0,28],[51,17,11,74000,23],[140,36,10,66000,62],[86,17,8,51000,37],[0,0,0,0,0]], july: [[81,50,5,29000,57],[215,70,10,56000,110],[299,53,9,53000,116],[204,62,13,82000,127],[200,73,11,64000,157],[469,44,17,87000,167],[189,16,0,0,0],[212,62,10,50000,153],[228,49,16,94000,151],[264,56,10,55000,155],[290,59,16,93000,145],[202,38,16,92000,125],[151,6,0,0,0],[125,0,0,0,0],[202,45,40,235000,145],[411,59,18,103000,172],[192,37,31,191000,157],[224,39,22,137000,136],[248,35,23,141000,165],[216,27,20,114000,155],[172,0,0,0,0]]},
+  'South Cluster': {june: [[278,44,22,116000,182],[297,44,31,162000,199],[26,0,0,0,18],[248,74,27,155000,183],[354,80,29,159000,234],[388,64,29,163500,274],[378,81,22,127000,245],[457,93,24,130000,319],[318,66,41,234000,202],[30,0,0,0,14],[670,97,27,152000,388],[363,74,44,217000,277],[544,67,42,213000,345],[227,64,31,168000,158],[64,0,0,0,55],[463,48,37,203500,331],[53,0,0,0,36],[327,57,31,157000,225],[493,83,28,154000,345],[365,84,34,186000,240],[0,0,0,0,0]], july: [[367,91,20,106000,232],[401,123,17,93000,305],[451,111,32,186000,343],[559,103,28,168000,290],[353,96,28,170000,289],[383,99,32,186000,330],[29,0,0,0,0],[450,114,23,145000,296],[340,105,31,184000,313],[483,106,22,134000,332],[470,91,28,186000,297],[281,93,31,202000,332],[50,0,0,0,0],[21,0,0,0,0],[407,100,29,182000,285],[568,99,19,117000,306],[418,115,31,185000,330],[473,98,43,263000,332],[404,99,23,135000,340],[319,94,29,188000,367],[72,0,0,0,0]]},
+  'WCC Cluster': {june: [[70,17,25,165000,46],[169,26,22,143000,89],[38,0,0,0,25],[116,21,16,100000,64],[141,29,15,93000,57],[81,29,15,100000,37],[228,28,23,144000,115],[214,25,15,94000,74],[58,23,14,106000,23],[1,0,0,0,0],[224,27,21,146000,79],[168,27,22,145000,64],[184,20,29,177500,100],[235,19,27,182000,110],[35,3,0,0,13],[100,14,20,109500,57],[7,10,0,0,1],[257,27,19,117000,135],[133,27,16,115000,68],[400,30,21,121000,189],[0,0,0,0,0]], july: [[149,46,9,57000,104],[201,58,7,43000,111],[129,56,9,56000,129],[182,63,8,50000,124],[117,52,10,61000,140],[180,46,7,44000,139],[15,0,0,0,0],[186,41,3,17000,106],[169,47,9,51000,135],[216,34,19,120000,136],[99,34,2,13000,125],[186,38,9,52000,117],[4,0,0,0,0],[19,0,0,0,0],[187,42,14,88000,118],[123,30,8,56000,108],[161,26,9,56000,111],[221,30,8,51000,110],[150,32,13,77000,108],[146,32,14,87000,119],[41,0,0,0,0]]},
+  'Law Cluster': {june: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], july: [[159,61,10,54000,127],[260,69,22,121000,175],[282,91,25,129000,207],[225,82,28,165000,180],[207,71,17,101000,200],[283,60,20,111000,208],[53,0,0,0,0],[476,76,19,110500,239],[382,72,40,222000,206],[279,62,25,137000,221],[231,48,21,111000,187],[124,58,19,107000,183],[14,0,0,0,0],[47,0,0,0,0],[278,80,22,123000,206],[336,85,30,152500,212],[252,81,19,102000,198],[469,68,45,262000,222],[288,56,25,133000,191],[372,35,62,329000,203],[37,0,0,0,0]]},
 };
 
 
@@ -1227,27 +1227,27 @@ function renderTrend(){
   const scope = trendScope.value;
   const meta = METRIC_META[metricIdx];
   const data = getScopeData(scope);
-  const AugSeries = data.Aug.map(row=>row[metricIdx]);
-  const AugSeries = data.Aug.map(row=>row[metricIdx]);
+  const juneSeries = data.june.map(row=>row[metricIdx]);
+  const julySeries = data.july.map(row=>row[metricIdx]);
 
   document.getElementById('trendChartTitle').textContent = `${meta.label} — ${trendScopeLabels[scope]}`;
   document.getElementById('trendChartCap').textContent = 'Daily totals, Aug 1–20, 2025 (Day 1–20) vs Aug 3–23, 2026 (Day 1–21)';
 
   renderChart('chartTrend', [
-    {name:'Aug 1–20, 2025', color:NAVY, data:AugSeries},
-    {name:'Aug 3–23, 2026', color:GOLD, data:AugSeries},
+    {name:'Aug 1–20, 2025', color:NAVY, data:juneSeries},
+    {name:'Aug 3–23, 2026', color:GOLD, data:julySeries},
   ], 'dense', DAY_LABELS, {valFmt:meta.fmt, axisFmt:meta.axisFmt});
 
-  const AugTotal = AugSeries.reduce((a,b)=>a+b,0);
-  const AugTotal = AugSeries.reduce((a,b)=>a+b,0);
-  const AugBestIdx = AugSeries.indexOf(Math.max(...AugSeries));
-  const AugBestIdx = AugSeries.indexOf(Math.max(...AugSeries));
-  const delta = AugTotal>0 ? ((AugTotal-AugTotal)/AugTotal*100) : null;
+  const juneTotal = juneSeries.reduce((a,b)=>a+b,0);
+  const julyTotal = julySeries.reduce((a,b)=>a+b,0);
+  const juneBestIdx = juneSeries.indexOf(Math.max(...juneSeries));
+  const julyBestIdx = julySeries.indexOf(Math.max(...julySeries));
+  const delta = juneTotal>0 ? ((julyTotal-juneTotal)/juneTotal*100) : null;
 
   document.getElementById('trendSummary').innerHTML = `
-    <div class="card"><div class="k">Aug 1–20, 2025 Total</div><div class="v">${meta.fmt(AugTotal)}</div></div>
-    <div class="card"><div class="k">Aug 3–23, 2026 Total</div><div class="v">${meta.fmt(AugTotal)}${delta!==null?` <span style="font-size:14px; color:${delta>=0?'var(--teal)':'var(--coral)'}">(${delta>=0?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%)</span>`:''}</div></div>
-    <div class="card"><div class="k">Best Single Day</div><div class="v" style="font-size:15px;">Jun ${meta.fmt(AugSeries[AugBestIdx])} (Day ${AugBestIdx+1}) · Jul ${meta.fmt(AugSeries[AugBestIdx])} (Day ${AugBestIdx+1})</div></div>
+    <div class="card"><div class="k">Aug 1–20, 2025 Total</div><div class="v">${meta.fmt(juneTotal)}</div></div>
+    <div class="card"><div class="k">Aug 3–23, 2026 Total</div><div class="v">${meta.fmt(julyTotal)}${delta!==null?` <span style="font-size:14px; color:${delta>=0?'var(--teal)':'var(--coral)'}">(${delta>=0?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%)</span>`:''}</div></div>
+    <div class="card"><div class="k">Best Single Day</div><div class="v" style="font-size:15px;">Jun ${meta.fmt(juneSeries[juneBestIdx])} (Day ${juneBestIdx+1}) · Jul ${meta.fmt(julySeries[julyBestIdx])} (Day ${julyBestIdx+1})</div></div>
   `;
 }
 document.getElementById('trendMetric').addEventListener('change', renderTrend);
