@@ -1247,7 +1247,7 @@ function renderTrend(){
   document.getElementById('trendSummary').innerHTML = `
     <div class="card"><div class="k">Aug 1–20, 2025 Total</div><div class="v">${meta.fmt(juneTotal)}</div></div>
     <div class="card"><div class="k">Aug 3–23, 2026 Total</div><div class="v">${meta.fmt(julyTotal)}${delta!==null?` <span style="font-size:14px; color:${delta>=0?'var(--teal)':'var(--coral)'}">(${delta>=0?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%)</span>`:''}</div></div>
-    <div class="card"><div class="k">Best Single Day</div><div class="v" style="font-size:15px;">Jun ${meta.fmt(juneSeries[juneBestIdx])} (Day ${juneBestIdx+1}) · Jul ${meta.fmt(julySeries[julyBestIdx])} (Day ${julyBestIdx+1})</div></div>
+    <div class="card"><div class="k">Best Single Day</div><div class="v" style="font-size:15px;">Aug'2025 ${meta.fmt(juneSeries[juneBestIdx])} (Day ${juneBestIdx+1}) · Aug'2026 ${meta.fmt(julySeries[julyBestIdx])} (Day ${julyBestIdx+1})</div></div>
   `;
 }
 document.getElementById('trendMetric').addEventListener('change', renderTrend);
