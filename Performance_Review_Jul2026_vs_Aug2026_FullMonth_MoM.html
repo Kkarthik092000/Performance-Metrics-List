@@ -205,7 +205,7 @@
 <header class="hero" id="overview">
   <div class="eyebrow">Jul 2 – 31 → Aug 2 – 31, 2026 · 25 working days each</div>
   <h1>Revenue up 18.3%, <em>on fewer but far more productive campaigns</em>.</h1>
-  <p class="lede">Revenue grew 18.34% month‑over‑month — leads up 7.2% and units up 13.6%, even as total campaigns fell 18.61% and pitches held essentially flat (−0.36%). Conversion Rate improved from 6.70% to 7.10% and Pitch‑to‑Close improved from 11.52% to 13.13%. Headcount grew only 2.55%, far slower than revenue, so Revenue per Boe rose 15.40%. This report covers the overall funnel, all six regions, sub‑clusters, all teams, market‑level revenue (overall and by cluster), and day‑by‑day trends.</p>
+  <p class="lede">Revenue grew 18.34% month‑over‑month — leads up 14.5% and units up 13.6%, even as total campaigns fell 18.61% and pitches held essentially flat (−0.36%). Conversion Rate held essentially flat (6.70%→6.64%) and Pitch‑to‑Close improved from 11.52% to 13.13%. Headcount grew only 2.55%, far slower than revenue, so Revenue per Boe rose 15.40%. This report covers the overall funnel, all six regions, sub‑clusters, all teams, market‑level revenue (overall and by cluster), and day‑by‑day trends.</p>
 
   <div class="stat-strip">
     <div class="stat">
@@ -215,13 +215,13 @@
     </div>
     <div class="stat">
       <div class="k">Total Leads</div>
-      <div class="v">41,000</div>
-      <div class="d up">▲ 7.22% MoM</div>
+      <div class="v">43,781</div>
+      <div class="d up">▲ 14.49% MoM</div>
     </div>
     <div class="stat">
       <div class="k">Conversion Rate</div>
-      <div class="v">7.10%</div>
-      <div class="d up">▲ 0.40 pp</div>
+      <div class="v">6.64%</div>
+      <div class="d down">▼ 0.06 pp</div>
     </div>
     <div class="stat">
       <div class="k">Pitch → Close</div>
@@ -707,11 +707,11 @@
   <div class="insight-grid">
     <div class="insight-card good">
       <div class="num">+18.34%</div>
-      <p><b>Strong revenue growth on a much leaner campaign base.</b> Total revenue rose from ₹1.41Cr to ₹1.66Cr — leads +7.2%, units +13.6% — while total campaigns fell 18.61% (9,383→7,637) and pitches held flat. Growth came almost entirely from getting more out of fewer campaigns, not from more outreach.</p>
+      <p><b>Strong revenue growth on a much leaner campaign base.</b> Total revenue rose from ₹1.41Cr to ₹1.66Cr — leads +14.5%, units +13.6% — while total campaigns fell 18.61% (9,383→7,637) and pitches held flat. Growth came almost entirely from getting more out of fewer campaigns, not from more outreach.</p>
     </div>
-    <div class="insight-card good">
-      <div class="num">+0.40pp</div>
-      <p><b>Conversion Rate improved</b> from 6.70% to 7.10% even as campaigns were cut sharply — driven mainly by Law + New Businesses (+1.42pp) and Medical Cluster (+0.88pp), offsetting a mild dip in South (−0.24pp) and WCC (−0.60pp).</p>
+    <div class="insight-card">
+      <div class="num">-0.06pp</div>
+      <p><b>Conversion Rate held essentially flat</b> (6.70%→6.64%) even as leads grew 14.5% on far fewer campaigns — Law + New Businesses (+0.74pp) and Medical Cluster (+0.44pp) improved, while WCC (−1.03pp) and South (−0.82pp) softened, roughly offsetting each other at the overall level.</p>
     </div>
     <div class="insight-card good">
       <div class="num">+1.61pp</div>
@@ -886,15 +886,15 @@ const t1 = [
   {name:'Total Revenue', v25:14068000, v26:16648000, type:'cur'},
   {name:'Average Order Value (AOV)', v25:5493.17, v26:5722.93, type:'cur2'},
   {name:'Total Units', v25:2561, v26:2909, type:'num'},
-  {name:'Conversion Rate', v25:6.7, v26:7.1, type:'pct'},
+  {name:'Conversion Rate', v25:6.7, v26:6.64, type:'pct'},
   {name:'Total Campaigns', v25:9383, v26:7637, type:'num'},
-  {name:'Total Leads', v25:38239, v26:41000, type:'num'},
-  {name:'Leads Per Campaign (LPC)', v25:4.08, v26:5.37, type:'dec'},
+  {name:'Total Leads', v25:38239, v26:43781, type:'num'},
+  {name:'Leads Per Campaign (LPC)', v25:4.08, v26:5.73, type:'dec'},
   {name:'Pitches', v25:22230, v26:22150, type:'num'},
   {name:'P to C', v25:11.52, v26:13.13, type:'pct'},
   {name:'Working Days', v25:25, v26:25, type:'num'},
   {name:'Campaigns Per Day', v25:375, v26:305, type:'num'},
-  {name:'Leads Per Day', v25:1530, v26:1640, type:'num'},
+  {name:'Leads Per Day', v25:1530, v26:1751, type:'num'},
   {name:'Pitches Per Day', v25:889, v26:886, type:'num'},
   {name:'Revenue Per Day', v25:562720, v26:665920, type:'cur'},
   {name:'Head Count', v25:157, v26:161, type:'num'},
@@ -957,14 +957,14 @@ const t1AnalysisPoints = [
   `<b>Total Revenue</b> grew from ₹1,40,68,000 to ₹1,66,48,000, up <span class="up">▲18.34%</span> — a strong month‑over‑month gain, driven mainly by a much leaner and more productive campaign base rather than by more outreach volume.`,
   `<b>Average Order Value</b> rose from ₹5,493.17 to ₹5,722.93 (<span class="up">▲4.18%</span>) — both a higher ticket size and more units sold contributed to revenue growth.`,
   `<b>Total Units</b> sold rose from 2,561 to 2,909 (<span class="up">▲13.59%</span>), confirming solid volume growth alongside the AOV gain.`,
-  `<b>Conversion Rate</b> improved from 6.70% to 7.10% (<span class="up">▲0.40 pp</span>) — a genuine efficiency gain even as campaigns were cut sharply.`,
+  `<b>Conversion Rate</b> held essentially flat, from 6.70% to 6.64% (<span class="down">▼0.06 pp</span>) — a much bigger lead pool converted at almost the same rate as before, even as campaigns were cut sharply.`,
   `<b>Total Campaigns</b> fell from 9,383 to 7,637 (<span class="down">▼18.61%</span>) — this month's growth came from a much leaner campaign base, not from more outreach.`,
-  `<b>Total Leads</b> still grew from 38,239 to 41,000 (<span class="up">▲7.22%</span>) despite the campaign cut — a real efficiency improvement in lead generation.`,
-  `<b>Leads Per Campaign</b> jumped from 4.08 to 5.37 (<span class="up">▲31.62%</span>) — the clearest efficiency gain in Table 1, each campaign pulling in nearly a third more leads on average.`,
+  `<b>Total Leads</b> grew from 38,239 to 43,781 (<span class="up">▲14.49%</span>) despite the campaign cut — a real efficiency improvement in lead generation.`,
+  `<b>Leads Per Campaign</b> jumped from 4.08 to 5.73 (<span class="up">▲40.44%</span>) — the clearest efficiency gain in Table 1, each campaign pulling in more than 40% more leads on average.`,
   `<b>Pitches</b> held essentially flat, from 22,230 to 22,150 (<span class="down">▼0.36%</span>) — the funnel converted a similar pitch volume into a much higher revenue outcome.`,
   `<b>P to C</b> improved sharply from 11.52% to 13.13% (<span class="up">▲1.61 pp</span>) — the back end of the funnel converted pitches into revenue notably more efficiently this month.`,
   `<b>Working Days</b> were identical at 25 in both months, so every other change reflects genuine month‑over‑month activity shifts, not calendar effects.`,
-  `<b>Campaigns/Day</b> fell from 375 to 305 (<span class="down">▼18.67%</span>), while <b>Leads/Day</b> rose from 1,530 to 1,640 (<span class="up">▲7.19%</span>) and <b>Pitches/Day</b> held flat (889→886, <span class="down">▼0.34%</span>) — daily tempo confirms a leaner, more efficient funnel driving this month's growth.`,
+  `<b>Campaigns/Day</b> fell from 375 to 305 (<span class="down">▼18.67%</span>), while <b>Leads/Day</b> rose from 1,530 to 1,751 (<span class="up">▲14.44%</span>) and <b>Pitches/Day</b> held flat (889→886, <span class="down">▼0.34%</span>) — daily tempo confirms a leaner funnel generating meaningfully more leads per day this month.`,
   `<b>Revenue/Day</b> rose from ₹5,62,720 to ₹6,65,920 (<span class="up">▲18.34%</span>), matching total revenue's growth exactly since working days were unchanged.`,
   `<b>Head Count</b> grew only slightly, from 157 to 161 (<span class="up">▲2.55%</span>) — far slower than revenue growth.`,
   `<b>Revenue Per Boe</b> rose from ₹89,605.10 to ₹1,03,403.73 (<span class="up">▲15.40%</span>) — revenue growth comfortably outpaced the small headcount increase, confirming a genuine productivity gain alongside the improved Conversion Rate and P to C.`,
@@ -975,12 +975,12 @@ t1AnalysisPoints.forEach(p=>{ const li=document.createElement('li'); li.innerHTM
 /* ---- Table 1 charts ---- */
 renderChart('chartFunnel', [
   {name:'Jul 2–31', color:NAVY, data:[9383,38239,22230]},
-  {name:'Aug 2–31', color:GOLD, data:[7637,41000,22150]},
+  {name:'Aug 2–31', color:GOLD, data:[7637,43781,22150]},
 ], 'bar', ['Campaigns','Leads','Pitches'], {valFmt:v=>fmtNum(v)});
 
 renderChart('chartRates', [
   {name:'Jul 2–31', color:NAVY, data:[6.70,11.52]},
-  {name:'Aug 2–31', color:CORAL, data:[7.10,13.13]},
+  {name:'Aug 2–31', color:CORAL, data:[6.64,13.13]},
 ], 'bar', ['Conversion Rate','P to C'], {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
 
 renderChart('chartRevProd', [
@@ -990,18 +990,18 @@ renderChart('chartRevProd', [
 
 renderChart('chartDaily', [
   {name:'Jul 2–31', color:NAVY, data:[375,1530,889]},
-  {name:'Aug 2–31', color:TEAL, data:[305,1640,886]},
+  {name:'Aug 2–31', color:TEAL, data:[305,1751,886]},
 ], 'bar', ['Campaigns/Day','Leads/Day','Pitches/Day'], {valFmt:v=>fmtNum(v)});
 
 const t2 = [
-  {name:'Law + New Businesses', rev25:2362000, leads25:5965, camp25:2012, pitch25:4127, prod25:94480, rev26:3571000, leads26:7182, camp26:1653, pitch26:4456, prod26:127536, aov25:5124, units25:461, conv25:7.73, lpc25:2.96, p2c25:11.17, boe25:25, aov26:5435, units26:657, conv26:9.15, lpc26:4.34, p2c26:14.74, boe26:28},
-  {name:'Medical Cluster', rev25:1692000, leads25:7620, camp25:1493, pitch25:3336, prod25:84600, rev26:2036000, leads26:7315, camp26:1039, pitch26:3055, prod26:84833, aov25:4429, units25:382, conv25:5.01, lpc25:5.1, p2c25:11.45, boe25:20, aov26:4724, units26:431, conv26:5.89, lpc26:7.04, p2c26:14.11, boe26:24},
-  {name:'Nagpur Cluster', rev25:2260000, leads25:5854, camp25:1183, pitch25:3168, prod25:72903, rev26:2510000, leads26:6091, camp26:1135, pitch26:3087, prod26:92963, aov25:5553, units25:407, conv25:6.95, lpc25:4.95, p2c25:12.85, boe25:31, aov26:5906, units26:425, conv26:6.98, lpc26:5.37, p2c26:13.77, boe26:27},
-  {name:'North Cluster', rev25:1568500, leads25:4729, camp25:776, pitch25:2200, prod25:92265, rev26:2161500, leads26:5833, camp26:445, pitch26:2499, prod26:127147, aov25:5987, units25:262, conv25:5.54, lpc25:6.09, p2c25:11.91, boe25:17, aov26:6072, units26:356, conv26:6.1, lpc26:13.11, p2c26:14.25, boe26:17},
-  {name:'South Cluster', rev25:4474000, leads25:10032, camp25:2470, pitch25:7541, prod25:104047, rev26:4846500, leads26:10635, camp26:2442, pitch26:7170, prod26:107700, aov25:5810, units25:770, conv25:7.68, lpc25:4.06, p2c25:10.21, boe25:43, aov26:6127, units26:791, conv26:7.44, lpc26:4.36, p2c26:11.03, boe26:45},
-  {name:'WCC Cluster', rev25:1711500, leads25:4039, camp25:1449, pitch25:1858, prod25:81500, rev26:1523000, leads26:3944, camp26:923, pitch26:1883, prod26:76150, aov25:6134, units25:279, conv25:6.91, lpc25:2.79, p2c25:15.02, boe25:21, aov26:6116, units26:249, conv26:6.31, lpc26:4.27, p2c26:13.22, boe26:20},
+  {name:'Law + New Businesses', rev25:2362000, leads25:5965, camp25:2012, pitch25:4127, prod25:94480, rev26:3571000, leads26:7757, camp26:1653, pitch26:4456, prod26:127536, aov25:5124, units25:461, conv25:7.73, lpc25:2.96, p2c25:11.17, boe25:25, aov26:5435, units26:657, conv26:8.47, lpc26:4.69, p2c26:14.74, boe26:28},
+  {name:'Medical Cluster', rev25:1692000, leads25:7620, camp25:1493, pitch25:3336, prod25:84600, rev26:2036000, leads26:7907, camp26:1039, pitch26:3055, prod26:84833, aov25:4429, units25:382, conv25:5.01, lpc25:5.1, p2c25:11.45, boe25:20, aov26:4724, units26:431, conv26:5.45, lpc26:7.61, p2c26:14.11, boe26:24},
+  {name:'Nagpur Cluster', rev25:2260000, leads25:5854, camp25:1183, pitch25:3168, prod25:72903, rev26:2510000, leads26:6132, camp26:1135, pitch26:3087, prod26:92963, aov25:5553, units25:407, conv25:6.95, lpc25:4.95, p2c25:12.85, boe25:31, aov26:5906, units26:425, conv26:6.93, lpc26:5.40, p2c26:13.77, boe26:27},
+  {name:'North Cluster', rev25:1568500, leads25:4729, camp25:776, pitch25:2200, prod25:92265, rev26:2161500, leads26:6213, camp26:445, pitch26:2499, prod26:127147, aov25:5987, units25:262, conv25:5.54, lpc25:6.09, p2c25:11.91, boe25:17, aov26:6072, units26:356, conv26:5.73, lpc26:13.96, p2c26:14.25, boe26:17},
+  {name:'South Cluster', rev25:4474000, leads25:10032, camp25:2470, pitch25:7541, prod25:104047, rev26:4846500, leads26:11538, camp26:2442, pitch26:7170, prod26:107700, aov25:5810, units25:770, conv25:7.68, lpc25:4.06, p2c25:10.21, boe25:43, aov26:6127, units26:791, conv26:6.86, lpc26:4.72, p2c26:11.03, boe26:45},
+  {name:'WCC Cluster', rev25:1711500, leads25:4039, camp25:1449, pitch25:1858, prod25:81500, rev26:1523000, leads26:4234, camp26:923, pitch26:1883, prod26:76150, aov25:6134, units25:279, conv25:6.91, lpc25:2.79, p2c25:15.02, boe25:21, aov26:6116, units26:249, conv26:5.88, lpc26:4.59, p2c26:13.22, boe26:20},
 ];
-const t2Total = {name:'Grand Total', rev25:14068000, leads25:38239, camp25:9383, pitch25:22230, prod25:89605, rev26:16648000, leads26:41000, camp26:7637, pitch26:22150, prod26:103404, aov25:5493, units25:2561, conv25:6.70, lpc25:4.08, p2c25:11.52, boe25:157, aov26:5723, units26:2909, conv26:7.10, lpc26:5.37, p2c26:13.13, boe26:161};function rowHtmlVol(c){
+const t2Total = {name:'Grand Total', rev25:14068000, leads25:38239, camp25:9383, pitch25:22230, prod25:89605, rev26:16648000, leads26:43781, camp26:7637, pitch26:22150, prod26:103404, aov25:5493, units25:2561, conv25:6.70, lpc25:4.08, p2c25:11.52, boe25:157, aov26:5723, units26:2909, conv26:6.64, lpc26:5.73, p2c26:13.13, boe26:161};function rowHtmlVol(c){
   return `<td class="label">${c.name}</td>
     <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
     <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
@@ -1043,34 +1043,34 @@ renderChart('chartClusterP2C', [
 /* ---- Region mini-cards + written analysis ---- */
 const clusterAnalysis = {
   'Law + New Businesses': [
-    `Revenue grew from ₹23.62L to ₹35.71L (<span class="up">▲51.19%</span>), the strongest regional gain, on leads up 20.40% even as campaigns fell 17.84% (2,012→1,653) — a much leaner and more productive funnel.`,
-    `Conversion Rate rose from 7.73% to 9.15% (<span class="up">▲1.42 pp</span>) and P to C rose from 11.17% to 14.74% (<span class="up">▲3.57 pp</span>) — this region combined its strongest growth with the largest efficiency gain of any region.`,
-    `Head Count grew only 12.00% (25→28) while revenue grew over four times as fast, so Productivity rose 34.99% (₹94,480→₹1,27,536) — a standout productivity story.`,
+    `Revenue grew from ₹23.62L to ₹35.71L (<span class="up">▲51.19%</span>), the strongest regional gain, on leads up 30.04% even as campaigns fell 17.84% (2,012→1,653) — a much leaner and more productive funnel.`,
+    `Conversion Rate rose from 7.73% to 8.47% (<span class="up">▲0.74 pp</span>) and P to C rose from 11.17% to 14.74% (<span class="up">▲3.57 pp</span>) — this region combined its strongest growth with the largest P to C gain of any region.`,
+    `LPC jumped from 2.96 to 4.69 (<span class="up">▲58.45%</span>) — each campaign is now pulling in well over half again as many leads as a month earlier. Head Count grew only 12.00% (25→28) while revenue grew over four times as fast, so Productivity rose 34.99% (₹94,480→₹1,27,536).`,
   ],
   'Medical Cluster': [
-    `Revenue grew from ₹16.92L to ₹20.36L (<span class="up">▲20.33%</span>) even as leads fell 4.00% and campaigns fell 30.41% (1,493→1,039) — a much leaner funnel delivering more revenue.`,
-    `Conversion Rate rose from 5.01% to 5.89% (<span class="up">▲0.88 pp</span>) and P to C rose from 11.45% to 14.11% (<span class="up">▲2.66 pp</span>) — genuine efficiency gains alongside the campaign cutback.`,
-    `Productivity held essentially flat (₹84,600→₹84,833, <span class="up">▲0.28%</span>) despite Head Count growing 20.00% (20→24) — revenue kept pace with the larger team, but didn't outrun it.`,
+    `Revenue grew from ₹16.92L to ₹20.36L (<span class="up">▲20.33%</span>) on leads up 3.77%, even as campaigns fell 30.41% (1,493→1,039) — a much leaner funnel delivering more revenue on a similar lead volume.`,
+    `Conversion Rate rose from 5.01% to 5.45% (<span class="up">▲0.44 pp</span>) and P to C rose from 11.45% to 14.11% (<span class="up">▲2.66 pp</span>) — genuine efficiency gains alongside the campaign cutback.`,
+    `LPC rose from 5.10 to 7.61 (<span class="up">▲49.22%</span>) — each campaign generated far more leads even as campaign count fell sharply. Productivity held essentially flat (₹84,600→₹84,833, <span class="up">▲0.28%</span>) despite Head Count growing 20.00% (20→24).`,
   ],
   'Nagpur Cluster': [
-    `Revenue grew from ₹22.60L to ₹25.10L (<span class="up">▲11.06%</span>) on leads up 4.05%, with campaigns and pitches both easing slightly (−4.06% and −2.56% respectively).`,
-    `Conversion Rate held essentially flat (6.95%→6.98%) and P to C improved modestly (12.85%→13.77%, <span class="up">▲0.92 pp</span>) — steady, unremarkable efficiency alongside modest growth.`,
+    `Revenue grew from ₹22.60L to ₹25.10L (<span class="up">▲11.06%</span>) on leads up 4.75%, with campaigns and pitches both easing slightly (−4.06% and −2.56% respectively).`,
+    `Conversion Rate held essentially flat (6.95%→6.93%) and P to C improved modestly (12.85%→13.77%, <span class="up">▲0.92 pp</span>) — steady, unremarkable efficiency alongside modest growth.`,
     `Head Count fell from 31 to 27 (<span class="down">▼12.90%</span>), the only region to cut headcount, and Productivity still rose 27.52% (₹72,903→₹92,963) — a leaner team driving meaningfully more output per person.`,
   ],
   'North Cluster': [
-    `Revenue grew from ₹15.69L to ₹21.62L (<span class="up">▲37.81%</span>) on leads up 23.35%, even as campaigns nearly halved (776→445, <span class="down">▼42.65%</span>) — the steepest campaign cut of any region.`,
-    `LPC more than doubled, from 6.09 to 13.11 (<span class="up">▲115.27%</span>), by far the largest LPC jump of any region, and P to C rose from 11.91% to 14.25% (<span class="up">▲2.34 pp</span>) — a dramatic efficiency gain alongside strong revenue growth.`,
+    `Revenue grew from ₹15.69L to ₹21.62L (<span class="up">▲37.81%</span>) on leads up 31.38%, even as campaigns nearly halved (776→445, <span class="down">▼42.65%</span>) — the steepest campaign cut of any region.`,
+    `LPC more than doubled, from 6.09 to 13.96 (<span class="up">▲129.23%</span>), by far the largest LPC jump of any region, though Conversion Rate eased slightly (5.54%→5.73%, <span class="up">▲0.19 pp</span>) while P to C rose from 11.91% to 14.25% (<span class="up">▲2.34 pp</span>).`,
     `Head Count held exactly flat (17→17) while Productivity rose 37.81% (₹92,265→₹1,27,147), matching revenue's own growth rate exactly — the clearest case of a fixed team producing proportionally more output.`,
   ],
   'South Cluster': [
-    `Revenue grew from ₹44.74L to ₹48.47L (<span class="up">▲8.33%</span>) — still the largest region by revenue — on leads up 6.01%, even as campaigns and pitches both eased slightly.`,
-    `Conversion Rate eased from 7.68% to 7.44% (<span class="down">▼0.24 pp</span>) while P to C improved from 10.21% to 11.03% (<span class="up">▲0.82 pp</span>) — a mixed efficiency picture even as revenue grew steadily.`,
-    `Table 3 shows this growth was driven mainly by FightClub (+12.71%), with PackHouse growing more slowly (+2.90%) despite a larger absolute base.`,
+    `Revenue grew from ₹44.74L to ₹48.47L (<span class="up">▲8.33%</span>) — still the largest region by revenue — on leads up 15.01%, even as campaigns and pitches both eased slightly.`,
+    `Conversion Rate eased from 7.68% to 6.86% (<span class="down">▼0.82 pp</span>) while P to C improved from 10.21% to 11.03% (<span class="up">▲0.82 pp</span>) — a mixed efficiency picture even as revenue and leads both grew.`,
+    `Table 3 shows this growth was driven mainly by FightClub, whose leads grew from 5,534 to 6,578, with PackHouse growing more slowly on leads (4,498→4,960) despite a comparable absolute base.`,
   ],
   'WCC Cluster': [
     `Revenue fell from ₹17.12L to ₹15.23L (<span class="down">▼11.01%</span>), the only region to decline, even as campaigns fell 36.30% (1,449→923) in an attempt to streamline the funnel.`,
-    `Conversion Rate fell from 6.91% to 6.31% (<span class="down">▼0.60 pp</span>) and P to C fell from 15.02% to 13.22% (<span class="down">▼1.80 pp</span>) — the only region where efficiency declined alongside the revenue drop.`,
-    `Units fell from 279 to 249 (<span class="down">▼10.75%</span>) and Head Count fell slightly (21→20, <span class="down">▼4.76%</span>) — WCC Cluster contracted on revenue, units and efficiency all together, the clearest underperformer this month.`,
+    `Conversion Rate fell from 6.91% to 5.88% (<span class="down">▼1.03 pp</span>) and P to C fell from 15.02% to 13.22% (<span class="down">▼1.80 pp</span>) — the only region where efficiency declined alongside the revenue drop, even as LPC rose sharply from 2.79 to 4.59 (<span class="up">▲64.52%</span>).`,
+    `Units fell from 279 to 249 (<span class="down">▼10.75%</span>) and Head Count fell slightly (21→20, <span class="down">▼4.76%</span>) — WCC Cluster contracted on revenue, units and conversion efficiency all together, the clearest underperformer this month.`,
   ],
 };
 
@@ -1103,12 +1103,12 @@ t2.forEach(c=>{
 });
 
 const t3 = [
-  {region:'Law + New Businesses', name:'New Businesses', rev25:1286000, leads25:2734, camp25:1135, pitch25:1916, prod25:91857, rev26:1744000, leads26:3442, camp26:927, pitch26:2202, prod26:116267, aov25:5381, units25:239, conv25:8.74, lpc25:2.41, p2c25:12.47, boe25:14, aov26:5572, units26:313, conv26:9.09, lpc26:3.71, p2c26:14.21, boe26:15},
-  {region:'', name:'Law', rev25:1076000, leads25:3231, camp25:877, pitch25:2211, prod25:97818, rev26:1827000, leads26:3740, camp26:726, pitch26:2254, prod26:140538, aov25:4847, units25:222, conv25:6.87, lpc25:3.68, p2c25:10.04, boe25:11, aov26:5311, units26:344, conv26:9.2, lpc26:5.15, p2c26:15.26, boe26:13},
-  {region:'South Cluster', name:'FightClub', rev25:2474000, leads25:5534, camp25:1158, pitch25:4447, prod25:98960, rev26:2788500, leads26:6094, camp26:1211, pitch26:4183, prod26:107250, aov25:5990, units25:413, conv25:7.46, lpc25:4.78, p2c25:9.29, boe25:25, aov26:6410, units26:435, conv26:7.14, lpc26:5.03, p2c26:10.4, boe26:26},
-  {region:'', name:'PackHouse', rev25:2000000, leads25:4498, camp25:1312, pitch25:3094, prod25:111111, rev26:2058000, leads26:4541, camp26:1231, pitch26:2987, prod26:108316, aov25:5602, units25:357, conv25:7.94, lpc25:3.43, p2c25:11.54, boe25:18, aov26:5781, units26:356, conv26:7.84, lpc26:3.69, p2c26:11.92, boe26:19},
+  {region:'Law + New Businesses', name:'New Businesses', rev25:1286000, leads25:2734, camp25:1135, pitch25:1916, prod25:91857, rev26:1744000, leads26:3739, camp26:927, pitch26:2202, prod26:116267, aov25:5381, units25:239, conv25:8.74, lpc25:2.41, p2c25:12.47, boe25:14, aov26:5572, units26:313, conv26:8.37, lpc26:4.03, p2c26:14.21, boe26:15},
+  {region:'', name:'Law', rev25:1076000, leads25:3231, camp25:877, pitch25:2211, prod25:97818, rev26:1827000, leads26:4018, camp26:726, pitch26:2254, prod26:140538, aov25:4847, units25:222, conv25:6.87, lpc25:3.68, p2c25:10.04, boe25:11, aov26:5311, units26:344, conv26:8.56, lpc26:5.53, p2c26:15.26, boe26:13},
+  {region:'South Cluster', name:'FightClub', rev25:2474000, leads25:5534, camp25:1158, pitch25:4447, prod25:98960, rev26:2788500, leads26:6578, camp26:1211, pitch26:4183, prod26:107250, aov25:5990, units25:413, conv25:7.46, lpc25:4.78, p2c25:9.29, boe25:25, aov26:6410, units26:435, conv26:6.61, lpc26:5.43, p2c26:10.40, boe26:26},
+  {region:'', name:'PackHouse', rev25:2000000, leads25:4498, camp25:1312, pitch25:3094, prod25:111111, rev26:2058000, leads26:4960, camp26:1231, pitch26:2987, prod26:108316, aov25:5602, units25:357, conv25:7.94, lpc25:3.43, p2c25:11.54, boe25:18, aov26:5781, units26:356, conv26:7.18, lpc26:4.03, p2c26:11.92, boe26:19},
 ];
-const t3Total = {region:'', name:'Grand Total', rev25:6836000, leads25:15997, camp25:4482, pitch25:11668, prod25:100529, rev26:8417500, leads26:17817, camp26:4095, pitch26:11626, prod26:115308, aov25:5553, units25:1231, conv25:7.70, lpc25:3.57, p2c25:10.55, boe25:68, aov26:5813, units26:1448, conv26:8.13, lpc26:4.35, p2c26:12.45, boe26:73};function t3RowHtmlVol(c){
+const t3Total = {region:'', name:'Grand Total', rev25:6836000, leads25:15997, camp25:4482, pitch25:11668, prod25:100529, rev26:8417500, leads26:19295, camp26:4095, pitch26:11626, prod26:115308, aov25:5553, units25:1231, conv25:7.70, lpc25:3.57, p2c25:10.55, boe25:68, aov26:5813, units26:1448, conv26:7.50, lpc26:4.71, p2c26:12.45, boe26:73};function t3RowHtmlVol(c){
   return `<td class="label">${c.region}</td><td class="label">${c.name}</td>
     <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
     <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
@@ -1137,10 +1137,10 @@ renderChart('chartSubClusterAOV', [
 ], 'bar', t3Names, {valFmt:v=>'₹'+fmtNum(v)});
 
 const t3AnalysisPoints = [
-  `<b>New Businesses</b> revenue grew from ₹12.86L to ₹17.44L (<span class="up">▲35.61%</span>), with leads up 25.90% even as campaigns fell 18.33% — Conversion Rate improved slightly (8.74%→9.09%) and P to C rose from 12.47% to 14.21%.`,
-  `<b>Law</b> was the standout sub‑cluster: revenue grew from ₹10.76L to ₹18.27L (<span class="up">▲69.80%</span>), with Conversion Rate rising from 6.87% to 9.20% (<span class="up">▲2.33 pp</span>) and P to C jumping from 10.04% to 15.26% (<span class="up">▲5.22 pp</span>) — the strongest combination of growth and efficiency gain of any sub‑cluster, driving much of Law + New Businesses' regional strength in Table 2.`,
-  `<b>FightClub</b> revenue grew from ₹24.74L to ₹27.89L (<span class="up">▲12.71%</span>) on leads up 10.12%, though Conversion Rate eased slightly from 7.46% to 7.14% while P to C improved from 9.29% to 10.40% (<span class="up">▲1.11 pp</span>) — a mixed but broadly positive efficiency picture.`,
-  `<b>PackHouse</b> revenue grew only modestly, from ₹20.00L to ₹20.58L (<span class="up">▲2.90%</span>), the slowest-growing sub‑cluster, with Conversion Rate and P to C both roughly flat (7.94%→7.84% and 11.54%→11.92%).`,
+  `<b>New Businesses</b> revenue grew from ₹12.86L to ₹17.44L (<span class="up">▲35.61%</span>), with leads up 36.76% even as campaigns fell 18.33% — Conversion Rate eased slightly (8.74%→8.37%) even as P to C rose from 12.47% to 14.21%.`,
+  `<b>Law</b> was the standout sub‑cluster: revenue grew from ₹10.76L to ₹18.27L (<span class="up">▲69.80%</span>), with leads up 24.36%, Conversion Rate rising from 6.87% to 8.56% (<span class="up">▲1.69 pp</span>) and P to C jumping from 10.04% to 15.26% (<span class="up">▲5.22 pp</span>) — the strongest combination of growth and efficiency gain of any sub‑cluster, driving much of Law + New Businesses' regional strength in Table 2.`,
+  `<b>FightClub</b> revenue grew from ₹24.74L to ₹27.89L (<span class="up">▲12.71%</span>) on leads up 18.87%, though Conversion Rate eased from 7.46% to 6.61% (<span class="down">▼0.85 pp</span>) while P to C improved from 9.29% to 10.40% (<span class="up">▲1.11 pp</span>) — a mixed efficiency picture even as the funnel widened.`,
+  `<b>PackHouse</b> revenue grew only modestly, from ₹20.00L to ₹20.58L (<span class="up">▲2.90%</span>), the slowest-growing sub‑cluster, with leads up 10.27% while Conversion Rate eased from 7.94% to 7.18% (<span class="down">▼0.76 pp</span>) and P to C improved slightly (11.54%→11.92%).`,
   `<b>South Cluster net effect:</b> FightClub's stronger relative growth (+12.71% vs PackHouse's +2.90%) was the main driver behind South Cluster's overall region‑level revenue growth of 8.33% in Table 2, with PackHouse's near‑flat performance holding the region's growth back.`,
 ];
 document.getElementById('t3-analysis').innerHTML = t3AnalysisPoints.map(p=>`<li>${p}</li>`).join('');
@@ -1179,7 +1179,7 @@ const t4 = [
   {cluster:'', name:'Poseidon', rev25:597000, leads25:1097, camp25:250, pitch25:452, prod25:149250, rev26:355000, leads26:681, camp26:174, pitch26:307, prod26:88750, aov25:6489, units25:92, conv25:8.39, lpc25:4.39, p2c25:20.35, boe25:4, aov26:6017, units26:59, conv26:8.66, lpc26:3.91, p2c26:19.22, boe26:4},
   {cluster:'', name:'T-Rajarshi', rev25:349000, leads25:896, camp25:235, pitch25:406, prod25:87250, rev26:368000, leads26:933, camp26:208, pitch26:433, prod26:92000, aov25:6232, units25:56, conv25:6.25, lpc25:3.81, p2c25:13.79, boe25:4, aov26:6456, units26:57, conv26:6.11, lpc26:4.49, p2c26:13.16, boe26:4},
 ];
-const t4Total = {cluster:'', name:'Grand Total', rev25:14068000, leads25:38239, camp25:9383, pitch25:22230, prod25:89605, rev26:16648000, leads26:41000, camp26:7637, pitch26:22150, prod26:103404, aov25:5493, units25:2561, conv25:6.70, lpc25:4.08, p2c25:11.52, boe25:157, aov26:5723, units26:2909, conv26:7.10, lpc26:5.37, p2c26:13.13, boe26:161};function t4RowHtmlVol(c){
+const t4Total = {cluster:'', name:'Grand Total', rev25:14068000, leads25:38239, camp25:9383, pitch25:22230, prod25:89605, rev26:16648000, leads26:43781, camp26:7637, pitch26:22150, prod26:103404, aov25:5493, units25:2561, conv25:6.70, lpc25:4.08, p2c25:11.52, boe25:157, aov26:5723, units26:2909, conv26:6.64, lpc26:5.73, p2c26:13.13, boe26:161};function t4RowHtmlVol(c){
   return `<td class="label">${c.cluster}</td><td class="label">${c.name}</td>
     <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
     <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
