@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Review — Aug 1-13 vs Sep 1-14, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F3EC;
+    --panel:#FFFFFF;
+    --ink:#1C2530;
+    --ink-soft:#5B6472;
+    --line:#E4DFD3;
+    --navy:#28425A;
+    --navy-deep:#17242F;
+    --teal:#2E8B76;
+    --teal-soft:#E4F2ED;
+    --coral:#B84B32;
+    --coral-soft:#F7E7E1;
+    --gold:#C79A2E;
+    --gold-soft:#FBF2DC;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(28,37,48,.04), 0 8px 24px -12px rgba(28,37,48,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',serif; margin:0; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,243,236,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:17px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--coral); flex:none;}
+  .navlinks{display:flex; gap:4px; flex-wrap:wrap;}
+  .navlinks a{
+    font-size:13px; font-weight:600; padding:8px 13px; border-radius:100px; text-decoration:none;
+    color:var(--ink-soft); transition:.15s;
+  }
+  .navlinks a:hover{background:var(--navy); color:#fff;}
+
+  /* ===== HERO ===== */
+  .hero{max-width:1180px; margin:0 auto; padding:64px 24px 40px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--coral);
+    background:var(--coral-soft); padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(32px,5vw,54px); font-weight:600; max-width:820px; line-height:1.06;}
+  .hero h1 em{font-style:normal; color:var(--navy); border-bottom:3px solid var(--gold);}
+  .hero p.lede{max-width:640px; color:var(--ink-soft); font-size:17px; margin-top:18px;}
+
+  .stat-strip{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; margin-top:40px;
+  }
+  .stat{background:var(--panel); padding:22px 20px;}
+  .stat .k{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);}
+  .stat .v{font-family:'Fraunces',serif; font-size:30px; font-weight:600; margin-top:6px;}
+  .stat .d{font-size:13px; font-weight:600; margin-top:4px; display:inline-flex; align-items:center; gap:4px;}
+  .up{color:var(--teal);} .down{color:var(--coral);}
+
+  /* ===== SECTIONS ===== */
+  section{max-width:1180px; margin:0 auto; padding:60px 24px;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:28px;}
+  .section-head .tag{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--navy); text-transform:uppercase; letter-spacing:.1em;}
+  .section-head h2{font-size:clamp(24px,3.4vw,34px); font-weight:600; margin-top:6px;}
+  .section-sub{color:var(--ink-soft); max-width:680px; font-size:15px;}
+
+  /* ===== TABLE ===== */
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); box-shadow:var(--shadow); min-width:0;}
+  table{border-collapse:collapse; width:100%; min-width:640px; font-size:13.5px;}
+  .market-table{min-width:0;}
+  .market-table table{min-width:0; table-layout:fixed;}
+  .market-table td.label{white-space:normal; word-break:break-word; line-height:1.35;}
+  .market-table th:first-child, .market-table td:first-child{width:44%;}
+  thead th{
+    background:var(--navy-deep); color:#F4EFE3; text-align:left; padding:12px 14px;
+    font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em;
+    position:sticky; top:0;
+  }
+  thead th.num, td.num{text-align:right;}
+  tbody td{padding:11px 14px; border-bottom:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:13px;}
+  tbody td.label{font-family:'Inter',sans-serif; font-weight:600; color:var(--ink);}
+  tbody tr:nth-child(even){background:#FBFAF6;}
+  tbody tr:hover{background:var(--gold-soft);}
+  tbody tr.total td{background:var(--navy); color:#fff; font-weight:700;}
+  .delta-pill{display:inline-block; padding:2px 8px; border-radius:100px; font-size:11.5px; font-weight:600;}
+  .delta-pill.up{background:var(--teal-soft); color:var(--teal);}
+  .delta-pill.down{background:var(--coral-soft); color:var(--coral);}
+  .delta-pill.flat{background:var(--gold-soft); color:var(--gold);}
+
+  /* ===== KPI DUMBBELL CARDS ===== */
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin-top:28px;}
+  .kpi-card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 16px; box-shadow:var(--shadow);}
+  .kpi-card .name{font-size:12.5px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+  .kpi-card svg{width:100%; height:46px; margin-top:10px; display:block;}
+  .kpi-card .foot{display:flex; justify-content:space-between; align-items:baseline; margin-top:6px;}
+  .kpi-card .foot .val{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-soft);}
+  .kpi-card .foot .delta{font-size:13px; font-weight:700;}
+
+  /* ===== CHART GRID ===== */
+  .chart-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px; min-width:0;}
+  .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); min-width:0;}
+  .chart-card h4{font-size:14.5px; font-weight:700; margin-bottom:2px;}
+  .chart-card .cap{font-size:12.5px; color:var(--ink-soft); margin-bottom:14px;}
+  .chart-holder{width:100%;}
+  .chart-holder svg{width:100%; height:auto; display:block; overflow:visible;}
+  .chart-legend{display:flex; gap:16px; margin-bottom:10px; flex-wrap:wrap;}
+  .chart-legend span{font-size:12px; font-weight:600; color:var(--ink-soft); display:inline-flex; align-items:center;}
+  .chart-legend .sw{width:10px; height:10px; border-radius:3px; display:inline-block; margin-right:6px;}
+  @media(max-width:820px){.chart-grid{grid-template-columns:1fr;} .stat-strip{grid-template-columns:repeat(2,1fr);}}
+
+  /* ===== ANALYSIS ===== */
+  .analysis{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--navy); border-radius:var(--radius); padding:22px 24px; margin-top:28px; box-shadow:var(--shadow);}
+  .analysis h4{font-size:15px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px;}
+  .analysis h4 .tick{width:7px;height:7px;border-radius:50%;background:var(--gold); flex:none;}
+  .analysis ul{margin:0; padding-left:18px;}
+  .analysis li{margin-bottom:7px; font-size:14.5px; color:#2c3742;}
+  .analysis li b{color:var(--ink);}
+  .analysis li .up{font-weight:700;} .analysis li .down{font-weight:700;}
+
+  /* ===== CLUSTER CARDS ===== */
+  .cluster-block{border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); margin-top:20px; overflow:hidden; box-shadow:var(--shadow);}
+  .cluster-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    padding:16px 22px; background:linear-gradient(90deg,var(--navy-deep),var(--navy)); color:#F4EFE3;
+  }
+  .cluster-head h3{font-size:19px; font-weight:600; color:#fff;}
+  .cluster-head .rev-badge{font-family:'IBM Plex Mono',monospace; font-size:13px; background:rgba(255,255,255,.12); padding:5px 12px; border-radius:100px;}
+  .cluster-body{padding:20px 22px 22px; display:grid; grid-template-columns:1.15fr 1fr; gap:24px;}
+  @media(max-width:900px){.cluster-body{grid-template-columns:1fr;}}
+  .mini-metric-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px;}
+  .mini-metric{border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:#FBFAF6;}
+  .mini-metric .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:700;}
+  .mini-metric .pair{display:flex; align-items:baseline; gap:6px; margin-top:4px; font-family:'IBM Plex Mono',monospace;}
+  .mini-metric .pair .a{font-size:13px; color:var(--ink-soft);}
+  .mini-metric .pair .arrow{color:var(--ink-soft); font-size:12px;}
+  .mini-metric .pair .b{font-size:14.5px; font-weight:700;}
+  .cluster-analysis ul{margin:0; padding-left:18px;}
+  .cluster-analysis li{font-size:13.8px; margin-bottom:7px; color:#2c3742;}
+
+  /* ===== DATE-WISE TRENDS ===== */
+  .trend-controls{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:24px; margin-bottom:8px;}
+  .trend-controls label{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:700; margin-right:8px;}
+  .trend-controls select{
+    font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600; color:var(--ink);
+    padding:9px 14px; border-radius:100px; border:1px solid var(--line); background:var(--panel);
+    box-shadow:var(--shadow); cursor:pointer;
+  }
+  .trend-summary{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px;}
+  .trend-summary .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow);}
+  .trend-summary .card .k{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft);}
+  .trend-summary .card .v{font-family:'Fraunces',serif; font-size:22px; font-weight:600; margin-top:4px;}
+  @media(max-width:820px){.trend-summary{grid-template-columns:1fr;}}
+
+  /* ===== INSIGHTS / FOOTER ===== */
+  .insight-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:26px;}
+  .insight-card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); border-top:4px solid var(--gold);}
+  .insight-card.warn{border-top-color:var(--coral);}
+  .insight-card.good{border-top-color:var(--teal);}
+  .insight-card .num{font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--navy);}
+  .insight-card p{font-size:13.8px; color:var(--ink-soft); margin-top:8px;}
+  footer{max-width:1180px; margin:0 auto; padding:40px 24px 60px; color:var(--ink-soft); font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>Performance Review · Weekly Snapshot</div>
+    <div class="navlinks">
+      <a href="#overview">Overview</a>
+      <a href="#table1">Overall Metrics</a>
+      <a href="#table2">Region / Dept</a>
+      <a href="#table3">Cluster</a>
+      <a href="#table4">Team</a>
+      <a href="#market">Market Analysis</a>
+      <a href="#trends">Date‑wise Trends</a>
+      <a href="#insights">Insights</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="overview">
+  <div class="eyebrow">Aug 1 – 13 → Sep 1 – 14, 2026 · 10 working days each</div>
+  <h1>Revenue up 19.4%, <em>on far fewer campaigns working much harder</em>.</h1>
+  <p class="lede">Revenue grew 19.41% month‑over‑month — even as total campaigns fell 26.88% (3,456→2,527). Leads still grew 5.55% and Leads Per Campaign surged 44.33% (4.76→6.87). Conversion Rate improved from 5.84% to 6.43% and Pitch‑to‑Close improved sharply from 9.43% to 11.88%. Headcount fell 16.15% (161→135) while revenue grew strongly, so Revenue per Boe rose 42.41%. This report covers the overall funnel, all six regions, sub‑clusters, all teams, market‑level revenue (overall and by cluster), and day‑by‑day trends.</p>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="k">Total Revenue</div>
+      <div class="v">₹65.06L</div>
+      <div class="d up">▲ 19.41% MoM</div>
+    </div>
+    <div class="stat">
+      <div class="k">Total Leads</div>
+      <div class="v">17,353</div>
+      <div class="d up">▲ 5.55% MoM</div>
+    </div>
+    <div class="stat">
+      <div class="k">Conversion Rate</div>
+      <div class="v">6.43%</div>
+      <div class="d up">▲ 0.59 pp</div>
+    </div>
+    <div class="stat">
+      <div class="k">Pitch → Close</div>
+      <div class="v">11.88%</div>
+      <div class="d up">▲ 2.45 pp</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TABLE 1 ================= -->
+<section id="table1">
+  <div class="section-head">
+    <div>
+      <div class="tag">Table 1</div>
+      <h2>Overall Performance Metrics</h2>
+    </div>
+    <div class="section-sub">All 16 headline metrics, Aug 1–13 vs Sep 1–14 2026, with per‑metric movement.</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th class="num">Aug 1 – 13</th>
+          <th class="num">Sep 1 – 14</th>
+          <th class="num">Change</th>
+        </tr>
+      </thead>
+      <tbody id="t1-body"></tbody>
+    </table>
+  </div>
+
+  <div class="analysis" style="margin-top:24px;">
+    <h4><span class="tick"></span>Metric-by-metric analysis — Aug 1–13 vs Sep 1–14, 2026</h4>
+    <ul id="t1-analysis"></ul>
+  </div>
+
+  <div class="kpi-grid" id="kpi-grid"></div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h4>Funnel Volume: Campaigns → Leads → Pitches</h4>
+      <div class="cap">Absolute counts, Aug 1–13 vs Sep 1–14</div>
+      <div id="chartFunnel" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Rate Metrics: Conversion vs Pitch‑to‑Close</h4>
+      <div class="cap">Both rates eased slightly, Aug 1–13 vs Sep 1–14</div>
+      <div id="chartRates" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Revenue &amp; Productivity</h4>
+      <div class="cap">Indexed to Aug 1–13 = 100, so both lines are comparable on one scale</div>
+      <div id="chartRevProd" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Daily Cadence</h4>
+      <div class="cap">Campaigns, leads &amp; pitches executed per working day</div>
+      <div id="chartDaily" class="chart-holder"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TABLE 2 : REGION/DEPT ================= -->
+<section id="table2">
+  <div class="section-head">
+    <div>
+      <div class="tag">Table 2</div>
+      <h2>Region / Department Performance</h2>
+    </div>
+    <div class="section-sub">Six regions/departments, each compared on revenue, funnel volume, AOV, units, conversion, leads‑per‑campaign, pitch‑to‑close and headcount.</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Region / Department</th>
+          <th class="num" colspan="6" style="text-align:center;">Aug 1 – 13, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Sep 1 – 14, 2026</th>
+        </tr>
+        <tr>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+        </tr>
+      </thead>
+      <tbody id="t2-body-vol"></tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" style="margin-top:20px;">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Region / Department</th>
+          <th class="num" colspan="5" style="text-align:center;">Aug 1–13 Ratios</th>
+          <th class="num" colspan="5" style="text-align:center;">Sep 1–14 Ratios</th>
+        </tr>
+        <tr>
+          <th class="num">AOV</th><th class="num">Units</th><th class="num">Conv.</th><th class="num">LPC</th><th class="num">P2C</th>
+          <th class="num">AOV</th><th class="num">Units</th><th class="num">Conv.</th><th class="num">LPC</th><th class="num">P2C</th>
+        </tr>
+      </thead>
+      <tbody id="t2-body-ratio"></tbody>
+    </table>
+  </div>
+
+  <div class="chart-grid" style="margin-top:32px;">
+    <div class="chart-card">
+      <h4>Revenue by Region</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14, ₹</div>
+      <div id="chartClusterRevenue" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Leads by Region</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14</div>
+      <div id="chartClusterLeads" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Conversion Rate by Region</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14, %</div>
+      <div id="chartClusterConv" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Pitch‑to‑Close by Region</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14, %</div>
+      <div id="chartClusterP2C" class="chart-holder"></div>
+    </div>
+  </div>
+
+  <div id="cluster-blocks"></div>
+</section>
+
+<!-- ================= TABLE 3 : CLUSTER ================= -->
+<section id="table3">
+  <div class="section-head">
+    <div>
+      <div class="tag">Table 3</div>
+      <h2>Cluster Performance</h2>
+    </div>
+    <div class="section-sub">Sub‑cluster breakdown available for Law + New Businesses and South Cluster.</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Region</th>
+          <th rowspan="2" style="vertical-align:bottom;">Cluster</th>
+          <th class="num" colspan="6" style="text-align:center;">Aug 1 – 13, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Sep 1 – 14, 2026</th>
+        </tr>
+        <tr>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+        </tr>
+      </thead>
+      <tbody id="t3-body-vol"></tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" style="margin-top:20px;">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Region</th>
+          <th rowspan="2" style="vertical-align:bottom;">Cluster</th>
+          <th class="num" colspan="5" style="text-align:center;">Aug 1–13 Ratios</th>
+          <th class="num" colspan="5" style="text-align:center;">Sep 1–14 Ratios</th>
+        </tr>
+        <tr>
+          <th class="num">AOV</th><th class="num">Units</th><th class="num">Conv.</th><th class="num">LPC</th><th class="num">P to C</th>
+          <th class="num">AOV</th><th class="num">Units</th><th class="num">Conv.</th><th class="num">LPC</th><th class="num">P to C</th>
+        </tr>
+      </thead>
+      <tbody id="t3-body-ratio"></tbody>
+    </table>
+  </div>
+
+  <div class="chart-grid" style="margin-top:32px;">
+    <div class="chart-card">
+      <h4>Revenue by Sub‑Cluster</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14, ₹</div>
+      <div id="chartSubClusterRevenue" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>AOV by Sub‑Cluster</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14, ₹</div>
+      <div id="chartSubClusterAOV" class="chart-holder"></div>
+    </div>
+  </div>
+
+  <div class="analysis" style="margin-top:24px;">
+    <h4><span class="tick"></span>Analysis — Cluster</h4>
+    <ul id="t3-analysis"></ul>
+  </div>
+</section>
+
+<!-- ================= TABLE 4 : TEAM ================= -->
+<section id="table4">
+  <div class="section-head">
+    <div>
+      <div class="tag">Table 4</div>
+      <h2>Team Performance</h2>
+    </div>
+    <div class="section-sub">All 33 teams across the six clusters, Aug 1–13 vs Sep 1–14, 2026.</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Cluster</th>
+          <th rowspan="2" style="vertical-align:bottom;">Team</th>
+          <th class="num" colspan="6" style="text-align:center;">Aug 1 – 13, 2026</th>
+          <th class="num" colspan="6" style="text-align:center;">Sep 1 – 14, 2026</th>
+        </tr>
+        <tr>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+          <th class="num">Revenue</th><th class="num">Leads</th><th class="num">Campaigns</th><th class="num">Pitches</th><th class="num">Headcount</th><th class="num">Productivity</th>
+        </tr>
+      </thead>
+      <tbody id="t4-body-vol"></tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" style="margin-top:20px;">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="vertical-align:bottom;">Cluster</th>
+          <th rowspan="2" style="vertical-align:bottom;">Team</th>
+          <th class="num" colspan="5" style="text-align:center;">Aug 1–13 Ratios</th>
+          <th class="num" colspan="5" style="text-align:center;">Sep 1–14 Ratios</th>
+        </tr>
+        <tr>
+          <th class="num">AOV</th><th class="num">Units</th><th class="num">Conv.</th><th class="num">LPC</th><th class="num">P to C</th>
+          <th class="num">AOV</th><th class="num">Units</th><th class="num">Conv.</th><th class="num">LPC</th><th class="num">P to C</th>
+        </tr>
+      </thead>
+      <tbody id="t4-body-ratio"></tbody>
+    </table>
+  </div>
+
+  <div class="chart-grid" style="margin-top:32px;">
+    <div class="chart-card">
+      <h4>Top 8 Revenue Gainers</h4>
+      <div class="cap">% change, Aug 1–13 → Sep 1–14</div>
+      <div id="chartTeamGainers" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Top 8 Revenue Decliners</h4>
+      <div class="cap">% change, Aug 1–13 → Sep 1–14</div>
+      <div id="chartTeamDecliners" class="chart-holder"></div>
+    </div>
+  </div>
+
+  <div class="analysis" style="margin-top:24px;">
+    <h4><span class="tick"></span>Analysis — Team</h4>
+    <ul id="t4-analysis"></ul>
+  </div>
+</section>
+
+<!-- ================= MARKET ANALYSIS : OVERALL ================= -->
+<section id="market">
+  <div class="section-head">
+    <div>
+      <div class="tag">Market Analysis · 1 of 2</div>
+      <h2>Revenue On Markets — Overall</h2>
+    </div>
+    <div class="section-sub">Every college/institution ("market") that generated revenue in Aug 1–13 and/or Sep 1–14, 2026 — matched by name to show repeat growth, new entrants, and drop‑offs.</div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="k">Active Colleges</div>
+      <div class="v">270 → 264</div>
+      <div class="d down">▼ 2.22% MoM</div>
+    </div>
+    <div class="stat">
+      <div class="k">Repeat Colleges Revenue</div>
+      <div class="v">₹22.52L</div>
+      <div class="d up">▲ 29.57% MoM</div>
+    </div>
+    <div class="stat">
+      <div class="k">New in Sep 1–14</div>
+      <div class="v">202 colleges</div>
+      <div class="d up">₹42.54L · 65.4% of Sep revenue</div>
+    </div>
+    <div class="stat">
+      <div class="k">Dropped from Aug 1–13</div>
+      <div class="v">208 colleges</div>
+      <div class="d down">₹37.105L not repeated</div>
+    </div>
+  </div>
+
+  <div class="chart-grid" style="margin-top:32px;">
+    <div class="chart-card">
+      <h4>Revenue Composition: Repeat vs New vs Dropped</h4>
+      <div class="cap">Aug 1–13 vs Sep 1–14 — how Aug's total was built and Jul's total was lost</div>
+      <div id="chartMarketComposition" class="chart-holder"></div>
+    </div>
+    <div class="chart-card">
+      <h4>Active College Count</h4>
+      <div class="cap">Distinct colleges generating revenue, Aug 1–13 vs Sep 1–14</div>
+      <div id="chartMarketCount" class="chart-holder"></div>
+    </div>
+  </div>
+
+  <div class="analysis" style="margin-top:24px;">
+    <h4><span class="tick"></span>Analysis — Market (Overall)</h4>
+    <ul id="market-analysis"></ul>
+  </div>
+
+  <div class="chart-grid" style="margin-top:32px; grid-template-columns:1fr 1fr;">
+    <div class="chart-card">
+      <h4>Top 15 Colleges by Revenue — Aug 1–13</h4>
+      <div class="cap">Aug 1 – 13, 2026</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="market-top-june"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h4>Top 15 Colleges by Revenue — Sep 1–14</h4>
+      <div class="cap">Sep 1 – 14, 2026</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="market-top-july"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid" style="margin-top:20px; grid-template-columns:1fr 1fr;">
+    <div class="chart-card">
+      <h4>Top 15 Gainers</h4>
+      <div class="cap">Colleges active in both periods, ranked by revenue increase</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Jun Rev</th><th class="num">Jul Rev</th><th class="num">Δ Revenue</th></tr></thead>
+          <tbody id="market-gainers"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h4>Top 15 Decliners</h4>
+      <div class="cap">Colleges active in both periods, ranked by revenue decrease</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Jun Rev</th><th class="num">Jul Rev</th><th class="num">Δ Revenue</th></tr></thead>
+          <tbody id="market-decliners"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid" style="margin-top:20px; grid-template-columns:1fr 1fr;">
+    <div class="chart-card">
+      <h4>Top 15 New Entrants</h4>
+      <div class="cap">Colleges with no Aug 1–13 revenue, ranked by Sep 1–14 revenue</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="market-new"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h4>Top 15 Dropped</h4>
+      <div class="cap">Colleges with Aug 1–13 revenue and no Sep 1–14 revenue, ranked by Aug 1–13 revenue</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="market-dropped"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARKET ANALYSIS : BY CLUSTER ================= -->
+<section id="market-cluster">
+  <div class="section-head">
+    <div>
+      <div class="tag">Market Analysis · 2 of 2</div>
+      <h2>Revenue On Markets — By Cluster</h2>
+    </div>
+    <div class="section-sub">Same college‑level revenue data, broken out per cluster. Pick a cluster to see its top colleges in Aug 1–13 vs Sep 1–14, 2026.</div>
+  </div>
+
+  <div class="trend-controls">
+    <div><label>Cluster</label>
+      <select id="mcSelect"></select>
+    </div>
+  </div>
+
+  <div class="trend-summary" id="mcSummary"></div>
+
+  <div class="chart-grid" style="margin-top:24px; grid-template-columns:1fr 1fr;">
+    <div class="chart-card">
+      <h4 id="mcJuneTitle">Top Colleges — Aug 1–13</h4>
+      <div class="cap">Aug 1 – 13, 2026</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="mc-june-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h4 id="mcJulyTitle">Top Colleges — Sep 1–14</h4>
+      <div class="cap">Sep 1 – 14, 2026</div>
+      <div class="table-wrap market-table" style="box-shadow:none; border:none;">
+        <table>
+          <thead><tr><th>College</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+          <tbody id="mc-july-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DATE-WISE TRENDS ================= -->
+<section id="trends">
+  <div class="section-head">
+    <div>
+      <div class="tag">Date‑wise Trends</div>
+      <h2>Day‑by‑Day Comparison</h2>
+    </div>
+    <div class="section-sub">Every day of Aug 1–13 plotted against the matching day of Sep 1–14 — pick a metric and a region/cluster to compare. Day 1 = Aug 1 / Sep 1, with both series running 14 calendar days (Aug padded to align with Sep's longer window).</div>
+  </div>
+
+  <div class="trend-controls">
+    <div><label>Metric</label>
+      <select id="trendMetric">
+        <option value="3">Revenue</option>
+        <option value="0">Leads</option>
+        <option value="1">Campaigns</option>
+        <option value="2">Sales (Units)</option>
+        <option value="4">Pitches</option>
+      </select>
+    </div>
+    <div><label>Scope</label>
+      <select id="trendScope"></select>
+    </div>
+  </div>
+
+  <div class="trend-summary" id="trendSummary"></div>
+
+  <div class="chart-grid" style="margin-top:20px; grid-template-columns:1fr;">
+    <div class="chart-card">
+      <h4 id="trendChartTitle">Revenue — Company‑wide</h4>
+      <div class="cap" id="trendChartCap">Daily totals, Aug 1–13 (Day 1–13) vs Sep 1–14 (Day 1–14)</div>
+      <div id="chartTrend" class="chart-holder"></div>
+    </div>
+  </div>
+
+  <div class="analysis" style="margin-top:24px;">
+    <h4><span class="tick"></span>Reading the daily pattern</h4>
+    <ul>
+      <li>Aug 1–13 spans <b>13 calendar days</b> and Sep 1–14 spans <b>14 calendar days</b>; Day 1 (Aug 1 / Sep 1) onward line up for a like‑for‑like comparison, with Sep's extra trailing day visible where the Aug series has no data.</li>
+      <li>Low points recurring roughly every 7 days are <b>Sundays</b> — campaigns and pitching pause, so revenue and campaigns drop close to zero while leads keep trickling in.</li>
+      <li>Switch <b>Scope</b> to any region or South's two sub‑clusters (FightClub, PackHouse) to see whether a strong or weak month was broad‑based or concentrated in specific days.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= INSIGHTS ================= -->
+<section id="insights">
+  <div class="section-head">
+    <div>
+      <div class="tag">Insights</div>
+      <h2>Key Takeaways</h2>
+    </div>
+    <div class="section-sub">The headline story reading all tables — including the market and daily trend data — together.</div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-card good">
+      <div class="num">+19.41%</div>
+      <p><b>Strong revenue growth on a much leaner campaign base.</b> Total revenue rose from ₹54.485L to ₹65.06L — leads +5.6%, units +16.2% — while total campaigns fell 26.88% (3,456→2,527) and pitches fell 7.80%. Growth came almost entirely from getting more out of fewer campaigns, not from more outreach.</p>
+    </div>
+    <div class="insight-card good">
+      <div class="num">+0.59pp</div>
+      <p><b>Conversion Rate improved</b> (5.84%→6.43%) even as campaigns were cut sharply — South Cluster (+1.28pp), North Cluster (+0.72pp) and Nagpur Cluster (+0.63pp) led the gains, while Law + New Businesses (−0.14pp) and Medical Cluster (−0.10pp) softened only marginally.</p>
+    </div>
+    <div class="insight-card good">
+      <div class="num">+2.45pp</div>
+      <p><b>Pitch‑to‑Close improved sharply</b> (9.43%→11.88%) — North Cluster gained 5.57pp (11.49%→17.06%) by far the largest P to C gain of any region, with every single region improving on this measure.</p>
+    </div>
+    <div class="insight-card good">
+      <div class="num">+42.41%</div>
+      <p><b>Revenue per Boe surged.</b> Head Count fell 16.15% (161→135) while revenue grew strongly (19.41%), so Revenue per Boe rose from ₹33,842 to ₹48,193 — a large productivity gain driven by both fewer people and more revenue.</p>
+    </div>
+    <div class="insight-card good">
+      <div class="num">South +59.63%</div>
+      <p><b>Fastest‑growing region, with efficiency intact.</b> South Cluster revenue grew from ₹15.58L to ₹24.87L, on Head Count held exactly flat (45→45) — Conversion Rate rose 1.28pp and P to C rose 2.74pp, driven mainly by FightClub's +81.23% sub‑cluster surge.</p>
+    </div>
+    <div class="insight-card warn">
+      <div class="num">WCC -16.99%</div>
+      <p><b>Only region to decline.</b> WCC Cluster revenue fell from ₹5.12L to ₹4.25L even as campaigns were cut 31.01% — but Conversion Rate still improved slightly (5.04%→5.14%) and P to C still improved (6.65%→7.72%), suggesting the decline is a scale effect rather than an efficiency problem.</p>
+    </div>
+    <div class="insight-card">
+      <div class="num">270 → 264</div>
+      <p><b>The college market held roughly steady while revenue grew far faster.</b> Active colleges fell 2.22%, in sharp contrast to the 19.41% revenue growth. 62 colleges repeated from Aug 1–13 into Sep 1–14, with their combined revenue growing 29.57% — 202 new colleges contributed 65.4% of Sep's revenue.</p>
+    </div>
+    <div class="insight-card warn">
+      <div class="num">Titans +241.5%</div>
+      <p><b>Biggest team‑level mover.</b> Titans (Nagpur) grew +241.51% (₹0.53L→₹1.81L), the largest percentage gain in the dataset, while Genesis (WCC) fell −63.95% (₹1.72L→₹0.62L) and T‑Samriddhi (WCC) fell to zero revenue — the two steepest declines, both concentrated in WCC Cluster.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Performance Review Report · Generated for internal analysis</span>
+  <span>Source: Overall, Region/Department, Cluster, Team, Market &amp; Date‑wise tables, Aug 1–13 vs Sep 1–14, 2026</span>
+</footer>
+
+<script>
+const NAVY = "#28425A", TEAL = "#2E8B76", CORAL = "#B84B32", GOLD = "#C79A2E", INK="#1C2530";
+
+/* ============ Dependency-free inline SVG chart engine (no external CDN) ============ */
+function legendHtml(series){
+  return `<div class="chart-legend">${series.map(s=>`<span><span class="sw" style="background:${s.color}"></span>${s.name}</span>`).join('')}</div>`;
+}
+function niceMax(v){
+  if(v<=0) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v)));
+  const n = v/p;
+  const step = n<=1?1:n<=2?2:n<=5?5:10;
+  return step*p;
+}
+function barChartSvg(labels, series, opts={}){
+  const width=600, height=250;
+  const margin={top:22,right:14,bottom:34,left:52};
+  const innerW=width-margin.left-margin.right, innerH=height-margin.top-margin.bottom;
+  const allVals=series.flatMap(s=>s.data);
+  const maxVal=niceMax(Math.max(...allVals)*1.12);
+  const groupW=innerW/labels.length;
+  const barPad=groupW*0.16;
+  const barW=(groupW-barPad*2)/series.length;
+  const yScale=v=> margin.top+innerH-(v/maxVal*innerH);
+  const steps=4;
+  let gridlines='', gridlabels='';
+  for(let i=0;i<=steps;i++){
+    const v=maxVal/steps*i;
+    const y=yScale(v);
+    gridlines+=`<line x1="${margin.left}" y1="${y.toFixed(1)}" x2="${width-margin.right}" y2="${y.toFixed(1)}" stroke="#EEEAE0" stroke-width="1"/>`;
+    gridlabels+=`<text x="${margin.left-8}" y="${(y+3).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#9AA2AC" font-family="'IBM Plex Mono',monospace">${opts.axisFmt?opts.axisFmt(v):Math.round(v)}</text>`;
+  }
+  let bars='', catlabels='';
+  labels.forEach((lab,i)=>{
+    const gx=margin.left+i*groupW;
+    catlabels+=`<text x="${(gx+groupW/2).toFixed(1)}" y="${height-margin.bottom+18}" font-size="10.5" text-anchor="middle" fill="#5B6472" font-family="Inter,sans-serif" font-weight="600">${lab}</text>`;
+    series.forEach((s,si)=>{
+      const val=s.data[i];
+      const x=gx+barPad+si*barW;
+      const y=yScale(val);
+      const h=(margin.top+innerH)-y;
+      bars+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(barW-4).toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="${s.color}"/>`;
+      bars+=`<text x="${(x+(barW-4)/2).toFixed(1)}" y="${(y-6).toFixed(1)}" font-size="8.6" text-anchor="middle" fill="${s.color}" font-family="'IBM Plex Mono',monospace" font-weight="600">${opts.valFmt?opts.valFmt(val):val}</text>`;
+    });
+  });
+  return `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">${gridlines}${gridlabels}${bars}${catlabels}</svg>`;
+}
+function lineChartSvg(labels, series, opts={}){
+  const width=600, height=250;
+  const margin={top:22,right:18,bottom:34,left:52};
+  const innerW=width-margin.left-margin.right, innerH=height-margin.top-margin.bottom;
+  const allVals=series.flatMap(s=>s.data);
+  const maxVal=niceMax(Math.max(...allVals)*1.15);
+  const minVal=0;
+  const xStep = labels.length>1 ? innerW/(labels.length-1) : innerW;
+  const yScale=v=> margin.top+innerH-((v-minVal)/(maxVal-minVal)*innerH);
+  const xScale=i=> margin.left+i*xStep;
+  const steps=4;
+  let gridlines='', gridlabels='';
+  for(let i=0;i<=steps;i++){
+    const v=minVal+(maxVal-minVal)/steps*i;
+    const y=yScale(v);
+    gridlines+=`<line x1="${margin.left}" y1="${y.toFixed(1)}" x2="${width-margin.right}" y2="${y.toFixed(1)}" stroke="#EEEAE0" stroke-width="1"/>`;
+    gridlabels+=`<text x="${margin.left-8}" y="${(y+3).toFixed(1)}" font-size="9.5" text-anchor="end" fill="#9AA2AC" font-family="'IBM Plex Mono',monospace">${opts.axisFmt?opts.axisFmt(v):Math.round(v)}</text>`;
+  }
+  let catlabels='';
+  labels.forEach((lab,i)=>{
+    catlabels+=`<text x="${xScale(i).toFixed(1)}" y="${height-margin.bottom+18}" font-size="9.5" text-anchor="middle" fill="#5B6472" font-family="Inter,sans-serif" font-weight="600">${lab}</text>`;
+  });
+  let paths='', points='';
+  series.forEach(s=>{
+    let d='';
+    s.data.forEach((v,i)=>{
+      const x=xScale(i), y=yScale(v);
+      d += (i===0?'M':'L')+x.toFixed(1)+','+y.toFixed(1)+' ';
+    });
+    paths+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.5"/>`;
+    s.data.forEach((v,i)=>{
+      const x=xScale(i), y=yScale(v);
+      points+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${s.color}"/>`;
+      points+=`<text x="${x.toFixed(1)}" y="${(y-9).toFixed(1)}" font-size="8.6" text-anchor="middle" fill="${s.color}" font-family="'IBM Plex Mono',monospace" font-weight="600">${opts.valFmt?opts.valFmt(v):v}</text>`;
+    });
+  });
+  return `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">${gridlines}${gridlabels}${paths}${points}${catlabels}</svg>`;
+}
+/* Dense line chart for daily trends: no per-point value labels, thinned x-axis labels */
+function denseLineChartSvg(labels, series, opts={}){
+  const width=1160, height=300;
+  const margin={top:22,right:18,bottom:34,left:64};
+  const innerW=width-margin.left-margin.right, innerH=height-margin.top-margin.bottom;
+  const allVals=series.flatMap(s=>s.data);
+  const maxVal=niceMax(Math.max(...allVals,1)*1.15);
+  const minVal=0;
+  const xStep = labels.length>1 ? innerW/(labels.length-1) : innerW;
+  const yScale=v=> margin.top+innerH-((v-minVal)/(maxVal-minVal)*innerH);
+  const xScale=i=> margin.left+i*xStep;
+  const steps=5;
+  let gridlines='', gridlabels='';
+  for(let i=0;i<=steps;i++){
+    const v=minVal+(maxVal-minVal)/steps*i;
+    const y=yScale(v);
+    gridlines+=`<line x1="${margin.left}" y1="${y.toFixed(1)}" x2="${width-margin.right}" y2="${y.toFixed(1)}" stroke="#EEEAE0" stroke-width="1"/>`;
+    gridlabels+=`<text x="${margin.left-10}" y="${(y+3).toFixed(1)}" font-size="10" text-anchor="end" fill="#9AA2AC" font-family="'IBM Plex Mono',monospace">${opts.axisFmt?opts.axisFmt(v):Math.round(v)}</text>`;
+  }
+  let catlabels='';
+  const labelEvery = Math.ceil(labels.length/10);
+  labels.forEach((lab,i)=>{
+    if(i%labelEvery!==0 && i!==labels.length-1) return;
+    catlabels+=`<text x="${xScale(i).toFixed(1)}" y="${height-margin.bottom+20}" font-size="10" text-anchor="middle" fill="#5B6472" font-family="Inter,sans-serif" font-weight="600">${lab}</text>`;
+    catlabels+=`<line x1="${xScale(i).toFixed(1)}" y1="${(margin.top+innerH).toFixed(1)}" x2="${xScale(i).toFixed(1)}" y2="${(margin.top+innerH+4).toFixed(1)}" stroke="#9AA2AC" stroke-width="1"/>`;
+  });
+  let paths='', points='';
+  series.forEach(s=>{
+    let d='';
+    s.data.forEach((v,i)=>{
+      const x=xScale(i), y=yScale(v);
+      d += (i===0?'M':'L')+x.toFixed(1)+','+y.toFixed(1)+' ';
+    });
+    paths+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.25"/>`;
+    s.data.forEach((v,i)=>{
+      const x=xScale(i), y=yScale(v);
+      points+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="${s.color}"><title>${labels[i]}: ${opts.valFmt?opts.valFmt(v):v}</title></circle>`;
+    });
+  });
+  return `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">${gridlines}${gridlabels}${paths}${points}${catlabels}</svg>`;
+}
+function renderChart(id, series, kind, labels, opts={}){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const svg = kind==='line' ? lineChartSvg(labels, series, opts) : kind==='dense' ? denseLineChartSvg(labels, series, opts) : barChartSvg(labels, series, opts);
+  el.innerHTML = legendHtml(series) + svg;
+}
+
+function fmtNum(n, d=0){ return Number(n).toLocaleString('en-IN', {maximumFractionDigits:d, minimumFractionDigits:d}); }
+function fmtCur(n){ return '₹' + fmtNum(n); }
+function pctDelta(a,b){ return ((b-a)/a*100); }
+
+const t1 = [
+  {name:'Total Revenue', v25:5448500, v26:6506000, type:'cur'},
+  {name:'Average Order Value (AOV)', v25:5675.52, v26:5834.98, type:'cur2'},
+  {name:'Total Units', v25:960, v26:1115, type:'num'},
+  {name:'Conversion Rate', v25:5.84, v26:6.43, type:'pct'},
+  {name:'Total Campaigns', v25:3456, v26:2527, type:'num'},
+  {name:'Total Leads', v25:16441, v26:17353, type:'num'},
+  {name:'Leads Per Campaign (LPC)', v25:4.76, v26:6.87, type:'dec'},
+  {name:'Pitches', v25:10179, v26:9385, type:'num'},
+  {name:'P to C', v25:9.43, v26:11.88, type:'pct'},
+  {name:'Working Days', v25:10, v26:10, type:'num'},
+  {name:'Campaigns Per Day', v25:346, v26:253, type:'num'},
+  {name:'Leads Per Day', v25:1644, v26:1735, type:'num'},
+  {name:'Pitches Per Day', v25:1018, v26:939, type:'num'},
+  {name:'Revenue Per Day', v25:544850, v26:650600, type:'cur'},
+  {name:'Head Count', v25:161, v26:135, type:'num'},
+  {name:'Revenue Per Boe', v25:33841.61, v26:48192.59, type:'cur2'},
+];function fmtByType(v, type){
+  if(type==='cur') return fmtCur(v);
+  if(type==='cur2') return fmtCur(v.toFixed(2));
+  if(type==='pct') return v.toFixed(2)+'%';
+  if(type==='dec') return v.toFixed(2);
+  return fmtNum(v);
+}
+
+const t1Body = document.getElementById('t1-body');
+t1.forEach(m=>{
+  const delta = pctDelta(m.v25, m.v26);
+  const isFlat = Math.abs(delta) < 0.01;
+  const dirClass = isFlat ? 'flat' : (delta>0 ? 'up':'down');
+  const arrow = isFlat ? '→' : (delta>0?'▲':'▼');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td class="label">${m.name}</td>
+    <td class="num">${fmtByType(m.v25,m.type)}</td>
+    <td class="num">${fmtByType(m.v26,m.type)}</td>
+    <td class="num"><span class="delta-pill ${dirClass}">${arrow} ${Math.abs(delta).toFixed(1)}%</span></td>`;
+  t1Body.appendChild(tr);
+});
+
+/* ---- KPI dumbbell cards ---- */
+const kpiSet = ['Total Revenue','Total Leads','Total Campaigns','Pitches','Conversion Rate','P to C','Leads Per Campaign (LPC)','Head Count','Revenue Per Boe'];
+const kpiGrid = document.getElementById('kpi-grid');
+kpiSet.forEach(name=>{
+  const m = t1.find(x=>x.name===name);
+  const delta = pctDelta(m.v25,m.v26);
+  const dir = delta>=0?'up':'down';
+  const min = Math.min(m.v25,m.v26), max = Math.max(m.v25,m.v26);
+  const range = max-min || 1;
+  const pad = range*0.35;
+  const lo = min-pad, hi = max+pad;
+  const x = v => 10 + (v-lo)/(hi-lo)*280;
+  const x25 = x(m.v25), x26 = x(m.v26);
+  const color26 = dir==='up' ? TEAL : CORAL;
+  const card = document.createElement('div');
+  card.className='kpi-card';
+  card.innerHTML = `
+    <div class="name">${name}</div>
+    <svg viewBox="0 0 300 46">
+      <line x1="10" y1="23" x2="290" y2="23" stroke="#E4DFD3" stroke-width="2"/>
+      <line x1="${x25}" y1="23" x2="${x26}" y2="23" stroke="${color26}" stroke-width="3" opacity="0.55"/>
+      <circle cx="${x25}" cy="23" r="6" fill="#fff" stroke="${NAVY}" stroke-width="2.5"/>
+      <circle cx="${x26}" cy="23" r="6.5" fill="${color26}"/>
+    </svg>
+    <div class="foot">
+      <span class="val">${fmtByType(m.v25,m.type)} → ${fmtByType(m.v26,m.type)}</span>
+      <span class="delta" style="color:${color26}">${dir==='up'?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%</span>
+    </div>`;
+  kpiGrid.appendChild(card);
+});
+
+/* ---- Table 1 written analysis ---- */
+const t1AnalysisPoints = [
+  `<b>Total Revenue</b> grew from ₹54,48,500 to ₹65,06,000, up <span class="up">▲19.41%</span> — a strong gain driven by a much leaner campaign base converting more efficiently.`,
+  `<b>Average Order Value</b> rose from ₹5,675.52 to ₹5,834.98 (<span class="up">▲2.81%</span>) — a modest ticket-size gain alongside solid volume growth.`,
+  `<b>Total Units</b> sold rose from 960 to 1,115 (<span class="up">▲16.15%</span>), tracking closely with revenue's own growth.`,
+  `<b>Conversion Rate</b> improved from 5.84% to 6.43% (<span class="up">▲0.59 pp</span>) — a genuine efficiency gain even as campaigns were cut sharply.`,
+  `<b>Total Campaigns</b> fell from 3,456 to 2,527 (<span class="down">▼26.88%</span>) — this period's growth came from a much leaner campaign base, not more outreach.`,
+  `<b>Total Leads</b> still grew from 16,441 to 17,353 (<span class="up">▲5.55%</span>) despite the campaign cut — a real efficiency improvement in lead generation.`,
+  `<b>Leads Per Campaign</b> jumped from 4.76 to 6.87 (<span class="up">▲44.33%</span>) — the clearest efficiency gain in Table 1, each campaign pulling in over 44% more leads on average.`,
+  `<b>Pitches</b> fell from 10,179 to 9,385 (<span class="down">▼7.80%</span>) — the funnel converted a smaller pitch volume into meaningfully more revenue.`,
+  `<b>P to C</b> improved sharply from 9.43% to 11.88% (<span class="up">▲2.45 pp</span>) — the back end of the funnel converted pitches into revenue notably more efficiently.`,
+  `<b>Working Days</b> were identical at 10 in both periods, so every other change reflects genuine period‑over‑period activity shifts, not calendar effects.`,
+  `<b>Campaigns/Day</b> fell from 346 to 253 (<span class="down">▼26.88%</span>), while <b>Leads/Day</b> rose from 1,644 to 1,735 (<span class="up">▲5.54%</span>) and <b>Pitches/Day</b> fell from 1,018 to 939 (<span class="down">▼7.76%</span>) — daily tempo confirms a leaner, more efficient funnel driving this period's growth.`,
+  `<b>Revenue/Day</b> rose from ₹5,44,850 to ₹6,50,600 (<span class="up">▲19.41%</span>), matching total revenue's growth exactly since working days were unchanged.`,
+  `<b>Head Count</b> fell from 161 to 135 (<span class="down">▼16.15%</span>) — a meaningful team contraction even as revenue grew strongly.`,
+  `<b>Revenue Per Boe</b> rose from ₹33,841.61 to ₹48,192.59 (<span class="up">▲42.41%</span>) — with fewer people generating far more revenue, this is a genuine productivity surge on top of the improved Conversion Rate and P to C.`,
+];
+const t1AnalysisUl = document.getElementById('t1-analysis');
+t1AnalysisPoints.forEach(p=>{ const li=document.createElement('li'); li.innerHTML=p; t1AnalysisUl.appendChild(li); });
+
+/* ---- Table 1 charts ---- */
+renderChart('chartFunnel', [
+  {name:'Aug 1–13', color:NAVY, data:[3456,16441,10179]},
+  {name:'Sep 1–14', color:GOLD, data:[2527,17353,9385]},
+], 'bar', ['Campaigns','Leads','Pitches'], {valFmt:v=>fmtNum(v)});
+
+renderChart('chartRates', [
+  {name:'Aug 1–13', color:NAVY, data:[5.84,9.43]},
+  {name:'Sep 1–14', color:CORAL, data:[6.43,11.88]},
+], 'bar', ['Conversion Rate','P to C'], {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
+
+renderChart('chartRevProd', [
+  {name:'Revenue / Day (Index, Aug=100)', color:TEAL, data:[100, +(650600/544850*100).toFixed(1)]},
+  {name:'Revenue per Boe (Index, Aug=100)', color:CORAL, data:[100, +(48192.59/33841.61*100).toFixed(1)]},
+], 'line', ['Aug 1–13','Sep 1–14'], {valFmt:v=>v.toFixed(1), axisFmt:v=>v.toFixed(0)});
+
+renderChart('chartDaily', [
+  {name:'Aug 1–13', color:NAVY, data:[346,1644,1018]},
+  {name:'Sep 1–14', color:TEAL, data:[253,1735,939]},
+], 'bar', ['Campaigns/Day','Leads/Day','Pitches/Day'], {valFmt:v=>fmtNum(v)});
+
+const t2 = [
+  {name:'Law + New Businesses', rev25:1261500, leads25:2888, camp25:692, pitch25:1956, prod25:45054, rev26:1302000, leads26:3057, camp26:609, pitch26:1991, prod26:56609, aov25:5557, units25:227, conv25:7.86, lpc25:4.17, p2c25:11.61, boe25:28, aov26:5517, units26:236, conv26:7.72, lpc26:5.02, p2c26:11.85, boe26:23},
+  {name:'Medical Cluster', rev25:719000, leads25:2848, camp25:471, pitch25:1578, prod25:29958, rev26:675000, leads26:2659, camp26:280, pitch26:1104, prod26:39706, aov25:4639, units25:155, conv25:5.44, lpc25:6.05, p2c25:9.82, boe25:24, aov26:4754, units26:142, conv26:5.34, lpc26:9.5, p2c26:12.86, boe26:17},
+  {name:'Nagpur Cluster', rev25:663000, leads25:2549, camp25:595, pitch25:1338, prod25:24556, rev26:842000, leads26:2742, camp26:371, pitch26:1141, prod26:44316, aov25:5667, units25:117, conv25:4.59, lpc25:4.28, p2c25:8.74, boe25:27, aov26:5888, units26:143, conv26:5.22, lpc26:7.39, p2c26:12.53, boe26:19},
+  {name:'North Cluster', rev25:735000, leads25:2194, camp25:214, pitch25:1018, prod25:43235, rev26:775000, leads26:2166, camp26:131, pitch26:768, prod26:51667, aov25:6282, units25:117, conv25:5.33, lpc25:10.25, p2c25:11.49, boe25:17, aov26:5916, units26:131, conv26:6.05, lpc26:16.53, p2c26:17.06, boe26:15},
+  {name:'South Cluster', rev25:1558000, leads25:4316, camp25:1039, pitch25:3040, prod25:34622, rev26:2487000, leads26:5347, camp26:829, pitch26:3461, prod26:55267, aov25:5969, units25:261, conv25:6.05, lpc25:4.15, p2c25:8.59, boe25:45, aov26:6344, units26:392, conv26:7.33, lpc26:6.45, p2c26:11.33, boe26:45},
+  {name:'WCC Cluster', rev25:512000, leads25:1646, camp25:445, pitch25:1249, prod25:25600, rev26:425000, leads26:1382, camp26:307, pitch26:920, prod26:26563, aov25:6169, units25:83, conv25:5.04, lpc25:3.7, p2c25:6.65, boe25:20, aov26:5986, units26:71, conv26:5.14, lpc26:4.5, p2c26:7.72, boe26:16},
+];
+const t2Total = {name:'Grand Total', rev25:5448500, leads25:16441, camp25:3456, pitch25:10179, prod25:33842, rev26:6506000, leads26:17353, camp26:2527, pitch26:9385, prod26:48193, aov25:5676, units25:960, conv25:5.84, lpc25:4.76, p2c25:9.43, boe25:161, aov26:5835, units26:1115, conv26:6.43, lpc26:6.87, p2c26:11.88, boe26:135};function rowHtmlVol(c){
+  return `<td class="label">${c.name}</td>
+    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
+    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
+}
+function rowHtmlRatioBoe(c){
+  return `<td class="label">${c.name}</td>
+    <td class="num">${fmtCur(c.aov25.toFixed(2))}</td><td class="num">${fmtNum(c.units25)}</td><td class="num">${c.conv25.toFixed(2)}%</td><td class="num">${c.lpc25.toFixed(2)}</td><td class="num">${c.p2c25.toFixed(2)}%</td>
+    <td class="num">${fmtCur(c.aov26.toFixed(2))}</td><td class="num">${fmtNum(c.units26)}</td><td class="num">${c.conv26.toFixed(2)}%</td><td class="num">${c.lpc26.toFixed(2)}</td><td class="num">${c.p2c26.toFixed(2)}%</td>`;
+}
+const t2BodyVol = document.getElementById('t2-body-vol');
+const t2BodyRatio = document.getElementById('t2-body-ratio');
+t2.forEach(c=>{ const tr=document.createElement('tr'); tr.innerHTML = rowHtmlVol(c); t2BodyVol.appendChild(tr); });
+{ const tr=document.createElement('tr'); tr.className='total'; tr.innerHTML = rowHtmlVol(t2Total); t2BodyVol.appendChild(tr); }
+t2.forEach(c=>{ const tr=document.createElement('tr'); tr.innerHTML = rowHtmlRatioBoe(c); t2BodyRatio.appendChild(tr); });
+{ const tr=document.createElement('tr'); tr.className='total'; tr.innerHTML = rowHtmlRatioBoe(t2Total); t2BodyRatio.appendChild(tr); }
+
+/* ---- Table 2 charts ---- */
+const clusterNames = t2.map(c=>c.name.replace(' Cluster','').replace('Law + New Businesses','Law + New Biz'));
+renderChart('chartClusterRevenue', [
+  {name:'Aug 1–13', color:NAVY, data:t2.map(c=>c.rev25)},
+  {name:'Sep 1–14', color:GOLD, data:t2.map(c=>c.rev26)},
+], 'bar', clusterNames, {valFmt:v=>'₹'+fmtNum(Math.round(v/1000))+'K', axisFmt:v=>'₹'+fmtNum(Math.round(v/100000))+'L'});
+
+renderChart('chartClusterLeads', [
+  {name:'Aug 1–13', color:NAVY, data:t2.map(c=>c.leads25)},
+  {name:'Sep 1–14', color:TEAL, data:t2.map(c=>c.leads26)},
+], 'bar', clusterNames, {valFmt:v=>fmtNum(v)});
+
+renderChart('chartClusterConv', [
+  {name:'Aug 1–13', color:NAVY, data:t2.map(c=>c.conv25)},
+  {name:'Sep 1–14', color:CORAL, data:t2.map(c=>c.conv26)},
+], 'line', clusterNames, {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
+
+renderChart('chartClusterP2C', [
+  {name:'Aug 1–13', color:NAVY, data:t2.map(c=>c.p2c25)},
+  {name:'Sep 1–14', color:GOLD, data:t2.map(c=>c.p2c26)},
+], 'line', clusterNames, {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
+
+/* ---- Region mini-cards + written analysis ---- */
+const clusterAnalysis = {
+  'Law + New Businesses': [
+    `Revenue grew modestly, from ₹12.62L to ₹13.02L (<span class="up">▲3.21%</span>), even as leads grew 5.85% and campaigns fell 11.99% (692→609) — a slightly leaner funnel with limited revenue upside.`,
+    `Conversion Rate held essentially flat (7.86%→7.72%) and P to C held essentially flat (11.61%→11.85%) — steady, unremarkable efficiency alongside modest growth.`,
+    `LPC rose from 4.17 to 5.02 (<span class="up">▲20.38%</span>) and Head Count fell 17.86% (28→23) — Productivity still rose 25.65% (₹45,054→₹56,609) despite the muted revenue growth, since fewer people delivered it.`,
+  ],
+  'Medical Cluster': [
+    `Revenue fell from ₹7.19L to ₹6.75L (<span class="down">▼6.12%</span>) on leads down 6.64%, even as campaigns fell 40.55% (471→280) — a much leaner funnel that still couldn't offset the volume decline.`,
+    `Conversion Rate held essentially flat (5.44%→5.34%) while P to C rose from 9.82% to 12.86% (<span class="up">▲3.04 pp</span>) — a real back-end efficiency gain even as revenue softened.`,
+    `LPC surged from 6.05 to 9.50 (<span class="up">▲57.02%</span>) and Head Count fell 29.17% (24→17) — Productivity still rose 32.54% (₹29,958→₹39,706), the strongest productivity gain of any region despite the revenue decline.`,
+  ],
+  'Nagpur Cluster': [
+    `Revenue grew from ₹6.63L to ₹8.42L (<span class="up">▲27.00%</span>) on leads up 7.57%, even as campaigns fell 37.65% (595→371) — a leaner funnel driving solid growth.`,
+    `Conversion Rate rose from 4.59% to 5.22% (<span class="up">▲0.63 pp</span>) and P to C rose from 8.74% to 12.53% (<span class="up">▲3.79 pp</span>) — a genuine efficiency gain alongside strong revenue growth.`,
+    `Head Count fell 29.63% (27→19), one of the steepest headcount cuts of any region, and Productivity nearly doubled (₹24,556→₹44,316, <span class="up">▲80.47%</span>) — the largest productivity gain in this report.`,
+  ],
+  'North Cluster': [
+    `Revenue grew from ₹7.35L to ₹7.75L (<span class="up">▲5.44%</span>) even as leads fell slightly (2,194→2,166, <span class="down">▼1.28%</span>) and campaigns nearly halved (214→131, <span class="down">▼38.79%</span>).`,
+    `Conversion Rate rose from 5.33% to 6.05% (<span class="up">▲0.72 pp</span>) and P to C rose from 11.49% to 17.06% (<span class="up">▲5.57 pp</span>) — by far the largest P to C gain of any region in this report.`,
+    `LPC rose from 10.25 to 16.53 (<span class="up">▲61.27%</span>) and Productivity rose 19.50% (₹43,235→₹51,667) — North Cluster combined the smallest funnel with the sharpest efficiency gains anywhere in this report.`,
+  ],
+  'South Cluster': [
+    `Revenue grew from ₹15.58L to ₹24.87L (<span class="up">▲59.63%</span>) — the strongest regional gain by far — on leads up 23.89%, even as campaigns fell 20.21%.`,
+    `Conversion Rate rose from 6.05% to 7.33% (<span class="up">▲1.28 pp</span>) and P to C rose from 8.59% to 11.33% (<span class="up">▲2.74 pp</span>) — a rare combination of the largest revenue gain and genuine efficiency improvement.`,
+    `Table 3 shows this growth was driven by both sub‑clusters, with FightClub's revenue growth (+81.23%) far outpacing PackHouse's (+36.89%). Head Count held exactly flat (45→45), so this growth came entirely from a more productive team.`,
+  ],
+  'WCC Cluster': [
+    `Revenue fell from ₹5.12L to ₹4.25L (<span class="down">▼16.99%</span>), the only region to decline, even as campaigns fell 31.01% (445→307) in an attempt to streamline the funnel.`,
+    `Conversion Rate still improved slightly (5.04%→5.14%) and P to C still improved (6.65%→7.72%, <span class="up">▲1.07 pp</span>) — efficiency actually moved in the right direction even as revenue fell.`,
+    `Units fell from 83 to 71 (<span class="down">▼14.46%</span>) and Head Count fell 20.00% (20→16) — WCC Cluster's revenue decline appears to be primarily a scale effect (fewer leads, fewer campaigns) rather than an efficiency problem.`,
+  ],
+};
+
+const clusterBlocks = document.getElementById('cluster-blocks');
+t2.forEach(c=>{
+  const revDelta = pctDelta(c.rev25, c.rev26);
+  const block = document.createElement('div');
+  block.className = 'cluster-block';
+  block.innerHTML = `
+    <div class="cluster-head">
+      <h3>${c.name}</h3>
+      <div class="rev-badge">${fmtCur(c.rev25)} → ${fmtCur(c.rev26)} &nbsp;${revDelta>=0?'▲':'▼'} ${Math.abs(revDelta).toFixed(1)}%</div>
+    </div>
+    <div class="cluster-body">
+      <div class="mini-metric-grid">
+        <div class="mini-metric"><div class="lbl">Leads</div><div class="pair"><span class="a">${fmtNum(c.leads25)}</span><span class="arrow">→</span><span class="b">${fmtNum(c.leads26)}</span></div></div>
+        <div class="mini-metric"><div class="lbl">Campaigns</div><div class="pair"><span class="a">${fmtNum(c.camp25)}</span><span class="arrow">→</span><span class="b">${fmtNum(c.camp26)}</span></div></div>
+        <div class="mini-metric"><div class="lbl">Pitches</div><div class="pair"><span class="a">${fmtNum(c.pitch25)}</span><span class="arrow">→</span><span class="b">${fmtNum(c.pitch26)}</span></div></div>
+        <div class="mini-metric"><div class="lbl">Units</div><div class="pair"><span class="a">${fmtNum(c.units25)}</span><span class="arrow">→</span><span class="b">${fmtNum(c.units26)}</span></div></div>
+        <div class="mini-metric"><div class="lbl">Conversion Rate</div><div class="pair"><span class="a">${c.conv25.toFixed(2)}%</span><span class="arrow">→</span><span class="b">${c.conv26.toFixed(2)}%</span></div></div>
+        <div class="mini-metric"><div class="lbl">P to C</div><div class="pair"><span class="a">${c.p2c25.toFixed(2)}%</span><span class="arrow">→</span><span class="b">${c.p2c26.toFixed(2)}%</span></div></div>
+        <div class="mini-metric"><div class="lbl">LPC</div><div class="pair"><span class="a">${c.lpc25.toFixed(2)}</span><span class="arrow">→</span><span class="b">${c.lpc26.toFixed(2)}</span></div></div>
+        <div class="mini-metric"><div class="lbl">BOE</div><div class="pair"><span class="a">${fmtNum(c.boe25)}</span><span class="arrow">→</span><span class="b">${fmtNum(c.boe26)}</span></div></div>
+      </div>
+      <div class="cluster-analysis">
+        <ul>${clusterAnalysis[c.name].map(p=>`<li>${p}</li>`).join('')}</ul>
+      </div>
+    </div>`;
+  clusterBlocks.appendChild(block);
+});
+
+const t3 = [
+  {region:'Law + New Businesses', name:'New Businesses', rev25:556000, leads25:1471, camp25:380, pitch25:1090, prod25:37067, rev26:770000, leads26:1639, camp26:412, pitch26:1162, prod26:59231, aov25:5560, units25:100, conv25:6.8, lpc25:3.87, p2c25:9.17, boe25:15, aov26:5662, units26:136, conv26:8.3, lpc26:3.98, p2c26:11.7, boe26:13},
+  {region:'', name:'Law', rev25:705500, leads25:1417, camp25:312, pitch25:866, prod25:54269, rev26:532000, leads26:1418, camp26:197, pitch26:829, prod26:53200, aov25:5555, units25:127, conv25:8.96, lpc25:4.54, p2c25:14.67, boe25:13, aov26:5320, units26:100, conv26:7.05, lpc26:7.2, p2c26:12.06, boe26:10},
+  {region:'South Cluster', name:'FightClub', rev25:799000, leads25:2533, camp25:498, pitch25:1537, prod25:30731, rev26:1448000, leads26:3127, camp26:407, pitch26:1856, prod26:55692, aov25:6146, units25:130, conv25:5.13, lpc25:5.09, p2c25:8.46, boe25:26, aov26:6766, units26:214, conv26:6.84, lpc26:7.68, p2c26:11.53, boe26:26},
+  {region:'', name:'PackHouse', rev25:759000, leads25:1783, camp25:541, pitch25:1503, prod25:39947, rev26:1039000, leads26:2220, camp26:422, pitch26:1605, prod26:54684, aov25:5794, units25:131, conv25:7.35, lpc25:3.3, p2c25:8.72, boe25:19, aov26:5837, units26:178, conv26:8.02, lpc26:5.26, p2c26:11.09, boe26:19},
+];
+const t3Total = {region:'', name:'Grand Total', rev25:2819500, leads25:7204, camp25:1731, pitch25:4996, prod25:38623, rev26:3789000, leads26:8404, camp26:1438, pitch26:5452, prod26:55721, aov25:5778, units25:488, conv25:6.77, lpc25:4.16, p2c25:9.77, boe25:73, aov26:6033, units26:628, conv26:7.47, lpc26:5.84, p2c26:11.52, boe26:68};function t3RowHtmlVol(c){
+  return `<td class="label">${c.region}</td><td class="label">${c.name}</td>
+    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
+    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
+}
+function t3RowHtmlRatio(c){
+  return `<td class="label">${c.region}</td><td class="label">${c.name}</td>
+    <td class="num">${fmtCur(c.aov25.toFixed(2))}</td><td class="num">${fmtNum(c.units25)}</td><td class="num">${c.conv25.toFixed(2)}%</td><td class="num">${c.lpc25.toFixed(2)}</td><td class="num">${c.p2c25.toFixed(2)}%</td>
+    <td class="num">${fmtCur(c.aov26.toFixed(2))}</td><td class="num">${fmtNum(c.units26)}</td><td class="num">${c.conv26.toFixed(2)}%</td><td class="num">${c.lpc26.toFixed(2)}</td><td class="num">${c.p2c26.toFixed(2)}%</td>`;
+}
+const t3BodyVol = document.getElementById('t3-body-vol');
+const t3BodyRatio = document.getElementById('t3-body-ratio');
+t3.forEach(c=>{ const tr=document.createElement('tr'); tr.innerHTML = t3RowHtmlVol(c); t3BodyVol.appendChild(tr); });
+{ const tr=document.createElement('tr'); tr.className='total'; tr.innerHTML = t3RowHtmlVol(t3Total); t3BodyVol.appendChild(tr); }
+t3.forEach(c=>{ const tr=document.createElement('tr'); tr.innerHTML = t3RowHtmlRatio(c); t3BodyRatio.appendChild(tr); });
+{ const tr=document.createElement('tr'); tr.className='total'; tr.innerHTML = t3RowHtmlRatio(t3Total); t3BodyRatio.appendChild(tr); }
+
+const t3Names = t3.map(c=>c.name);
+renderChart('chartSubClusterRevenue', [
+  {name:'Aug 1–13', color:NAVY, data:t3.map(c=>c.rev25)},
+  {name:'Sep 1–14', color:GOLD, data:t3.map(c=>c.rev26)},
+], 'bar', t3Names, {valFmt:v=>'₹'+fmtNum(Math.round(v/1000))+'K', axisFmt:v=>'₹'+fmtNum(Math.round(v/100000))+'L'});
+
+renderChart('chartSubClusterAOV', [
+  {name:'Aug 1–13', color:NAVY, data:t3.map(c=>c.aov25)},
+  {name:'Sep 1–14', color:TEAL, data:t3.map(c=>c.aov26)},
+], 'bar', t3Names, {valFmt:v=>'₹'+fmtNum(v)});
+
+const t3AnalysisPoints = [
+  `<b>New Businesses</b> revenue grew from ₹5.56L to ₹7.70L (<span class="up">▲38.49%</span>), with leads up 11.42% and campaigns up 8.42% — Conversion Rate improved from 6.80% to 8.30% (<span class="up">▲1.50 pp</span>) and P to C rose from 9.17% to 11.70% (<span class="up">▲2.53 pp</span>), a genuine efficiency gain alongside strong growth.`,
+  `<b>Law</b> was the only sub‑cluster to decline: revenue fell from ₹7.06L to ₹5.32L (<span class="down">▼24.59%</span>), even as leads held essentially flat (1,417→1,418) — Conversion Rate fell from 8.96% to 7.05% (<span class="down">▼1.91 pp</span>) and P to C fell from 14.67% to 12.06% (<span class="down">▼2.61 pp</span>), the steepest efficiency decline of any sub‑cluster.`,
+  `<b>FightClub</b> was the standout: revenue grew from ₹7.99L to ₹14.48L (<span class="up">▲81.23%</span>) on leads up 23.45%, with Conversion Rate rising from 5.13% to 6.84% (<span class="up">▲1.71 pp</span>) and P to C jumping from 8.46% to 11.53% (<span class="up">▲3.07 pp</span>) — the strongest combination of growth and efficiency gain in this report.`,
+  `<b>PackHouse</b> revenue grew from ₹7.59L to ₹10.39L (<span class="up">▲36.89%</span>) on leads up 24.51%, with Conversion Rate rising from 7.35% to 8.02% (<span class="up">▲0.67 pp</span>) and P to C rising from 8.72% to 11.09% (<span class="up">▲2.37 pp</span>) — solid growth with a real efficiency gain, though smaller in scale than FightClub's.`,
+  `<b>South Cluster net effect:</b> FightClub's stronger relative growth (+81.23% vs PackHouse's +36.89%) was the dominant driver behind South Cluster's overall region‑level revenue growth of 59.63% in Table 2, making FightClub the single biggest contributor to growth anywhere in this report.`,
+];
+document.getElementById('t3-analysis').innerHTML = t3AnalysisPoints.map(p=>`<li>${p}</li>`).join('');
+
+const t4 = [
+  {cluster:'Law + New Businesses', name:'Athena', rev25:351000, leads25:840, camp25:177, pitch25:473, prod25:50143, rev26:341000, leads26:772, camp26:99, pitch26:428, prod26:68200, aov25:5661, units25:62, conv25:7.38, lpc25:4.75, p2c25:13.11, boe25:7, aov26:5413, units26:63, conv26:8.16, lpc26:7.8, p2c26:14.72, boe26:5},
+  {cluster:'', name:'T-Orion', rev25:354500, leads25:577, camp25:135, pitch25:393, prod25:59083, rev26:191000, leads26:646, camp26:98, pitch26:401, prod26:38200, aov25:5454, units25:65, conv25:11.27, lpc25:4.27, p2c25:16.54, boe25:6, aov26:5162, units26:37, conv26:5.73, lpc26:6.59, p2c26:9.23, boe26:5},
+  {cluster:'', name:'T-Pushkar', rev25:145000, leads25:500, camp25:142, pitch25:441, prod25:24167, rev26:299000, leads26:850, camp26:158, pitch26:517, prod26:49833, aov25:5370, units25:27, conv25:5.4, lpc25:3.52, p2c25:6.12, boe25:6, aov26:5339, units26:56, conv26:6.59, lpc26:5.38, p2c26:10.83, boe26:6},
+  {cluster:'', name:'T-Revival', rev25:186000, leads25:391, camp25:115, pitch25:265, prod25:37200, rev26:217000, leads26:363, camp26:127, pitch26:276, prod26:72333, aov25:5636, units25:33, conv25:8.44, lpc25:3.4, p2c25:12.45, boe25:5, aov26:5865, units26:37, conv26:10.19, lpc26:2.86, p2c26:13.41, boe26:3},
+  {cluster:'', name:'Mavericks', rev25:225000, leads25:580, camp25:123, pitch25:384, prod25:56250, rev26:254000, leads26:426, camp26:127, pitch26:369, prod26:63500, aov25:5625, units25:40, conv25:6.9, lpc25:4.72, p2c25:10.42, boe25:4, aov26:5907, units26:43, conv26:10.09, lpc26:3.35, p2c26:11.65, boe26:4},
+  {cluster:'Medical Cluster', name:'Apex', rev25:226500, leads25:444, camp25:130, pitch25:334, prod25:37750, rev26:167500, leads26:587, camp26:85, pitch26:312, prod26:33500, aov25:5393, units25:42, conv25:9.46, lpc25:3.42, p2c25:12.57, boe25:6, aov26:5076, units26:33, conv26:5.62, lpc26:6.91, p2c26:10.58, boe26:5},
+  {cluster:'', name:'IGNYT', rev25:68000, leads25:604, camp25:115, pitch25:323, prod25:13600, rev26:144500, leads26:499, camp26:40, pitch26:161, prod26:48167, aov25:4250, units25:16, conv25:2.65, lpc25:5.25, p2c25:4.95, boe25:5, aov26:4661, units26:31, conv26:6.21, lpc26:12.48, p2c26:19.25, boe26:3},
+  {cluster:'', name:'Ethos', rev25:158000, leads25:460, camp25:92, pitch25:309, prod25:31600, rev26:104000, leads26:562, camp26:52, pitch26:172, prod26:34667, aov25:4158, units25:38, conv25:8.26, lpc25:5.0, p2c25:12.3, boe25:5, aov26:4160, units26:25, conv26:4.45, lpc26:10.81, p2c26:14.53, boe26:3},
+  {cluster:'', name:'Rebels 2.0', rev25:80500, leads25:475, camp25:68, pitch25:265, prod25:20125, rev26:91000, leads26:170, camp26:41, pitch26:150, prod26:45500, aov25:4472, units25:18, conv25:3.79, lpc25:6.99, p2c25:6.79, boe25:4, aov26:4550, units26:20, conv26:11.76, lpc26:4.15, p2c26:13.33, boe26:2},
+  {cluster:'', name:'Phoenix', rev25:186000, leads25:865, camp25:66, pitch25:347, prod25:46500, rev26:168000, leads26:841, camp26:61, pitch26:309, prod26:42000, aov25:4537, units25:41, conv25:4.74, lpc25:13.11, p2c25:11.82, boe25:4, aov26:5091, units26:33, conv26:3.92, lpc26:13.79, p2c26:10.68, boe26:4},
+  {cluster:'Nagpur Cluster', name:'Aces', rev25:122000, leads25:631, camp25:101, pitch25:208, prod25:24400, rev26:165000, leads26:651, camp26:74, pitch26:264, prod26:41250, aov25:5810, units25:21, conv25:3.33, lpc25:6.25, p2c25:10.1, boe25:5, aov26:6111, units26:27, conv26:4.15, lpc26:8.8, p2c26:10.23, boe26:4},
+  {cluster:'', name:'Aces 2.0', rev25:67000, leads25:155, camp25:61, pitch25:131, prod25:16750, rev26:47000, leads26:82, camp26:18, pitch26:60, prod26:23500, aov25:4467, units25:15, conv25:9.68, lpc25:2.54, p2c25:11.45, boe25:4, aov26:6714, units26:7, conv26:8.54, lpc26:4.56, p2c26:11.67, boe26:2},
+  {cluster:'', name:'Nova', rev25:124000, leads25:369, camp25:96, pitch25:243, prod25:20667, rev26:164000, leads26:198, camp26:36, pitch26:135, prod26:54667, aov25:5905, units25:21, conv25:5.69, lpc25:3.84, p2c25:8.64, boe25:6, aov26:5655, units26:29, conv26:14.65, lpc26:5.5, p2c26:21.48, boe26:3},
+  {cluster:'', name:'SuperNova', rev25:99000, leads25:265, camp25:63, pitch25:166, prod25:49500, rev26:116000, leads26:235, camp26:28, pitch26:70, prod26:116000, aov25:5500, units25:18, conv25:6.79, lpc25:4.21, p2c25:10.84, boe25:2, aov26:6824, units26:17, conv26:7.23, lpc26:8.39, p2c26:24.29, boe26:1},
+  {cluster:'', name:'Phoenix Nagpur', rev25:198000, leads25:520, camp25:138, pitch25:279, prod25:39600, rev26:169000, leads26:1199, camp26:126, pitch26:340, prod26:33800, aov25:6387, units25:31, conv25:5.96, lpc25:3.77, p2c25:11.11, boe25:5, aov26:5281, units26:32, conv26:2.67, lpc26:9.52, p2c26:9.41, boe26:5},
+  {cluster:'', name:'Titans', rev25:53000, leads25:609, camp25:136, pitch25:311, prod25:10600, rev26:181000, leads26:377, camp26:89, pitch26:272, prod26:45250, aov25:4818, units25:11, conv25:1.81, lpc25:4.48, p2c25:3.54, boe25:5, aov26:5839, units26:31, conv26:8.22, lpc26:4.24, p2c26:11.4, boe26:4},
+  {cluster:'North Cluster', name:'Sudarshan', rev25:208000, leads25:766, camp25:109, pitch25:397, prod25:29714, rev26:247000, leads26:559, camp26:55, pitch26:297, prod26:49400, aov25:5943, units25:35, conv25:4.57, lpc25:7.03, p2c25:8.82, boe25:7, aov26:6333, units26:39, conv26:6.98, lpc26:10.16, p2c26:13.13, boe26:5},
+  {cluster:'', name:'Jeevan Marg', rev25:181000, leads25:549, camp25:50, pitch25:229, prod25:60333, rev26:207000, leads26:741, camp26:42, pitch26:225, prod26:51750, aov25:6241, units25:29, conv25:5.28, lpc25:10.98, p2c25:12.66, boe25:3, aov26:5914, units26:35, conv26:4.72, lpc26:17.64, p2c26:15.56, boe26:4},
+  {cluster:'', name:'T-Vyom', rev25:346000, leads25:879, camp25:55, pitch25:392, prod25:49429, rev26:321000, leads26:866, camp26:34, pitch26:246, prod26:53500, aov25:6528, units25:53, conv25:6.03, lpc25:15.98, p2c25:13.52, boe25:7, aov26:5632, units26:57, conv26:6.58, lpc26:25.47, p2c26:23.17, boe26:6},
+  {cluster:'South Cluster', name:'FC Cheguevara', rev25:280000, leads25:751, camp25:90, pitch25:350, prod25:46667, rev26:270000, leads26:757, camp26:77, pitch26:379, prod26:45000, aov25:6667, units25:42, conv25:5.59, lpc25:8.34, p2c25:12.0, boe25:6, aov26:6279, units26:43, conv26:5.68, lpc26:9.83, p2c26:11.35, boe26:6},
+  {cluster:'', name:'FC Cholas', rev25:180000, leads25:690, camp25:141, pitch25:433, prod25:22500, rev26:377000, leads26:784, camp26:87, pitch26:474, prod26:53857, aov25:5455, units25:33, conv25:4.78, lpc25:4.89, p2c25:7.62, boe25:8, aov26:6614, units26:57, conv26:7.27, lpc26:9.01, p2c26:12.03, boe26:7},
+  {cluster:'', name:'FC Sparkunity', rev25:222000, leads25:666, camp25:119, pitch25:419, prod25:31714, rev26:491000, leads26:938, camp26:178, pitch26:626, prod26:61375, aov25:6343, units25:35, conv25:5.26, lpc25:5.6, p2c25:8.35, boe25:7, aov26:7116, units26:69, conv26:7.36, lpc26:5.27, p2c26:11.02, boe26:8},
+  {cluster:'', name:'FC Fury', rev25:117000, leads25:426, camp25:148, pitch25:335, prod25:23400, rev26:310000, leads26:648, camp26:65, pitch26:377, prod26:62000, aov25:5850, units25:20, conv25:4.69, lpc25:2.88, p2c25:5.97, boe25:5, aov26:6889, units26:45, conv26:6.94, lpc26:9.97, p2c26:11.94, boe26:5},
+  {cluster:'', name:'PH Shadow Fangs', rev25:80000, leads25:285, camp25:74, pitch25:255, prod25:20000, rev26:220000, leads26:369, camp26:49, pitch26:239, prod26:73333, aov25:5000, units25:16, conv25:5.61, lpc25:3.85, p2c25:6.27, boe25:4, aov26:5946, units26:37, conv26:10.03, lpc26:7.53, p2c26:15.48, boe26:3},
+  {cluster:'', name:'PH Blitzwolfers', rev25:305000, leads25:747, camp25:217, pitch25:545, prod25:43571, rev26:224000, leads26:668, camp26:168, pitch26:545, prod26:32000, aov25:6778, units25:45, conv25:6.02, lpc25:3.44, p2c25:8.26, boe25:7, aov26:6788, units26:33, conv26:4.94, lpc26:3.98, p2c26:6.06, boe26:7},
+  {cluster:'', name:'PH Wolvx', rev25:243000, leads25:426, camp25:159, pitch25:418, prod25:48600, rev26:365000, leads26:752, camp26:123, pitch26:514, prod26:60833, aov25:5523, units25:44, conv25:10.33, lpc25:2.68, p2c25:10.53, boe25:5, aov26:5448, units26:67, conv26:8.91, lpc26:6.11, p2c26:13.04, boe26:6},
+  {cluster:'', name:'PH Wolfpack', rev25:131000, leads25:325, camp25:91, pitch25:285, prod25:43667, rev26:230000, leads26:431, camp26:82, pitch26:307, prod26:76667, aov25:5038, units25:26, conv25:8.0, lpc25:3.57, p2c25:9.12, boe25:3, aov26:5610, units26:41, conv26:9.51, lpc26:5.26, p2c26:13.36, boe26:3},
+  {cluster:'WCC Cluster', name:'Genesis', rev25:172000, leads25:446, camp25:121, pitch25:358, prod25:28667, rev26:62000, leads26:316, camp26:83, pitch26:178, prod26:20667, aov25:5931, units25:29, conv25:6.5, lpc25:3.69, p2c25:8.1, boe25:6, aov26:5636, units26:11, conv26:3.48, lpc26:3.81, p2c26:6.18, boe26:3},
+  {cluster:'', name:'T-Samriddhi', rev25:18000, leads25:24, camp25:68, pitch25:87, prod25:9000, rev26:0, leads26:4, camp26:12, pitch26:17, prod26:0, aov25:6000, units25:3, conv25:12.5, lpc25:0.35, p2c25:3.45, boe25:2, aov26:0, units26:0, conv26:0.0, lpc26:0.33, p2c26:0.0, boe26:2},
+  {cluster:'', name:'T-Hiba', rev25:109000, leads25:535, camp25:64, pitch25:344, prod25:27250, rev26:158000, leads26:520, camp26:68, pitch26:331, prod26:39500, aov25:6412, units25:17, conv25:3.18, lpc25:8.36, p2c25:4.94, boe25:4, aov26:5852, units26:27, conv26:5.19, lpc26:7.65, p2c26:8.16, boe26:4},
+  {cluster:'', name:'Poseidon', rev25:86000, leads25:288, camp25:85, pitch25:209, prod25:21500, rev26:116000, leads26:290, camp26:69, pitch26:214, prod26:38667, aov25:6143, units25:14, conv25:4.86, lpc25:3.39, p2c25:6.7, boe25:4, aov26:6105, units26:19, conv26:6.55, lpc26:4.2, p2c26:8.88, boe26:3},
+  {cluster:'', name:'T-Rajarshi', rev25:127000, leads25:353, camp25:107, pitch25:251, prod25:31750, rev26:89000, leads26:252, camp26:76, pitch26:180, prod26:22250, aov25:6350, units25:20, conv25:5.67, lpc25:3.3, p2c25:7.97, boe25:4, aov26:6357, units26:14, conv26:5.56, lpc26:3.32, p2c26:7.78, boe26:4},
+];
+const t4Total = {cluster:'', name:'Grand Total', rev25:5448500, leads25:16441, camp25:3456, pitch25:10179, prod25:33842, rev26:6506000, leads26:17353, camp26:2527, pitch26:9385, prod26:48193, aov25:5676, units25:960, conv25:5.84, lpc25:4.76, p2c25:9.43, boe25:161, aov26:5835, units26:1115, conv26:6.43, lpc26:6.87, p2c26:11.88, boe26:135};function t4RowHtmlVol(c){
+  return `<td class="label">${c.cluster}</td><td class="label">${c.name}</td>
+    <td class="num">${fmtCur(c.rev25)}</td><td class="num">${fmtNum(c.leads25)}</td><td class="num">${fmtNum(c.camp25)}</td><td class="num">${fmtNum(c.pitch25)}</td><td class="num">${fmtNum(c.boe25)}</td><td class="num">${fmtCur(c.prod25.toFixed(2))}</td>
+    <td class="num">${fmtCur(c.rev26)}</td><td class="num">${fmtNum(c.leads26)}</td><td class="num">${fmtNum(c.camp26)}</td><td class="num">${fmtNum(c.pitch26)}</td><td class="num">${fmtNum(c.boe26)}</td><td class="num">${fmtCur(c.prod26.toFixed(2))}</td>`;
+}
+function t4RowHtmlRatio(c){
+  return `<td class="label">${c.cluster}</td><td class="label">${c.name}</td>
+    <td class="num">${fmtCur(c.aov25.toFixed(2))}</td><td class="num">${fmtNum(c.units25)}</td><td class="num">${c.conv25.toFixed(2)}%</td><td class="num">${c.lpc25.toFixed(2)}</td><td class="num">${c.p2c25.toFixed(2)}%</td>
+    <td class="num">${fmtCur(c.aov26.toFixed(2))}</td><td class="num">${fmtNum(c.units26)}</td><td class="num">${c.conv26.toFixed(2)}%</td><td class="num">${c.lpc26.toFixed(2)}</td><td class="num">${c.p2c26.toFixed(2)}%</td>`;
+}
+const t4BodyVol = document.getElementById('t4-body-vol');
+const t4BodyRatio = document.getElementById('t4-body-ratio');
+t4.forEach(c=>{ const tr=document.createElement('tr'); tr.innerHTML = t4RowHtmlVol(c); t4BodyVol.appendChild(tr); });
+{ const tr=document.createElement('tr'); tr.className='total'; tr.innerHTML = t4RowHtmlVol(t4Total); t4BodyVol.appendChild(tr); }
+t4.forEach(c=>{ const tr=document.createElement('tr'); tr.innerHTML = t4RowHtmlRatio(c); t4BodyRatio.appendChild(tr); });
+{ const tr=document.createElement('tr'); tr.className='total'; tr.innerHTML = t4RowHtmlRatio(t4Total); t4BodyRatio.appendChild(tr); }
+
+/* ---- Team charts: top gainers / decliners by revenue % change ---- */
+const t4WithPct = t4.filter(c=>c.rev25>0).map(c=>({name:c.name, pct: (c.rev26-c.rev25)/c.rev25*100}));
+const gainers = [...t4WithPct].sort((a,b)=>b.pct-a.pct).slice(0,8);
+const decliners = [...t4WithPct].sort((a,b)=>a.pct-b.pct).slice(0,8);
+
+renderChart('chartTeamGainers', [
+  {name:'Revenue Growth %', color:TEAL, data:gainers.map(g=>+g.pct.toFixed(1))},
+], 'bar', gainers.map(g=>g.name), {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
+
+renderChart('chartTeamDecliners', [
+  {name:'Revenue Change %', color:CORAL, data:decliners.map(g=>+g.pct.toFixed(1))},
+], 'bar', decliners.map(g=>g.name), {valFmt:v=>v.toFixed(1)+'%', axisFmt:v=>v.toFixed(0)+'%'});
+
+const t4AnalysisPoints = [
+  `<b>Titans</b> (Nagpur) was the biggest relative gainer by far: revenue grew from ₹0.53L to ₹1.81L (<span class="up">▲241.51%</span>), the largest percentage move in the dataset, with Conversion Rate rising from 1.81% to 8.22%.`,
+  `Other steep gainers: <b>PH Shadow Fangs</b> (South, <span class="up">▲175.00%</span>, ₹0.80L→₹2.20L), <b>FC Fury</b> (South, <span class="up">▲164.96%</span>, ₹1.17L→₹3.10L) and <b>FC Sparkunity</b> (South, <span class="up">▲121.17%</span>, ₹2.22L→₹4.91L) — South Cluster's FightClub sub‑team dominates the gainer list, consistent with FightClub's standout +81.23% growth in Table 3.`,
+  `<b>T‑Samriddhi</b> (WCC) fell to zero revenue this period (₹0.18L→₹0), the only team with no recorded revenue at all in Sep 1–14, even as its lead count held roughly flat.`,
+  `<b>Genesis</b> (WCC) declined sharply: revenue fell from ₹1.72L to ₹0.62L (<span class="down">▼63.95%</span>), with Conversion Rate falling from 6.50% to 3.48% — the steepest decline among teams with meaningful revenue in both periods, and a major contributor to WCC Cluster's overall regional decline.`,
+  `<b>T‑Orion</b> (Law + New Businesses) also declined sharply, from ₹3.545L to ₹1.91L (<span class="down">▼46.12%</span>), with Conversion Rate falling from 11.27% to 5.73% — a notable efficiency collapse alongside the revenue drop.`,
+  `<b>FC Sparkunity</b> (South) delivered the largest absolute revenue gain of any team: ₹2.22L→₹4.91L (+₹2.69L, <span class="up">▲121.17%</span>), with Conversion Rate actually rising from 5.26% to 7.36% — a rare case of large-scale growth paired with an efficiency gain.`,
+  `<b>Concentration:</b> the biggest gains concentrated heavily in South Cluster's FightClub sub‑team, consistent with FightClub's standout performance in Table 3, while the sharpest declines concentrated in WCC (Genesis, T‑Samriddhi) — consistent with WCC Cluster's overall regional decline in Table 2.`,
+];
+document.getElementById('t4-analysis').innerHTML = t4AnalysisPoints.map(p=>`<li>${p}</li>`).join('');
+
+const TOP_JUNE = [
+  ['University Of Petroleum And Energy Studies',40,243000],
+  ['Hl College Of Commerece',28,193000],
+  ['Parul University',25,146000],
+  ['St Joseph University',20,145000],
+  ['Mcm Dav',22,144000],
+  ['Damodaram Sanjivayya National Law University',24,140000],
+  ['Gitam University',17,118000],
+  ['Mit Art Design And Technology University',21,114000],
+  ['Chandigarh University',16,87000],
+  ['Lovely Professional University',14,84000],
+  ['Karnavati University',12,80000],
+  ['Nmims Hyderabad',13,79000],
+  ['Nims University Jaipur',15,75000],
+  ['Gls University',12,72000],
+  ['Ethiraj College For Women',12,67000],
+];
+const TOP_JULY = [
+  ['Lovely Professional University',57,336000],
+  ['Chandigarh University',44,245000],
+  ['Srm University',27,194000],
+  ['Anna University',25,184000],
+  ['Sathyabama Institute Of Science And Technology Chennai',27,183000],
+  ['Reva University Bengaluru',26,161000],
+  ['Ra Podar College Of Commerce And Economics',17,117000],
+  ['Rajadhani Institute Of Engineering And Technology',18,104000],
+  ['Mit World Peace University Pune',16,96000],
+  ['Jain University',16,95000],
+  ['Jyothi Engineering College',19,95000],
+  ['Ceg Anna University',13,90000],
+  ['K P B Hinduja College Of Commerce',16,88000],
+  ['Academy Of Architecture Mumbai',14,84000],
+  ['Vinayaka Missions Law School',14,84000],
+];
+const GAINERS = [
+  ['Lovely Professional University',84000,336000,252000],
+  ['Srm University',7000,194000,187000],
+  ['Chandigarh University',87000,245000,158000],
+  ['Reva University Bengaluru',18000,161000,143000],
+  ['Jain University',10000,95000,85000],
+  ['Mit World Peace University Pune',16000,96000,80000],
+  ['The Heritage College',5000,77000,72000],
+  ['Guru Gobind Singh Indraprastha University',6000,72000,66000],
+  ['Ms Ramaiah College Of Arts Science And Commerce',7000,61000,54000],
+  ['Iilm University Greater Noida',5000,49000,44000],
+  ['Chitkara University',12000,51000,39000],
+  ['Amity University Lucknow',10000,45000,35000],
+  ['Banasthali Vidhyapeeth',10000,45000,35000],
+  ['Bharti Vidyapeeth College Of Engineering',18000,50000,32000],
+  ['Nmims Mumbai',14000,44000,30000],
+];
+const DECLINERS = [
+  ['Gitam University',118000,8000,-110000],
+  ['Mit Art Design And Technology University',114000,10000,-104000],
+  ['Parul University',146000,64000,-82000],
+  ['Nims University Jaipur',75000,15000,-60000],
+  ['Icfai University',65000,8000,-57000],
+  ['St Xavier\'s College',59000,6000,-53000],
+  ['Sk Somaiya College Mumbai',56000,5000,-51000],
+  ['Anant National University',59000,12000,-47000],
+  ['Pes University Bengaluru',56000,21000,-35000],
+  ['St Joseph\'s University',39000,6000,-33000],
+  ['Christ College Irinjalakuda',45000,17000,-28000],
+  ['Nitte Meenakshi Institute Of Technology Bangalore',34000,7000,-27000],
+  ['Avinash College Of Commerce',44000,19000,-25000],
+  ['Mop Vaishnav College For Women',32000,8000,-24000],
+  ['Sydenham College Of Commerce And Economics',27000,5000,-22000],
+];
+const NEW_ENTRANTS = [
+  ['Anna University',25,184000],
+  ['Sathyabama Institute Of Science And Technology Chennai',27,183000],
+  ['Ra Podar College Of Commerce And Economics',17,117000],
+  ['Rajadhani Institute Of Engineering And Technology',18,104000],
+  ['Jyothi Engineering College',19,95000],
+  ['Ceg Anna University',13,90000],
+  ['K P B Hinduja College Of Commerce',16,88000],
+  ['Academy Of Architecture Mumbai',14,84000],
+  ['Vinayaka Missions Law School',14,84000],
+  ['Psg College Of Technology',12,80000],
+  ['Sasi Creative School Of Architecture',11,78000],
+  ['Gsfc University',13,74000],
+  ['Ms-Idpt',12,72000],
+  ['Bms College Of Architecture',11,66000],
+  ['Amity University Punjab',10,61000],
+];
+const DROPPED = [
+  ['University Of Petroleum And Energy Studies',40,243000],
+  ['Hl College Of Commerece',28,193000],
+  ['St Joseph University',20,145000],
+  ['Mcm Dav',22,144000],
+  ['Damodaram Sanjivayya National Law University',24,140000],
+  ['Karnavati University',12,80000],
+  ['Nmims Hyderabad',13,79000],
+  ['Gls University',12,72000],
+  ['Ethiraj College For Women',12,67000],
+  ['Banasthali University',11,55000],
+  ['Symbiosis Statistics Institute',8,54000],
+  ['BK College',9,52000],
+  ['Marian College',9,46000],
+  ['Mes College Of Arts Commerce And Science',8,46000],
+  ['Apollo Chitoor Medical College',11,44000],
+];/* ---- Market charts (overall) ---- */
+renderChart('chartMarketComposition', [
+  {name:'Aug 1–13', color:NAVY, data:[1738000, 0, 3710500]},
+  {name:'Sep 1–14', color:GOLD, data:[2252000, 4254000, 0]},
+], 'bar', ['Repeat Colleges','New in Sep 1–14','Dropped from Aug 1–13'], {valFmt:v=>v>0?'₹'+fmtNum(Math.round(v/1000))+'K':'', axisFmt:v=>'₹'+fmtNum(Math.round(v/100000))+'L'});
+
+renderChart('chartMarketCount', [
+  {name:'Aug 1–13', color:NAVY, data:[270]},
+  {name:'Sep 1–14', color:TEAL, data:[264]},
+], 'bar', ['Active Colleges'], {valFmt:v=>fmtNum(v)});
+
+/* ---- Market tables ---- */
+function marketRowSimple(row){
+  const [name, units, rev] = row;
+  return `<tr><td class="label">${name}</td><td class="num">${fmtNum(units)}</td><td class="num">${fmtCur(rev)}</td></tr>`;
+}
+function marketRowDelta(row){
+  const [name, jun, jul, delta] = row;
+  const dir = delta>=0?'up':'down';
+  return `<tr><td class="label">${name}</td><td class="num">${fmtCur(jun)}</td><td class="num">${fmtCur(jul)}</td><td class="num"><span class="delta-pill ${dir}">${delta>=0?'▲':'▼'} ${fmtCur(Math.abs(delta))}</span></td></tr>`;
+}
+document.getElementById('market-top-june').innerHTML = TOP_JUNE.map(marketRowSimple).join('');
+document.getElementById('market-top-july').innerHTML = TOP_JULY.map(marketRowSimple).join('');
+document.getElementById('market-gainers').innerHTML = GAINERS.map(marketRowDelta).join('');
+document.getElementById('market-decliners').innerHTML = DECLINERS.map(marketRowDelta).join('');
+document.getElementById('market-new').innerHTML = NEW_ENTRANTS.map(marketRowSimple).join('');
+document.getElementById('market-dropped').innerHTML = DROPPED.map(marketRowSimple).join('');
+
+const marketAnalysisPoints = [
+  `<b>The market held roughly steady while revenue grew much faster.</b> Distinct colleges generating revenue fell slightly from 270 in Aug 1–13 to 264 in Sep 1–14 (<span class="down">▼2.22%</span>) — a sharp contrast with the 19.41% revenue growth, meaning growth came almost entirely from doing more with a similar-sized set of colleges, not from reaching more of them.`,
+  `<b>Repeat colleges (active in both periods)</b> — 62 of them — grew combined revenue from ₹17.38L to ₹22.52L (<span class="up">▲29.57%</span>), a gain ahead of the overall revenue growth rate.`,
+  `<b>New colleges in Sep 1–14</b> — 202 of them — contributed ₹42.54L, or 65.4% of Sep's total revenue. Nearly two‑thirds of this period's revenue came from institutions with no Aug 1–13 activity at all — this market runs heavily on new relationships rather than repeat ones.`,
+  `<b>Colleges that dropped off</b> — 208 of them, worth ₹37.105L in Aug 1–13 (68.1% of that period's revenue) — did not repeat in Sep 1–14. With only 62 colleges repeating out of 270 active in Aug 1–13, retention across this window remains moderate despite the market's overall revenue growth.`,
+  `<b>Lovely Professional University</b> was the largest gainer among repeat colleges: revenue grew from ₹84,000 to ₹3,36,000 (+₹2,52,000) — by far the biggest increase of any matched college.`,
+  `<b>Gitam University</b> saw the steepest decline among repeat colleges, falling from ₹1,18,000 to ₹8,000 (−₹1,10,000) — last period's strong college by revenue fell sharply this period, worth checking whether that reflects a one‑time large order in August.`,
+  `<b>Concentration eased.</b> The top 15 colleges by revenue in Sep 1–14 (₹21.56L combined) account for 33.1% of total revenue (₹65.06L) — a broader base of contributors than a shorter window would suggest, consistent with the large new‑entrant pool driving nearly two‑thirds of this period's revenue.`,
+];
+document.getElementById('market-analysis').innerHTML = marketAnalysisPoints.map(p=>`<li>${p}</li>`).join('');
+
+const CLUSTER_MARKET = {
+  'Law Cluster': {
+    june: [['University Of Petroleum And Energy Studies',37,222000], ['Damodaram Sanjivayya National Law University',24,140000], ['Nmims Hyderabad',13,79000], ['Gls University',11,66000], ['Anant National University',10,59000], ['Lovely Professional University',8,47000], ['Bhagat Phool Singh Mahila Vishwavidyalaya',9,40500], ['Mit Art Design And Technology University',7,37000]],
+    july: [['Academy Of Architecture Mumbai',14,84000], ['Lovely Professional University',12,79000], ['Ms-Idpt',12,72000], ['Guru Gobind Singh Indraprastha University',13,72000], ['Bms College Of Architecture',11,66000], ['Reva University Bengaluru',11,64000], ['Chandigarh University',9,49000], ['Banasthali Vidhyapeeth',9,45000]],
+    juneCount: 69, julyCount: 70,
+  },
+  'Medical Cluster': {
+    june: [['Banasthali University',10,49000], ['Apollo Chitoor Medical College',11,44000], ['Pes University Bengaluru',7,42000], ['Al Badar Dental College',10,40000], ['Chandigarh University',8,39000], ['S Thangapazham Medical College Of Naturopathy And Yogic Sciences',9,36000], ['The Assam Royal Global University',7,35000], ['Nims University Jaipur',7,35000]],
+    july: [['Lovely Professional University',15,62000], ['Mit World Peace University Pune',8,42000], ['Poona College Of Pharmacy',8,40000], ['Kle Academy Of Higher Education & Research',7,28000], ['Sri Adi Siva Sadguru Alli Saheb Sivaaryula Homeopathy Medical College',7,27000], ['Ravenshaw University',5,27000], ['Kle College Of Pharmacy',5,27000], ['Jss College Of Pharmacy',5,27000]],
+    juneCount: 47, julyCount: 47,
+  },
+  'Nagpur Cluster': {
+    june: [['Parul University',10,57000], ['BK College',9,52000], ['Karnavati University',6,42000], ['Narsee Monjee College Of Commerce And Economics',4,28000], ['Sydenham College Of Commerce And Economics',4,27000], ['Sandip University',5,25000], ['Avinash College Of Commerce',4,24000], ['Sk Somaiya College Mumbai',3,21000]],
+    july: [['Ra Podar College Of Commerce And Economics',17,117000], ['Lovely Professional University',12,72000], ['Mit World Peace University Pune',8,54000], ['Parul University',8,52000], ['Bharti Vidyapeeth College Of Engineering',10,50000], ['Amity University Raipur',6,42000], ['City Premier College',7,41000], ['Priyadarshini College Of Engineering',9,39000]],
+    juneCount: 54, julyCount: 31,
+  },
+  'North Cluster': {
+    june: [['Hl College Of Commerece',28,193000], ['Mcm Dav',22,144000], ['Parul University',13,77000], ['Shri Shikshayatan College',8,42000], ['J D Birla Institute',6,41000], ['Nims University Jaipur',8,40000], ['Christ University-Delhi Ncr',4,28000], ['St Xavier\'s College',3,18000]],
+    july: [['Chandigarh University',29,166000], ['Lovely Professional University',18,123000], ['The Heritage College',14,77000], ['Gsfc University',13,74000], ['Amity University Punjab',10,61000], ['Iilm University Greater Noida',7,49000], ['Chandigarh University Up Campus',8,46000], ['Christ University-Delhi Ncr',3,24000]],
+    juneCount: 27, julyCount: 24,
+  },
+  'FightClub': {
+    june: [['Gitam University',17,118000], ['Ethiraj College For Women',12,67000], ['Mes College Of Arts Commerce And Science',7,41000], ['Vellore Institute Of Technology Vellore',6,35000], ['Icfai University',5,35000], ['Rv University',4,33000], ['Mop Vaishnav College For Women',6,32000], ['Government Law College-Tirunelveli',5,25000]],
+    july: [['Srm University',27,194000], ['Anna University',25,184000], ['Sathyabama Institute Of Science And Technology Chennai',27,183000], ['Ceg Anna University',13,90000], ['Vinayaka Missions Law School',14,84000], ['Psg College Of Technology',12,80000], ['Sasi Creative School Of Architecture',11,78000], ['Srm University Ktr Campus',7,50000]],
+    juneCount: 43, julyCount: 45,
+  },
+  'PackHouse': {
+    june: [['St Joseph University',17,123000], ['Marian College',9,46000], ['Christ College Irinjalakuda',9,45000], ['Sacred Heart College',6,44000], ['St Joseph\'s University',6,39000], ['Nitte Meenakshi Institute Of Technology Bangalore',5,34000], ['Union Christian College Aluva',6,30000], ['Sn College Chempazhanthy',6,30000]],
+    july: [['Rajadhani Institute Of Engineering And Technology',18,104000], ['Jyothi Engineering College',19,95000], ['Reva University Bengaluru',11,74000], ['Ms Ramaiah College Of Arts Science And Commerce',7,54000], ['Amrita Vishwa Vidyapeetham Amritapuri',8,52000], ['Marian Engineering College Tvm',10,50000], ['Scms School Of Engineering And Technology',7,47000], ['Amal Jyothi College Of Engineering Autonomous',9,45000]],
+    juneCount: 47, julyCount: 51,
+  },
+  'WCC Cluster': {
+    june: [['Mit Art Design And Technology University',12,64000], ['Symbiosis Statistics Institute',8,54000], ['St Xavier\'s College',6,41000], ['Manipal University Jaipur',6,36000], ['Sk Somaiya College Mumbai',6,35000], ['Niranjan Hiranandani School Of Management And Real Estate',5,32000], ['Guru Nanak Khalsa College Of Arts Science And Commerce',4,26000], ['Karnavati University',4,24000]],
+    july: [['K P B Hinduja College Of Commerce',16,88000], ['Jain University',7,46000], ['Amity University Noida',6,41000], ['Nmims Mumbai',5,33000], ['Amity University Madhya Pradesh',6,33000], ['Amity University Lucknow',4,25000], ['Reva University Bengaluru',4,23000], ['Sharda University Greater Noida',3,17000]],
+    juneCount: 29, julyCount: 24,
+  },
+};
+const mcSelect = document.getElementById('mcSelect');
+const mcClusterLabels = {
+  'Law Cluster':'Law + New Businesses (Law)',
+  'Medical Cluster':'Medical Cluster',
+  'Nagpur Cluster':'Nagpur Cluster',
+  'North Cluster':'North Cluster',
+  'FightClub':'South Cluster — FightClub',
+  'PackHouse':'South Cluster — PackHouse',
+  'WCC Cluster':'WCC Cluster',
+};
+Object.keys(CLUSTER_MARKET).forEach(key=>{
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.textContent = mcClusterLabels[key] || key;
+  mcSelect.appendChild(opt);
+});
+
+function renderMarketCluster(){
+  const key = mcSelect.value;
+  const d = CLUSTER_MARKET[key];
+  document.getElementById('mcJuneTitle').textContent = 'Top Colleges — Aug 1–13 (' + (mcClusterLabels[key]||key) + ')';
+  document.getElementById('mcJulyTitle').textContent = 'Top Colleges — Sep 1–14 (' + (mcClusterLabels[key]||key) + ')';
+  document.getElementById('mc-june-body').innerHTML = d.june.map(marketRowSimple).join('');
+  document.getElementById('mc-july-body').innerHTML = d.july.map(marketRowSimple).join('');
+  const juneRevSum = d.june.reduce((s,r)=>s+r[2],0);
+  const julyRevSum = d.july.reduce((s,r)=>s+r[2],0);
+  const summary = document.getElementById('mcSummary');
+  summary.innerHTML = `
+    <div class="card"><div class="k">Active Colleges</div><div class="v">${d.juneCount} → ${d.julyCount}</div></div>
+    <div class="card"><div class="k">Top‑8 Revenue — Aug 1–13</div><div class="v">${fmtCur(juneRevSum)}</div></div>
+    <div class="card"><div class="k">Top‑8 Revenue — Sep 1–14</div><div class="v">${fmtCur(julyRevSum)}</div></div>
+  `;
+}
+mcSelect.addEventListener('change', renderMarketCluster);
+renderMarketCluster();
+
+const DAILY_OVERALL = {june: [[200,0,0,0,0],[93,0,0,0,0],[1247,323,62,356000,725],[1611,380,82,461000,964],[1705,386,98,558000,1072],[1834,373,100,590000,986],[1229,376,90,531000,1056],[1680,299,110,608000,1127],[328,16,0,0,0],[1775,372,78,434500,1049],[1650,359,131,728000,1059],[1833,328,110,619000,1117],[1478,276,101,572000,1005],[0,0,0,0,0]], july: [[124,10,0,0,0],[1494,248,76,429500,751],[1608,261,75,447000,934],[2136,282,121,711000,1027],[1917,218,171,1037000,1014],[260,13,0,0,16],[1664,267,116,652000,930],[1376,256,105,604000,889],[1796,272,94,537000,916],[1586,256,106,621000,940],[1628,242,118,682000,944],[1436,203,134,785500,1024],[97,1,0,0,0],[231,0,0,0,0]]};
+const DAILY_REGION = {
+  'South Cluster': {june: [[30,0,0,0,0],[10,0,0,0,0],[367,91,20,106000,232],[401,123,17,93000,305],[451,111,32,186000,343],[559,103,28,168000,290],[353,96,28,170000,289],[383,99,32,186000,330],[29,0,0,0,0],[450,114,23,145000,296],[340,105,31,184000,313],[483,106,22,134000,332],[470,91,28,186000,297],[0,0,0,0,0]], july: [[46,10,0,0,0],[611,85,32,201000,326],[429,77,32,204000,359],[590,95,39,252000,375],[616,60,61,407000,361],[40,0,0,0,10],[504,100,32,205000,336],[492,80,33,206000,337],[469,85,32,192000,328],[525,87,43,269000,324],[532,78,30,183000,322],[453,74,59,368000,383],[20,0,0,0,0],[20,0,0,0,0]]},
+  'Medical Cluster': {june: [[25,0,0,0,0],[5,0,0,0,0],[176,43,5,23000,103],[356,49,15,72000,148],[288,50,13,66000,173],[437,44,14,66000,164],[238,56,12,58000,160],[231,42,19,85000,182],[24,0,0,0,0],[272,54,17,77000,155],[370,47,24,110000,160],[239,54,16,71000,162],[187,32,22,100000,171],[0,0,0,0,0]], july: [[13,0,0,0,0],[312,26,13,54500,91],[185,29,10,48000,107],[365,27,13,69000,119],[300,25,17,89000,123],[38,0,0,0,0],[163,32,20,87000,102],[226,28,13,65000,97],[306,27,12,51000,119],[258,31,15,68000,142],[246,26,13,65000,102],[238,29,16,78500,102],[6,0,0,0,0],[3,0,0,0,0]]},
+  'WCC Cluster': {june: [[3,0,0,0,0],[0,0,0,0,0],[149,46,9,57000,104],[201,58,7,43000,111],[129,56,9,56000,129],[182,63,8,50000,124],[117,52,10,61000,140],[180,46,7,44000,139],[15,0,0,0,0],[186,41,3,17000,106],[169,47,9,51000,135],[216,34,19,120000,136],[99,34,2,13000,125],[0,0,0,0,0]], july: [[3,0,0,0,0],[55,22,4,25000,65],[140,25,2,15000,85],[169,36,5,31000,97],[131,28,18,104000,106],[6,0,0,0,0],[146,31,9,56000,72],[110,30,6,33000,84],[169,34,8,51000,85],[105,30,5,30000,98],[85,32,3,19000,108],[205,39,11,61000,120],[40,0,0,0,0],[18,0,0,0,0]]},
+  'Nagpur Cluster': {june: [[66,0,0,0,0],[47,0,0,0,0],[81,50,5,29000,57],[215,70,10,56000,110],[299,53,9,53000,116],[204,62,13,82000,127],[200,73,11,64000,157],[469,44,17,87000,167],[189,16,0,0,0],[212,62,10,50000,153],[228,49,16,94000,151],[264,56,10,55000,155],[290,59,16,93000,145],[0,0,0,0,0]], july: [[10,0,0,0,0],[103,48,4,25000,53],[241,50,6,40000,96],[561,58,18,100000,125],[378,29,22,133000,131],[102,12,0,0,6],[293,39,13,67000,149],[185,31,15,89000,118],[177,44,13,80000,121],[310,37,16,99000,110],[172,19,24,139000,122],[59,3,12,70000,110],[18,1,0,0,0],[133,0,0,0,0]]},
+  'Law + New Businesses': {june: [[25,0,0,0,0],[23,0,0,0,0],[159,61,10,54000,127],[260,69,22,121000,175],[282,91,25,129000,207],[225,82,28,165000,180],[207,71,17,101000,200],[283,60,20,111000,208],[53,0,0,0,0],[476,76,19,110500,239],[382,72,40,222000,206],[279,62,25,137000,221],[231,48,21,111000,187],[0,0,0,0,0]], july: [[17,0,0,0,0],[211,57,12,59000,143],[401,62,17,94000,225],[225,59,21,113000,234],[386,62,39,216000,210],[52,1,0,0,0],[172,51,25,134000,194],[247,65,30,169000,181],[276,64,21,122000,193],[220,60,17,94000,184],[514,75,28,152000,206],[322,53,26,149000,221],[9,0,0,0,0],[5,0,0,0,0]]},
+  'North Cluster': {june: [[51,0,0,0,0],[8,0,0,0,0],[315,32,13,87000,102],[178,11,11,76000,115],[256,25,10,68000,104],[227,19,9,59000,101],[114,28,12,77000,110],[134,8,15,95000,101],[18,0,0,0,0],[179,25,6,35000,100],[161,39,11,67000,94],[352,16,18,102000,111],[201,12,12,69000,80],[0,0,0,0,0]], july: [[35,0,0,0,0],[202,10,11,65000,73],[212,18,8,46000,62],[226,7,25,146000,77],[106,14,14,88000,83],[22,0,0,0,0],[386,14,17,103000,77],[116,22,8,42000,72],[399,18,8,41000,70],[168,11,10,61000,82],[79,12,20,124000,84],[159,5,10,59000,88],[4,0,0,0,0],[52,0,0,0,0]]},
+};
+
+const DAILY_CLUSTER = {
+  'FightClub': {june: [[29,0,0,0,0],[9,0,0,0,0],[202,45,9,48000,116],[258,64,7,41000,157],[221,54,14,84000,187],[309,48,12,76000,149]], july: [[36,0,0,0,0],[367,49,15,100000,158],[241,39,19,124000,187],[305,44,23,159000,213],[357,27,39,281000,189],[24,1,0,0,0]]},
+  'Law Cluster': {june: [[25,0,0,0,0],[23,0,0,0,0],[159,61,10,54000,127],[260,69,22,121000,175],[283,91,25,129000,207],[225,82,28,165000,180]], july: [[17,0,0,0,0],[213,57,12,59000,143],[403,62,17,94000,225],[228,59,21,113000,234],[389,62,39,216000,210],[52,1,0,0,0]]},
+  'PackHouse': {june: [[3,0,0,0,0],[2,0,0,0,0],[173,46,11,58000,122],[155,59,10,52000,153],[233,56,18,102000,160],[261,55,16,92000,147]], july: [[10,10,0,0,0],[239,36,17,101000,168],[190,38,13,80000,172],[286,51,16,93000,162],[272,33,22,126000,172],[15,0,0,0,0]]},
+  'Nagpur Cluster': {june: [[66,0,0,0,0],[47,0,0,0,0],[81,50,5,29000,57],[214,70,10,56000,110],[297,53,9,53000,116],[202,61,13,82000,121]], july: [[9,0,0,0,0],[103,47,4,25000,53],[242,49,6,40000,89],[528,58,18,100000,125],[333,29,22,133000,131],[96,11,0,0,6]]},
+  'WCC Cluster': {june: [[3,0,0,0,0],[0,0,0,0,0],[150,46,9,57000,98],[201,58,7,43000,109],[129,56,9,56000,129],[182,63,8,50000,122]], july: [[3,0,0,0,0],[55,22,4,25000,65],[140,25,2,15000,85],[169,36,5,31000,97],[131,28,18,104000,104],[6,0,0,0,0]]},
+  'Medical Cluster': {june: [[25,0,0,0,0],[5,0,0,0,0],[176,43,5,23000,103],[356,49,15,72000,148],[288,50,13,66000,173],[437,44,14,66000,164]], july: [[13,0,0,0,0],[312,26,13,54500,91],[185,29,10,48000,107],[365,27,13,69000,119],[300,25,17,89000,119],[38,0,0,0,0]]},
+  'North Cluster': {june: [[51,0,0,0,0],[8,0,0,0,0],[315,32,13,87000,102],[178,11,11,76000,115],[256,25,10,68000,104],[227,19,9,59000,101]], july: [[35,0,0,0,0],[202,10,11,65000,73],[212,18,8,46000,62],[226,7,25,146000,77],[106,14,14,88000,83],[22,0,0,0,0]]},
+};
+
+
+/* ---- Date-wise Trends: dropdown-driven daily line chart ---- */
+const DAY_LABELS = Array.from({length:14}, (_,i)=>'Day '+(i+1));
+const METRIC_META = {
+  0: {label:'Leads', fmt:v=>fmtNum(v), axisFmt:v=>fmtNum(Math.round(v))},
+  1: {label:'Campaigns', fmt:v=>fmtNum(v), axisFmt:v=>fmtNum(Math.round(v))},
+  2: {label:'Sales (Units)', fmt:v=>fmtNum(v), axisFmt:v=>fmtNum(Math.round(v))},
+  3: {label:'Revenue', fmt:v=>fmtCur(v), axisFmt:v=>'₹'+fmtNum(Math.round(v/1000))+'K'},
+  4: {label:'Pitches', fmt:v=>fmtNum(v), axisFmt:v=>fmtNum(Math.round(v))},
+};
+const trendScopeLabels = {
+  'ALL':'Company (All)',
+  'Law + New Businesses':'Law + New Businesses',
+  'Medical Cluster':'Medical Cluster',
+  'Nagpur Cluster':'Nagpur Cluster',
+  'North Cluster':'North Cluster',
+  'South Cluster':'South Cluster (combined)',
+  'FightClub':'South — FightClub',
+  'PackHouse':'South — PackHouse',
+  'WCC Cluster':'WCC Cluster',
+};
+const trendScope = document.getElementById('trendScope');
+Object.keys(trendScopeLabels).forEach(key=>{
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.textContent = trendScopeLabels[key];
+  trendScope.appendChild(opt);
+});
+
+function getScopeData(scope){
+  if(scope==='ALL') return DAILY_OVERALL;
+  if(DAILY_REGION[scope]) return DAILY_REGION[scope];
+  if(DAILY_CLUSTER[scope]) return DAILY_CLUSTER[scope];
+  return DAILY_OVERALL;
+}
+
+function renderTrend(){
+  const metricIdx = +document.getElementById('trendMetric').value;
+  const scope = trendScope.value;
+  const meta = METRIC_META[metricIdx];
+  const data = getScopeData(scope);
+  const juneSeries = data.june.map(row=>row[metricIdx]);
+  const julySeries = data.july.map(row=>row[metricIdx]);
+
+  document.getElementById('trendChartTitle').textContent = `${meta.label} — ${trendScopeLabels[scope]}`;
+  document.getElementById('trendChartCap').textContent = 'Daily totals, Aug 1–13 (Day 1–13) vs Sep 1–14 (Day 1–14)';
+
+  renderChart('chartTrend', [
+    {name:'Aug 1–13', color:NAVY, data:juneSeries},
+    {name:'Sep 1–14', color:GOLD, data:julySeries},
+  ], 'dense', DAY_LABELS, {valFmt:meta.fmt, axisFmt:meta.axisFmt});
+
+  const juneTotal = juneSeries.reduce((a,b)=>a+b,0);
+  const julyTotal = julySeries.reduce((a,b)=>a+b,0);
+  const juneBestIdx = juneSeries.indexOf(Math.max(...juneSeries));
+  const julyBestIdx = julySeries.indexOf(Math.max(...julySeries));
+  const delta = juneTotal>0 ? ((julyTotal-juneTotal)/juneTotal*100) : null;
+
+  document.getElementById('trendSummary').innerHTML = `
+    <div class="card"><div class="k">Aug 1–13 Total</div><div class="v">${meta.fmt(juneTotal)}</div></div>
+    <div class="card"><div class="k">Sep 1–14 Total</div><div class="v">${meta.fmt(julyTotal)}${delta!==null?` <span style="font-size:14px; color:${delta>=0?'var(--teal)':'var(--coral)'}">(${delta>=0?'▲':'▼'} ${Math.abs(delta).toFixed(1)}%)</span>`:''}</div></div>
+    <div class="card"><div class="k">Best Single Day</div><div class="v" style="font-size:15px;">Jun ${meta.fmt(juneSeries[juneBestIdx])} (Day ${juneBestIdx+1}) · Jul ${meta.fmt(julySeries[julyBestIdx])} (Day ${julyBestIdx+1})</div></div>
+  `;
+}
+document.getElementById('trendMetric').addEventListener('change', renderTrend);
+trendScope.addEventListener('change', renderTrend);
+renderTrend();
+
+</script>
+</body>
+</html>
